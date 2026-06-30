@@ -57,6 +57,8 @@ navbar:
         url: /local-development-eng.html
     - title: Guida
       url: /guide.html
+    - title: home
+      url: /home.html
     - title: Pagina di esempio
       url: /example.html
     - title: Approfondimenti
