@@ -18,8 +18,8 @@
 # {{ site.title }}, {{ site.email }}, ecc. Puoi creare variabili personalizzate:
 # saranno accessibili nei template tramite {{ site.myvariable }}.
 
-title: "Template per Progettoni"
-subtitle: "Questo è un template per i progetti del Master SoBigData"
+title: "Where does the money go?"
+subtitle: "Template del sito Gruppo 2"
 description: >- # ignora i ritorni a capo fino a "baseurl:"
   Scrivi qui una descrizione accattivante per il tuo nuovo sito. Puoi modificare questa
   riga in _config.yml. Apparirà nei meta del documento head (per
@@ -29,14 +29,14 @@ description: >- # ignora i ritorni a capo fino a "baseurl:"
 # Riportare il github del gruppo di progetto e quello del sito web (se differente).
 # Tali informazioni appariranno nel Footer del sito.
 github_repo:
-  - name: "Template per i Progettoni del Master SoBigData"
-    url: "https://github.com/danielefadda/master-projects-template-2026/"
+  - name: "Gruppo 2 - Repository del sito"
+    url: "https://github.com/l-scapin/website-repo"
 
 markdown: kramdown
 
-baseurl: "/master-projects-template-2026"
+baseurl: "/g2-2026-website"
 #baseurl: ""
-url: "https://danielefadda.github.io" # il dominio principale del sito senza barra finale (in questo caso il tuo username.github.io)
+url: "https://l-scapin.github.io" # il dominio principale del sito senza barra finale (in questo caso il tuo username.github.io)
 
 #################################
 #    Configurazione navigazione #
