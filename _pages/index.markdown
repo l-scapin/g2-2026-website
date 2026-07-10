@@ -35,7 +35,14 @@ Analizziamo oltre 200.000 progetti finanziati dalla politica di coesione italian
 dati aperti di **OpenCoesione**, per capire dove vanno davvero i fondi pubblici e con quali esiti.
 {: .lead }
 
-# Le tre domande
+La politica di coesione è lo strumento con cui l'Unione Europea e lo Stato finanziano
+interventi per ridurre i divari tra i territori: infrastrutture, ricerca, ambiente, servizi.
+**OpenCoesione** è il portale che rende pubblici questi dati, progetto per progetto. Noi ci
+concentriamo su questi progetti (il PNRR resta fuori) e li leggiamo con metodi statistici per
+rispondere a domande semplici ma decisive: i fondi si traducono in progetti conclusi? Dove si
+concentrano i ritardi e i rischi? E le opportunità sono distribuite in modo equo tra Nord e Sud?
+
+# Le domande
 
 <div class="qcards">
   <div class="qcard">
@@ -48,10 +55,15 @@ dati aperti di **OpenCoesione**, per capire dove vanno davvero i fondi pubblici 
     <p>Quali progetti rischiano di non partire o di sforare i tempi.</p>
     <a href="{{ site.baseurl }}/xgboost.html">Vai al modello →</a>
   </div>
-  <div class="qcard">
+  <div class="qcard qcard--sud">
     <h5>Sono equi tra Nord e Sud?</h5>
     <p>Il divario territoriale su fondi ed esiti, il nostro messaggio centrale.</p>
     <a href="{{ site.baseurl }}/conclusions.html">Vai alle conclusioni →</a>
+  </div>
+  <div class="qcard">
+    <h5>Le descrizioni predicono l'esito?</h5>
+    <p>Dalle etichette e dai testi dei progetti emergono parole associate al successo?</p>
+    <a href="{{ site.baseurl }}/text-analysis.html">Vai alla text analysis →</a>
   </div>
 </div>
 

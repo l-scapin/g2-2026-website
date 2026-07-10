@@ -10,6 +10,12 @@ strong {
   font-weight: 600;
 }
 
+// Occhiello (.lead): resta più grande ma con lo stesso peso del testo,
+// così il salto con il paragrafo normale è meno brusco.
+.lead {
+  font-weight: 400;
+}
+
 // pattern full width
 .full-width-wrapper {
             width: 100vw;
@@ -172,14 +178,21 @@ iframe {
 }
 
 // ---- Teaser "tre domande" ----
-.qcards { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0 2rem; }
+.qcards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1rem 0 2rem;
+}
+@media (max-width: 575px) {
+  .qcards { grid-template-columns: 1fr; }
+}
 .qcards .qcard {
-  flex: 1 1 240px;
   border: 1px solid #e5e7eb;
   border-left: 5px solid var(--nord);
   border-radius: .4rem;
   padding: 1.1rem 1.2rem;
   background: #fff;
 }
-.qcards .qcard:last-child { border-left-color: var(--sud); }
+.qcards .qcard--sud { border-left-color: var(--sud); }   // la domanda "centrale" Nord/Sud
 .qcards .qcard h5 { margin-top: 0; }
