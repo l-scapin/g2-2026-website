@@ -23,21 +23,21 @@
   role: tutor
   home: true
 
-- name: First Name Last Name
-  github: https://kdd.isti.cnr.it/people/student-1
+- name: Alessandro Arosio
+  github: https://sites.google.com/view/alessandro-arosio/lavori
   role: student
-- name: First Name Last Name
+- name: Gladness Boluwape
   github: https://kdd.isti.cnr.it/people/student-2
   role: student
-- name: First Name Last Name
+- name: Francesco Fida
   github: https://kdd.isti.cnr.it/people/student-3
   role: student
-- name: First Name Last Name
+- name: Antonio Mercuri
   github: https://kdd.isti.cnr.it/people/student-4
   role: student
-- name: First Name Last Name
+- name: Bruna Pitta
   github: https://kdd.isti.cnr.it/people/student-5
   role: student
-- name: First Name Last Name
+- name: Luca Scapin
   github: https://kdd.isti.cnr.it/people/student-6
-  role: student
+  role: Lorenza Valentini

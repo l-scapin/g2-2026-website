@@ -65,6 +65,10 @@ iframe {
 .navbar-brand {
   text-decoration: none;
 }
+// spazio tra il logo e il titolo del sito nella navbar
+.navbar-brand img {
+  margin-right: .55rem !important;
+}
 .navbar {
   //border-bottom: 1px solid white;
   z-index: 1000;
@@ -98,3 +102,84 @@ iframe {
   display: flex;
   justify-content: center;
 }
+
+// =====================================================================
+//  PALETTE A DUE POLI  (Nord/concluso = freddo, Sud/rischio = caldo)
+//  Usa queste variabili anche nei grafici Altair per coerenza.
+// =====================================================================
+:root {
+  --nord: #177E89;        // freddo: Nord / concluso
+  --nord-dark: #0E5A63;
+  --sud: #D1573B;         // caldo: Sud / a rischio
+  --ink: #1a1a1a;
+  --muted: #6b7280;
+}
+
+// Classi utility rapide da usare nel testo o inline
+.text-nord { color: var(--nord) !important; }
+.text-sud  { color: var(--sud)  !important; }
+.bg-nord   { background: var(--nord) !important; color: #fff !important; }
+.bg-sud    { background: var(--sud)  !important; color: #fff !important; }
+
+// ---- Header della home (sfondo sobrio, titolo leggibile) ----
+// text-shadow per far risaltare il titolo bianco sull'immagine full-page (splash)
+.hero-chulapa-image h1,
+.hero-chulapa-image .p-summary,
+.header-chulapa h1 {
+  letter-spacing: .5px;
+  color: #ffffff;
+  text-shadow: 0 2px 14px rgba(0,0,0,.45);
+}
+
+// ---- Fascia "big numbers" della home ----
+.big-numbers {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: .8rem;
+  margin: 2.5rem 0;
+}
+// Variante "a cavallo": tira su le caselle sul bordo hero / sezione bianca
+.big-numbers--straddle {
+  position: relative;
+  z-index: 10;
+  margin-top: -4rem;        // regola qui l'overlap sull'immagine (es. -3rem / -5rem)
+  margin-bottom: 2.5rem;
+}
+@media (max-width: 575px) {
+  .big-numbers { grid-template-columns: repeat(2, 1fr); }
+  .big-numbers--straddle { margin-top: -3rem; }
+}
+.big-numbers .stat {
+  background: var(--nord);
+  color: #fff;
+  border-radius: .5rem;
+  padding: 1.4rem 1rem;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(0,0,0,.08);
+}
+.big-numbers .stat.stat-sud { background: var(--sud); }   // il dato "a rischio/Sud"
+.big-numbers--straddle .stat { box-shadow: 0 10px 28px rgba(0,0,0,.22); }  // "galleggiano" sul bordo
+.big-numbers .stat .num {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: .3rem;
+}
+.big-numbers .stat .lbl {
+  font-size: .95rem;
+  opacity: .95;
+  margin: 0;
+}
+
+// ---- Teaser "tre domande" ----
+.qcards { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0 2rem; }
+.qcards .qcard {
+  flex: 1 1 240px;
+  border: 1px solid #e5e7eb;
+  border-left: 5px solid var(--nord);
+  border-radius: .4rem;
+  padding: 1.1rem 1.2rem;
+  background: #fff;
+}
+.qcards .qcard:last-child { border-left-color: var(--sud); }
+.qcards .qcard h5 { margin-top: 0; }

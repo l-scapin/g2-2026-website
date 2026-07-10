@@ -1,44 +1,62 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+# Pagina di atterraggio del sito (raggiunta dal brand in alto a sinistra).
+# Per modificare il layout: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: default
 title: "Home"
 vega: true
+header_type: splash #base, post, hero, image, splash — splash = pagina intera, titolo centrato
+header_img: assets/images/hero_road.jpg
+header_title: "Where Does the Money Go?"
+subtitle: "I fondi della politica di coesione italiana: si concludono, sono a rischio, sono equi tra Nord e Sud?"
+
 ---
 
-<div class="full-width-wrapper">
-    <img src="{{ site.baseurl }}/assets/images/header.svg" alt="sbd-pattern" class="full-width-image">
+<div class="big-numbers big-numbers--straddle">
+  <div class="stat">
+    <p class="num">206.777</p>
+    <p class="lbl">progetti analizzati</p>
+  </div>
+  <div class="stat">
+    <p class="num">49%</p>
+    <p class="lbl">progetti conclusi</p>
+  </div>
+  <div class="stat stat-sud">
+    <p class="num">31%</p>
+    <p class="lbl">progetti a rischio</p>
+  </div>
+  <div class="stat">
+    <p class="num">+17&nbsp;pt</p>
+    <p class="lbl">divario Nord–Sud nei conclusi</p>
+  </div>
 </div>
 
-Per sviluppare il sito web del *Progettone* utilizzeremo un **Static Site Generator** (SSG), che consente di creare siti web a caricamento rapido senza la necessità di complessi sistemi backend o database.
-In particolare, utilizzeremo uno degli SSG più popolari: Jekyll e GitHub Pages.
+Analizziamo oltre 200.000 progetti finanziati dalla politica di coesione italiana con i
+dati aperti di **OpenCoesione**, per capire dove vanno davvero i fondi pubblici e con quali esiti.
 {: .lead }
 
-**Jekyll** è un semplice generatore di siti statici, blog-aware, che prende i tuoi contenuti, li renderizza in un sito web statico e li serve. Combinato con GitHub Pages, consente di ospitare il tuo sito web gratuitamente, rendendolo una scelta ideale per progetti personali, portfolio e siti di documentazione.
-{: .lead }
+# Le tre domande
 
-**GitHub Pages** è un servizio fornito da GitHub che consente di ospitare siti web statici direttamente da un repository GitHub. Supporta Jekyll nativamente, rendendo facile il deploy del tuo sito Jekyll con pochi click.
-{: .lead }
+<div class="qcards">
+  <div class="qcard">
+    <h5>Si concludono?</h5>
+    <p>Quanti progetti arrivano davvero a chiusura e cosa li distingue.</p>
+    <a href="{{ site.baseurl }}/eda.html">Vai all'analisi →</a>
+  </div>
+  <div class="qcard">
+    <h5>Sono a rischio?</h5>
+    <p>Quali progetti rischiano di non partire o di sforare i tempi.</p>
+    <a href="{{ site.baseurl }}/xgboost.html">Vai al modello →</a>
+  </div>
+  <div class="qcard">
+    <h5>Sono equi tra Nord e Sud?</h5>
+    <p>Il divario territoriale su fondi ed esiti, il nostro messaggio centrale.</p>
+    <a href="{{ site.baseurl }}/conclusions.html">Vai alle conclusioni →</a>
+  </div>
+</div>
 
-<br>
-
-# Cosa ti serve per iniziare
-
-- [ ] 🐙 **Un account GitHub** - Se non ne hai uno, puoi [crearlo gratuitamente](https://github.com/)
-- [ ] 📝 **Una bozza ben strutturata del tuo progetto** - Può essere un documento Word o qualsiasi altro formato tu preferisca. Dovrebbe includere le idee principali, la struttura e il contenuto che vuoi presentare sul tuo sito web.
-- [ ] 📊 **Una cartella con i tuoi Grafici salvati** - Puoi usare i grafici che hai creato salvandoli come file .json nella cartella `assets/charts`.
-- [ ] 📂 **Una cartella con tutte le immagini** che vuoi usare sul tuo sito web: puoi salvarle nella cartella `assets/images`.
-{: .bg-color-full  .px-3 .lead}
-
-<br>
-
-# Come iniziare
-
-Lo sviluppo del sito web può essere effettuato in due modi:
-1. **Completamente online, utilizzando GitHub e GitHub Pages.**
-2. Localmente, utilizzando Jekyll e poi caricando le modifiche su GitHub.
-
-Nella guida, ci concentreremo sulla prima opzione, che è il modo più semplice per creare un sito web. 
-Tuttavia, se vuoi sviluppare il sito web localmente, devi installare Jekyll sul tuo computer. 
-Puoi trovare le istruzioni su come farlo [nella guida ufficiale](https://jekyllrb.com/docs/installation/) o nella [sezione sviluppo locale]({{ site.baseurl }}/local-development/).
+<!-- Spazio per un grafico introduttivo (togli il commento e cambia il nome del file):
+<div style="height: 420px">
+<vegachart schema-url="{{site.baseurl}}/assets/charts/NOME_FILE.json" style="width: 100%; height: 100%"></vegachart>
+</div>
+-->

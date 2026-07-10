@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Home"
+title: "Pagina di Esempio"
 show_sidetoc: true
 header_type: hero
 header_img: assets/images/folium_map.webp

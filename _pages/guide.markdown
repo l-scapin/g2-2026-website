@@ -3,7 +3,7 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: default
-title: "Home"
+title: "Guida"
 vega: true
 header_type: hero #base, post, hero,image, splash
 header_img: assets/images/header.svg
