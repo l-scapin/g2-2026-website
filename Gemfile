@@ -28,3 +28,4 @@ gem "wdm", "~> 0.2.0", :platforms => [:mingw, :x64_mingw, :mswin]
 
 # Lock http_parser.rb per JRuby
 gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
+gem "openssl", "~> 3.1.2"
