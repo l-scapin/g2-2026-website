@@ -53,22 +53,14 @@ navbar:
       url: /eda.html
     - title: clustering
       url: /clustering.html
-    - title: xgboost
-      url: /xgboost.html
+    - title: modello
+      url: /modello.html
     - title: text analysis
       url: /text-analysis.html
     - title: conclusions
       url: /conclusions.html
-    - title: installazione di Jekyll
-      child:
-      - title: Sviluppo locale
-        url: /local-development.html
-      - title: Local development
-        url: /local-development-eng.html
     - title: Guida
       url: /guide.html
-    - title: Pagina di esempio
-      url: /example.html
     - title: Approfondimenti
       child:
         - title: Markdown

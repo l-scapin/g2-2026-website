@@ -1,12 +1,12 @@
 ---
 layout: default
-title: "XGBoost"
+title: "Modello"
 vega: true
 show_sidetoc: true
 header_type: hero #base, post, hero, image, splash
 header_img: assets/images/header.svg
-header_title: "Modello XGBoost"
-subtitle: "Previsione e importanza delle variabili"
+header_title: "Il modello predittivo"
+subtitle: "Previsione del rischio e importanza delle variabili"
 ---
 
 Introduzione: qual è il target (es. progetto a rischio / concluso) e perché un modello.

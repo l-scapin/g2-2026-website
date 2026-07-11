@@ -53,7 +53,7 @@ concentrano i ritardi e i rischi? E le opportunità sono distribuite in modo equ
   <div class="qcard">
     <h5>Sono a rischio?</h5>
     <p>Quali progetti rischiano di non partire o di sforare i tempi.</p>
-    <a href="{{ site.baseurl }}/xgboost.html">Vai al modello →</a>
+    <a href="{{ site.baseurl }}/modello.html">Vai al modello →</a>
   </div>
   <div class="qcard qcard--sud">
     <h5>Sono equi tra Nord e Sud?</h5>
@@ -72,3 +72,9 @@ concentrano i ritardi e i rischi? E le opportunità sono distribuite in modo equ
 <vegachart schema-url="{{site.baseurl}}/assets/charts/NOME_FILE.json" style="width: 100%; height: 100%"></vegachart>
 </div>
 -->
+
+<hr>
+
+<p style="font-size: 0.8rem; color: #888; margin-top: 1.5rem;">
+  Immagine di copertina: foto di <a href="https://unsplash.com/photos/zN4mtLHkHn4" target="_blank" rel="noopener">Fahrul Azmi</a> su <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>.
+</p>

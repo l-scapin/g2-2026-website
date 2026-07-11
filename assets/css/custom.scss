@@ -137,6 +137,15 @@ iframe {
   text-shadow: 0 2px 14px rgba(0,0,0,.45);
 }
 
+// ---- Sottotitolo hero: leggibile anche su immagini chiare ----
+// Il colore di default (bianco) arriva dal tema chulapa (.chulapa-subtitle),
+// non da questo file: qui lo sovrascriviamo aggiungendo un'ombra scura.
+.hero-chulapa-image .chulapa-subtitle,
+.header-chulapa-img .chulapa-subtitle {
+  color: #ffffff;
+  text-shadow: 0 2px 12px rgba(0,0,0,.80);
+}
+
 // ---- Fascia "big numbers" della home ----
 .big-numbers {
   display: grid;
