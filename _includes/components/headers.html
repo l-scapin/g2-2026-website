@@ -22,7 +22,7 @@
 </header>
 {%- elsif include.headertype == "hero" -%}
   {%- if include.imghero -%}
-<header class="d-flex align-items-center hero-chulapa-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.3)), url('{{ include.imghero | absolute_url }}')">
+<header class="d-flex align-items-center hero-chulapa-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.3)), url('{{ include.imghero | absolute_url }}'); background-position: {{ page.header_img_position | default: 'top' }}">
   {%- else -%}
 <header class="d-flex align-items-center hero-chulapa-image">
   {%- endif -%}

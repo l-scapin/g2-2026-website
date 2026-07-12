@@ -72,8 +72,9 @@ iframe {
   text-decoration: none;
 }
 // spazio tra il logo e il titolo del sito nella navbar
+// (.75rem: un filo più arioso di .55, il logo "respira" meglio accanto al testo)
 .navbar-brand img {
-  margin-right: .55rem !important;
+  margin-right: .75rem !important;
 }
 .navbar {
   //border-bottom: 1px solid white;

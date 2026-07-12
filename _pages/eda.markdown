@@ -5,7 +5,7 @@ vega: true
 plotly: true
 show_sidetoc: true
 header_type: hero #base, post, hero, image, splash
-header_img: assets/images/hero_EDA.jpg
+header_img: assets/images/kaspars-upmanis-Z0AcAo2luII-unsplash.jpg
 header_title: "Analisi Esplorativa dei Dati"
 subtitle: "Qualità dei dati, le tre metriche di esito e i primi pattern"
 ---
@@ -37,20 +37,20 @@ mappe o classifiche regionali.
 
 ![Distribuzione dello stato dei progetti]({{ site.baseurl }}/assets/images/eda/01_stato_progetto.png){: .img-fluid }
 
-# Le tre metriche di esito
+# Le tre metriche di esito {#metriche}
 
 Riassumiamo l'esito di ogni progetto con tre misure semplici. **Concluso**: il progetto risulta
 chiuso. **A rischio**: non è mai partito, oppure è in corso ma con la data di fine prevista già
 scaduta. **Tasso di assorbimento**: quanto è stato effettivamente pagato rispetto al finanziamento
 pubblico (da 0 a 2, dove valori sopra 1 segnalano un forte cofinanziamento privato).
 
-Nel complesso circa **metà** dei progetti è conclusa e **~31%** è a rischio. L'assorbimento merita
+Nel complesso circa **metà** dei progetti è conclusa e quasi un terzo (**31,5%**) è a rischio. L'assorbimento merita
 attenzione: la sua distribuzione è **bimodale** — tanti progetti fermi a 0 e un grande picco intorno
 a 1 (spesa completa). La media (0,72) da sola dice poco: va sempre letta insieme allo stato e al ciclo.
 
 ![Distribuzione del tasso di assorbimento]({{ site.baseurl }}/assets/images/eda/03_assorbimento_dist.png){: .img-fluid }
 
-# Divario territoriale (Nord / Sud)
+# Divario territoriale (Nord / Sud) {#divario}
 
 È il cuore del progetto. Confrontando Centro-Nord e Mezzogiorno il divario è netto: il Centro-Nord
 conclude il **58,8%** dei progetti contro il **41,6%** del Sud, ed è a rischio molto meno
@@ -63,7 +63,13 @@ della politica di coesione.
 Un divario così grande potrebbe però essere solo un effetto di composizione: se il ciclo più recente
 (appena partito, quindi con pochi conclusi) pesasse di più al Sud, il gap sarebbe un artefatto.
 Lo verifichiamo **dentro ogni ciclo** — e il risultato regge: in *tutti* i cicli il Centro-Nord
-conclude di più. Il divario è strutturale, non un'illusione statistica.
+conclude di più. Il divario è **persistente**: non dipende dal calendario dei cicli. Il ciclo, però,
+è solo una delle composizioni possibili: resta da pesare quella per **dimensione** e tema — i
+progetti grandi concludono meno ovunque, e se al Sud pesassero di più, parte del gap potrebbe
+spiegarsi così. Quanto conta il territorio *in sé* lo stimerà il modello multivariato.
+
+<!-- TODO (fattibile subito, è EDA): incrocio macroarea × classe di importo.
+     Se il divario regge dentro ogni classe, il claim si rafforza già in descrittiva. -->
 
 ![Divario di conclusione Nord-Sud, per ciclo]({{ site.baseurl }}/assets/images/eda/07_divario_per_ciclo.png){: .img-fluid }
 
@@ -150,8 +156,10 @@ Suggerisce che i colli di bottiglia non sono solo nei cantieri, ma anche nei tra
 
 **Governance e ritardi.** Un'ipotesi diffusa è che più enti coinvolti significhino più ritardi.
 Sui nostri dati la correlazione è praticamente nulla (≈ −0,04): questa vista descrittiva **non** la
-sostiene. Va letta con prudenza (il ritardo è misurato quasi solo sui progetti conclusi), ma il test
-pulito arriva dal modello del Notebook 02, dove il numero di enti risulta *non* associato al rischio.
+sostiene. Va letta con prudenza (il ritardo è misurato quasi solo sui progetti conclusi): il test
+più pulito arriverà dal modello multivariato, dove il numero di enti entra tra i predittori.
+<!-- ⚠️ SLOT MODELLO: quando pronto, riportare qui il risultato reale (enti associati o no al
+     rischio). Non affermare l'esito prima di averlo. -->
 
 ![Numero di enti e ritardo medio]({{ site.baseurl }}/assets/images/eda/12_governance.png){: .img-fluid }
 
@@ -167,7 +175,7 @@ una sola per evitare collinearità.
 # In sintesi
 
 I progetti si concludono a metà, con forte dipendenza dall'età del ciclo e dalla dimensione: i grandi
-concludono molto meno. Il rischio (~31%) si concentra sui progetti medio-grandi e sui cicli recenti.
+concludono molto meno. Il rischio (31,5%) si concentra sui progetti medio-grandi e sui cicli recenti.
 Il **divario territoriale** è netto e resiste al controllo per ciclo (conclusione +17 punti, rischio
 −20 a favore del Nord). La complessità di governance, invece, **non** spiega i ritardi.
 
@@ -179,5 +187,5 @@ ciclo e tema.
 <hr>
 
 <p style="font-size: 0.8rem; color: #888; margin-top: 1.5rem;">
-  Immagine di copertina: foto di <a href="https://unsplash.com/it/@dawson2406" target="_blank" rel="noopener">Stephen Dawson</a> su <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>.
+  Immagine di copertina: <a href="https://unsplash.com/it/@upmanis" target="_blank" rel="noopener">Kaspars Upmanis</a> — Matera, su <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>.
 </p>

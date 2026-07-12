@@ -6,11 +6,19 @@ show_sidetoc: true
 header_type: hero #base, post, hero, image, splash
 header_img: assets/images/header.svg
 header_title: "Il modello predittivo"
-subtitle: "Previsione del rischio e importanza delle variabili"
+subtitle: "Territorio o dimensione: chi pesa di più nel rischio?"
 ---
 
-Introduzione: qual è il target (es. progetto a rischio / concluso) e perché un modello.
+L'EDA lascia aperta la domanda decisiva: il divario Nord-Sud conta *di per sé*, o riflette la
+dimensione, il ciclo e il tema dei progetti? Qui un modello impara a riconoscere i progetti a
+rischio e ci dice quali variabili pesano davvero. **[DA COMPLETARE — Notebook 02]**
 {: .lead }
+
+<!-- NOTA METODO: la Random Forest dà importanza delle variabili, non effetti "a parità di
+     condizioni" (+X punti, odds ratio). Per una frase del tipo "a parità di dimensione e ciclo,
+     il Sud ha +X punti di rischio" affiancare una regressione logistica semplice. -->
+<!-- Scrivere l'interpretazione in modo che regga entrambi gli esiti (territorio rilevante o no):
+     lo slot corrispondente in conclusions.html è già impostato così. -->
 
 # Feature e preparazione del dataset
 
