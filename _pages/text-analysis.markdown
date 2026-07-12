@@ -3,63 +3,98 @@ layout: default
 title: "Text Analysis"
 vega: true
 show_sidetoc: true
-header_type: hero 
+header_type: hero
 header_img: assets/images/header.svg
 header_title: "Text Analysis"
-subtitle: "Le descrizioni dei progetti raccontano il loro esito?"
+subtitle: "Le parole con cui un progetto viene descritto anticipano il suo esito?"
 ---
 
-Analizziamo le etichette e i testi con cui i progetti sono descritti per capire se 
-emergono parole, temi o tipi di intervento associati a una maggiore o minore 
-probabilità di successo o ritardo.
+Abbiamo letto le sintesi testuali di migliaia di progetti PNRR e OpenCoesione per capire
+se, oltre ai numeri, anche il *modo in cui un progetto viene raccontato* contenga indizi
+sulla probabilità che vada in ritardo.
 {: .lead }
 
-# Corpus e preprocessing
+# Dalle parole ai temi
 
-Per condurre questa analisi abbiamo analizzato le sintesi testuali di migliaia di progetti PNRR e OpenCoesione. 
-Il linguaggio burocratico è spesso ripetitivo; per questo, dopo una pulizia iniziale, abbiamo rimosso le "stop-word di dominio", ovvero termini onnipresenti come *progetto, intervento, finanziamento, fondo*. 
+Le descrizioni ufficiali dei progetti sono scritte in un linguaggio molto burocratico e
+ripetitivo: termini come *progetto*, *finanziamento* o *fondo* compaiono ovunque e non
+raccontano nulla di specifico. Abbiamo quindi "pulito" i testi per far emergere le parole
+davvero distintive di ciascun intervento — quelle che ne descrivono l'oggetto concreto.
 
-Abbiamo così isolato il "cuore" semantico di ogni proposta: sono le parole distintive — quelle che descrivono l'oggetto specifico dell'azione — a rivelare i pattern di successo o di rischio che si nascondono dietro la burocrazia.
+# Il vocabolario del rischio cambia con il tempo
 
-# Parole e temi ricorrenti
+Confrontando OpenCoesione (il passato) con il PNRR (il presente), il tipo di rischio
+raccontato dai testi è cambiato natura. In OpenCoesione il rischio era legato a una
+burocrazia più tradizionale (termini come *dipartimento*, *metanizzazione*). Nel PNRR il
+rischio si sposta invece su progetti legati al mondo accademico e alla ricerca (*percorsi*,
+*partecipante*, *università*).
 
-Confrontando il PNRR con lo storico di OpenCoesione, emerge un cambio di natura nel vocabolario dei progetti. 
-Mentre in OpenCoesione il rischio era storicamente associato a una burocrazia tradizionale (es. *metanizzazione*, *dipartimento*), nel PNRR le sfide si sono spostate verso progetti legati al mondo accademico e alla ricerca (*politecnico*, *università*, *percorsi*).
+Al contrario, nel PNRR i progetti che citano la digitalizzazione — *piattaforma*, *CIE*,
+*servizi digitali* — sono quelli che procedono più spediti: un segnale che la
+transizione digitale, pilastro del Piano, sta funzionando bene sul campo.
 
-D'altro canto, nel PNRR, abbiamo identificato un "vocabolario del successo": termini legati alla digitalizzazione (*piattaforma*, *api*, *cie*) sono i più forti predittori di progetti che procedono spediti.
-
-<!-- Qui puoi inserire un grafico a barre (es. con Altair) che confronta le 10 parole più frequenti tra PNRR e OC -->
 <div style="height: 400px">
 <vegachart schema-url="{{site.baseurl}}/assets/charts/rischio_words_chart.json" style="width: 100%; height: 100%"></vegachart>
 </div>
 
-# Testo ed esito
+# Le parole bastano per prevedere il ritardo?
 
-Abbiamo addestrato un modello di Intelligenza Artificiale per vedere se le parole contenute nelle descrizioni potessero prevedere il rischio di un progetto. 
-Il risultato è sorprendente: il nostro modello ha raggiunto un'**AUC di 0.853**. 
+Abbiamo verificato quanto le sole parole della sintesi progettuale siano in grado di
+anticipare se un progetto rischia il ritardo. Il risultato: un modello basato sul testo
+(insieme a un'informazione territoriale di base) individua correttamente il rischio in
+circa **85 casi su 100**, contro il 68% di un modello che usa solo i dati strutturati
+tradizionali (dimensione, ente attuatore, territorio).
 
-Questo significa che leggere la descrizione di un progetto è estremamente informativo. Le parole scelte per descrivere l'obiettivo non sono solo formali: sono indicatori reali della complessità che il progetto incontrerà sul campo.
+In altre parole: **come viene descritto un progetto non è un dettaglio formale**. Le
+parole scelte per raccontare l'obiettivo contengono informazioni reali sulla complessità
+che il progetto incontrerà.
 
-# Controllo: è il testo o il tipo di progetto?
+# Non è solo una questione di geografia
 
-Un rischio comune in questo tipo di analisi è scambiare l'effetto del testo con quello del contesto (es. progetti al Sud vs Nord). 
-Abbiamo quindi integrato il testo con i dati strutturati (territorio e missione). L'analisi dimostra che **il segnale testuale resiste**: il modo in cui un progetto viene descritto aggiunge valore predittivo indipendente. La semantica non è un riflesso della geografia, ma una dimensione aggiuntiva che ci aiuta a prevedere il futuro dei fondi.
+Un rischio tipico di questo genere di analisi è confondere l'effetto del testo con quello
+del contesto — ad esempio, i progetti al Sud potrebbero semplicemente scrivere le sintesi
+in modo diverso da quelli al Nord. Abbiamo quindi verificato il potere predittivo del testo
+tenendo sotto controllo l'area geografica (Mezzogiorno vs resto d'Italia): **il segnale
+testuale resta forte**. Il modo in cui un progetto viene descritto aggiunge informazione
+utile, indipendente dalla sua localizzazione.
 
-# Indice di Rischio Storico: guardare al passato per prevedere il presente
+# Un indice di rischio basato sulla storia
 
-Abbiamo creato un "ponte semantico" tra il PNRR e il passato di OpenCoesione. Per ogni progetto PNRR, il nostro algoritmo cerca i suoi 5 "gemelli storici": progetti che in passato avevano finalità identiche.
-L'**Indice di Rischio Storico** che ne deriva ci dice quanto quel tipo di intervento sia stato problematico in passato.
+Abbiamo provato a costruire un "ponte" tra il presente e il passato: per ogni progetto
+PNRR, un algoritmo di ricerca semantica individua i suoi "gemelli storici" — i progetti
+OpenCoesione con la sintesi più simile — e calcola quanti di questi gemelli sono finiti in
+ritardo. Ne nasce un **Indice di Rischio Storico**: quanto quel *tipo* di intervento è
+stato problematico in passato.
 
-<!-- Qui inserisci il grafico dell'Indice di Rischio per Missione PNRR -->
 <div style="height: 400px">
 <vegachart schema-url="{{site.baseurl}}/assets/charts/rischio_per_missione.json" style="width: 100%; height: 100%"></vegachart>
 </div>
 
+*Nota metodologica: questo indice è calcolato al momento su un campione di circa 1.000
+progetti PNRR (l'elaborazione sull'intero dataset è in corso). Per alcune missioni con
+pochissime osservazioni nel campione — in particolare Infrastrutture per la mobilità
+sostenibile, Salute e REPowerEU — il valore è indicativo e potrà variare con l'analisi
+completa; le missioni con più osservazioni (Digitalizzazione, Istruzione e ricerca,
+Inclusione e coesione) offrono al momento un segnale più stabile.*
+
 # Cosa emerge
 
-La nostra analisi suggerisce che:
-1. **La digitalizzazione è un fattore di stabilità:** i progetti orientati alla transizione digitale del PNRR mostrano i segnali di rischio più bassi.
-2. **Le collaborazioni complesse sono fragili:** le missioni che coinvolgono attori multipli (es. Istruzione e Ricerca) mostrano un rischio storico maggiore, probabilmente a causa della complessità di coordinamento.
-3. **Il linguaggio è un segnale:** l'attenzione alla precisione terminologica nelle descrizioni (es. piattaforme specifiche invece di descrizioni vaghe) correla fortemente con una migliore esecuzione.
+1. **La digitalizzazione è un fattore di stabilità.** I progetti orientati alla
+   transizione digitale (Missione 1) mostrano, storicamente, l'indice di rischio più
+   basso: interventi basati su standard tecnologici definiti sembrano più resilienti.
 
-Questi risultati offrono una nuova chiave di lettura per i decisori: non basta guardare ai budget, bisogna ascoltare il linguaggio dei progetti.
+2. **Istruzione e ricerca è la missione storicamente più a rischio** tra quelle con un
+   numero di osservazioni sufficiente. Un'ipotesi plausibile — da verificare con analisi
+   più approfondite — è che si tratti spesso di investimenti a lungo termine con
+   protocolli di verifica più rigidi, che tendono ad allungare i tempi.
+
+3. **Il linguaggio è un segnale predittivo utile.** Il fatto che il testo aggiunga
+   capacità predittiva rispetto ai soli dati strutturati suggerisce che la chiarezza con
+   cui un progetto viene descritto — ad esempio il riferimento a standard tecnici precisi
+   invece che a formule generiche — è legata a una migliore esecuzione.
+
+Questi risultati suggeriscono che, per mitigare il rischio, non basta guardare ai budget:
+serve anche una maggiore standardizzazione del linguaggio progettuale, specialmente per le
+missioni a vocazione accademica e di ricerca.
+
+
