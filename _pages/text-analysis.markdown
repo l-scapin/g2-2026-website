@@ -24,9 +24,9 @@ Abbiamo così isolato il "cuore" semantico di ogni proposta: sono le parole dist
 # Parole e temi ricorrenti
 
 Confrontando i due programmi, emerge un salto generazionale nel "vocabolario del rischio". 
-Nello storico di OpenCoesione, i progetti più a rischio erano associati alla burocrazia tradizionale (*dipartimento*, *imposta*) e agli interventi fisici o di welfare (*metanizzazione*, *servizio civile*). Nel PNRR, i termini di allerta si spostano sull'ambito formativo e accademico (*percorsi*, *politecnico*, *università studio*, *partecipante*).
+Nello storico di OpenCoesione, i progetti più a rischio erano associati alla burocrazia tradizionale (*dipartimento*, *credito imposta*) e agli interventi di natura fisica o di welfare (*metanizzazione*, *servizio civile*). Nel PNRR, i termini di allerta si spostano sull'ambito formativo e accademico (*percorsi*, *politecnico*, *università studio*, *partecipante*).
 
-D'altro canto, il PNRR vanta un chiarissimo "vocabolario del successo". I termini che abbattono maggiormente il rischio sono tutti legati alla transizione digitale: *piattaforma, cie (Carta d'Identità Elettronica), api, cms*.
+D'altro canto, il PNRR vanta un chiarissimo "vocabolario del successo". I termini che abbattono maggiormente il rischio sono tutti legati alla transizione digitale: *piattaforma, cie (Carta d'Identità Elettronica), api, cms, id*.
 
 <!-- Grafico Parole -->
 <div style="height: 400px">
@@ -48,7 +48,7 @@ Abbiamo quindi eseguito una *Feature Union*, integrando la matrice semantica con
 # Indice di Rischio Storico: guardare al passato per prevedere il presente
 
 Per tradurre queste stime in un indicatore concreto, abbiamo creato un "ponte semantico" tra il PNRR e i dati certificati di OpenCoesione. 
-Dato un campione rappresentativo di 10.000 progetti PNRR, il nostro algoritmo ha cercato per ciascuno i suoi 5 "gemelli storici", ovvero i progetti passati più simili testualmente. La percentuale di fallimento di questi gemelli ha generato un **Indice di Rischio Storico** per il PNRR.
+Dato un campione esplorativo di 10.000 progetti PNRR, il nostro algoritmo ha cercato per ciascuno i suoi 5 "gemelli storici", ovvero i progetti passati più simili testualmente. La percentuale di fallimento di questi gemelli ha generato un **Indice di Rischio Storico** per il PNRR.
 
 <!-- Grafico Missioni -->
 <div style="height: 400px">
@@ -60,22 +60,23 @@ Dato un campione rappresentativo di 10.000 progetti PNRR, il nostro algoritmo ha
 Per rendere concreto l'algoritmo, abbiamo estratto due progetti-simbolo dal nostro dataset. Guardando al passato, il nostro motore di ricerca ha individuato le traiettorie più probabili per questi due interventi.
 
 **🔴 Il progetto a Rischio**
-* **Missione:** Salute
-* **Sintesi:** *VIALE PICENO -MILANO*VIALE PICENO*INTERVENTO DI MANUTENZIONE STRAORDINARIA PER REALIZZAZIONE CASA DELLA COMUNITA'*
+* **Missione:** REPowerEU
+* **Sintesi:** *VISUALPLEX S.R.L.*Credito di imposta riconosciuto ai sensi dellarticolo 38 del DL 19/2024 -(M7I.15).*VIA FERRUCCIO PARRI 9/11/13*
 * **Indice di Rischio Storico:** 100.0%
-> Questo tipo di descrizione si allinea a progetti storici di OpenCoesione che, nella totalità dei casi esaminati dal modello, hanno subito forti ritardi, probabilmente legati alla complessità degli interventi strutturali in contesti urbani densi.
+> Questo intervento si basa sul "credito d'imposta", un termine che la nostra analisi ha identificato tra le top 10 parole a maggior rischio storico in OpenCoesione. I progetti gemelli del passato hanno subito ritardi o blocchi nella totalità dei casi esaminati dal modello.
 
 **🟢 Il progetto di Successo**
-* **Missione:** Istruzione e ricerca
-* **Sintesi:** *Università degli Studi di VERONA*Territorio nazionale*REALIZZAZIONE DEGLI OBIETTIVI INDICATI NEL PROGRAMMA DI RICERCA*
+* **Missione:** Digitalizzazione, innovazione, competitività e cultura
+* **Sintesi:** *MIGRAZIONE DI SERVIZI DIGITALI*PIAZZA CINELLI 4 - 61121 PESARO*19 SU PSN1 SU CLOUD QUALIFICATO E 5 SU INFRASTRUTTURA DELLA PA ADEGUATA*
 * **Indice di Rischio Storico:** 0.0%
-> Al contrario, questo intervento utilizza un lessico di tipo programmatico che il nostro modello associa alla puntualità. I suoi "gemelli" storici in OpenCoesione si sono conclusi regolarmente.
-
+> Al contrario, questo intervento utilizza un lessico fortemente orientato all'IT (*servizi digitali*, *cloud*). I suoi "gemelli" storici in OpenCoesione si sono conclusi regolarmente, confermando la stabilità amministrativa di questo tipo di misure.
 
 # Cosa emerge
 
 La nostra analisi semantica, incrociata con l'indagine esplorativa (EDA), ci permette di concludere che:
 
-1. **La digitalizzazione è un fattore di stabilità:** i progetti orientati alla transizione digitale (M1) mostrano l'Indice di Rischio Storico più basso (~25%). Le descrizioni tecniche e standardizzate (*piattaforma, api*) si traducono in una messa a terra più sicura.
-2. **Le transizioni "fisiche" sono le più complesse:** le missioni legate alla transizione ecologica (Rivoluzione Verde) o energetica (REPowerEU) registrano i rischi storici più alti (rispettivamente 48% e 76%). Anche in passato (vedi la parola *metanizzazione* in OC) i progetti con impatto fisico sul territorio tendono ad accumulare forti ritardi, indipendentemente dal numero di attori coinvolti.
+1. **La digitalizzazione è un fattore di stabilità:** i progetti orientati alla transizione digitale (M1) mostrano l'Indice di Rischio Storico più basso (~25%). Le descrizioni tecniche e standardizzate (*piattaforma, api, cloud*) si traducono in una messa a terra più sicura e prevedibile.
+2. **Il peso degli strumenti e della natura del progetto:** le missioni legate alla transizione energetica (REPowerEU) e alla transizione ecologica registrano i rischi storici più alti (rispettivamente ~77% e ~48%). Questo non dipende dal numero di attori coinvolti, ma dalla natura dello strumento finanziario (come i crediti d'imposta, storicamente problematici per i tempi di rendicontazione) o dalla complessità fisica dell'intervento.
 3. **Il linguaggio è un segnale d'allarme:** l'accuratezza semantica predice il rischio con un'efficacia (AUC 0.853) superiore a quella delle sole variabili strutturali. La chiarezza progettuale iniziale è, a tutti gli effetti, la prima garanzia di completamento di un'opera.
+
+*Nota metodologica: L'Indice di Rischio Storico è stato calcolato per ragioni computazionali su un campione rappresentativo di 10.000 progetti PNRR, impiegando un motore di ricerca semantico (BM25) che confronta il progetto attuale con i "gemelli storici" nel database di OpenCoesione.*
