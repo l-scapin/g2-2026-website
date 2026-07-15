@@ -18,7 +18,7 @@ rischio e ci dice quali variabili pesano davvero. **[DA COMPLETARE — Notebook 
      condizioni" (+X punti, odds ratio). Per una frase del tipo "a parità di dimensione e ciclo,
      il Sud ha +X punti di rischio" affiancare una regressione logistica semplice. -->
 <!-- Scrivere l'interpretazione in modo che regga entrambi gli esiti (territorio rilevante o no):
-     lo slot corrispondente in conclusions.html è già impostato così. -->
+     lo slot corrispondente nell'articolo in home (Atto II, #perche-succede) è già impostato così. -->
 
 # Feature e preparazione del dataset
 

@@ -186,6 +186,88 @@ iframe {
   opacity: .95;
   margin: 0;
 }
+// Variante "fuori margine": la fascia sfonda la colonna del testo e occupa
+// (quasi) tutta la finestra — 5 caselle respirano meglio che strette nei margini.
+// Trucco: larghezza 100vw riagganciata al centro (come .full-width-wrapper);
+// il padding-inline con max() centra il contenuto e lo blocca a 1300px sugli schermi larghi.
+.big-numbers--bleed {
+  grid-template-columns: repeat(5, 1fr);
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+  padding-inline: max(1.2rem, calc((100vw - 1300px) / 2));
+}
+// La casella dei soldi usa il colore base: la palette è a due poli (freddo/caldo)
+// e l'unico accento deve restare l'arancio di "a rischio". La classe .stat-money
+// serve comunque: sotto i 992px la casella va a tutta riga (vedi media query).
+// Sotto i 992px si torna nel flusso normale su 2 colonne,
+// con la casella dei soldi a tutta riga (5 caselle = 1 piena + 2×2, niente buchi)
+@media (max-width: 991px) {
+  .big-numbers--bleed {
+    grid-template-columns: repeat(2, 1fr);
+    width: auto;
+    left: auto;
+    margin-left: 0;
+    padding-inline: 0;
+  }
+  .big-numbers--bleed .stat-money { grid-column: 1 / -1; }
+}
+
+// ---- Figure dell'articolo in home ----
+// Una classe sola per tutte le figure dell'articolo, così non si ripetono
+// stili inline a ogni immagine. La variante --narrow serve alle immagini
+// verticali (es. la mappa dell'Italia), che a piena colonna sarebbero enormi.
+.fig-home {
+  margin: 2.2rem auto;
+}
+.fig-home img {
+  width: 100%;
+  border-radius: 4px;
+}
+.fig-home--narrow {
+  max-width: 540px;   // larghezza massima per le figure verticali
+}
+.fig-home figcaption {
+  font-size: .8rem;
+  color: #888;
+  margin-top: .45rem;
+  line-height: 1.45;
+}
+
+// ---- Box definizione (per la variabile chiave "a rischio") ----
+// La definiamo noi, quindi va dichiarata in modo inequivocabile: box dedicato,
+// nella palette del sito (polo caldo = rischio), riusabile in home e nell'EDA.
+.def-box {
+  border: 1px solid rgba(209, 87, 59, .35);
+  border-left: 6px solid var(--sud);
+  background: #FBF1ED;           // variante molto chiara dell'arancio "a rischio"
+  border-radius: .5rem;
+  padding: 1.3rem 1.5rem 1.1rem;
+  margin: 2.2rem 0;
+}
+.def-box .def-box__label {
+  font-size: .78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--sud);
+  margin-bottom: .35rem;
+}
+.def-box h4 {
+  margin-top: 0;
+  margin-bottom: .6rem;
+}
+.def-box p {
+  margin-bottom: .6rem;
+}
+.def-box p:last-child {
+  margin-bottom: 0;
+}
+.def-box .def-box__note {
+  font-size: .85rem;
+  color: #6b7280;
+}
 
 // ---- Teaser "tre domande" ----
 .qcards {

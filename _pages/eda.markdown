@@ -40,9 +40,28 @@ mappe o classifiche regionali.
 # Le tre metriche di esito {#metriche}
 
 Riassumiamo l'esito di ogni progetto con tre misure semplici. **Concluso**: il progetto risulta
-chiuso. **A rischio**: non è mai partito, oppure è in corso ma con la data di fine prevista già
-scaduta. **Tasso di assorbimento**: quanto è stato effettivamente pagato rispetto al finanziamento
-pubblico (da 0 a 2, dove valori sopra 1 segnalano un forte cofinanziamento privato).
+chiuso. **A rischio**: la nostra variabile chiave, definita nel box qui sotto. **Tasso di
+assorbimento**: quanto è stato effettivamente pagato rispetto al finanziamento pubblico (da 0 a 2,
+dove valori sopra 1 segnalano un forte cofinanziamento privato).
+
+<!-- BOX DEFINIZIONE — stessa definizione dichiarata in home: è la variabile target
+     del modello, quindi qui la versione con i dettagli operativi. -->
+<div class="def-box">
+  <p class="def-box__label">La nostra variabile chiave (e target del modello)</p>
+  <h4>Quando un progetto è «a rischio»?</h4>
+  <p>Il dataset non contiene un'etichetta di rischio: <strong>la costruiamo noi</strong>, in modo
+  conservativo, da due condizioni osservabili alla data di riferimento dei dati (6 maggio 2025).
+  <code>A_RISCHIO = 1</code> se il progetto:</p>
+  <p><strong>1 · non è mai partito</strong> — stato «non avviato», qualunque sia la sua data
+  prevista di fine (16.261 progetti, 7,9%), <em>oppure</em><br>
+  <strong>2 · è in corso fuori tempo massimo</strong> — stato «in corso» con data di fine
+  prevista anteriore alla data di riferimento (48.910 progetti, 23,7%).</p>
+  <p>In totale: <strong>65.171 progetti, il 31,5%</strong>.</p>
+  <p class="def-box__note">Due esclusioni deliberate: i progetti <em>conclusi</em> in ritardo non
+  contano (la metrica guarda chi è ancora per strada, non chi è arrivato tardi) e i
+  <em>liquidati</em> sono una categoria a parte. È la fotografia di un istante: un progetto oggi
+  a rischio può ancora concludersi — per questo «a rischio», non «fallito».</p>
+</div>
 
 Nel complesso circa **metà** dei progetti è conclusa e quasi un terzo (**31,5%**) è a rischio. L'assorbimento merita
 attenzione: la sua distribuzione è **bimodale** — tanti progetti fermi a 0 e un grande picco intorno
@@ -117,13 +136,18 @@ Tre tagli aiutano a capire *chi* conclude e *chi* no.
 piccoli (100–500k) sono il 70% del totale ma solo il ~10% dei fondi; i 623 progetti sopra i 50 milioni
 valgono da soli 120 miliardi. Morale: i risultati vanno pesati per importo, non solo per numero.
 
-![Esiti per classe dimensionale]({{ site.baseurl }}/assets/images/eda/05_dimensione.png){: .img-fluid }
+<!-- Conclusione e assorbimento erano un unico grafico barre+linea a doppio asse: separati
+     il 15/07 (il doppio asse rende ambigua la lettura). Sul sito teniamo solo la conclusione,
+     che racconta il pattern; l'assorbimento (stesso gradiente monotono) è nei numeri del testo
+     e nel notebook (figure 05b/06b). -->
+
+![Percentuale di progetti conclusi per classe di importo]({{ site.baseurl }}/assets/images/eda/05_dimensione.png){: .img-fluid }
 
 **Ciclo.** Come atteso, conta l'età del ciclo: i cicli chiusi (2000-06, 2007-13) sono conclusi al
 76% e 66%; il 2014-20 è a metà; il **2021-2027 è appena iniziato** (5% concluso). Confrontare
 l'efficienza tra cicli senza tenerne conto sarebbe fuorviante.
 
-![Esiti per ciclo di programmazione]({{ site.baseurl }}/assets/images/eda/06_ciclo.png){: .img-fluid }
+![Percentuale di progetti conclusi per ciclo di programmazione]({{ site.baseurl }}/assets/images/eda/06_ciclo.png){: .img-fluid }
 
 **Tema.** "Competitività delle imprese" è il tema che conclude meno (37%) e assorbe meno (0,57);
 vanno meglio digitale, energia e occupazione. I "trasporti" muovono i fondi maggiori (~100 mld) ma
@@ -148,9 +172,13 @@ passando il mouse su una regione la evidenzi in entrambe le viste.
 
 # Due approfondimenti
 
-**Tempi di esecuzione.** La fase di esecuzione è più lunga per gli **incentivi alle imprese**
-(~840 giorni) e più rapida per l'acquisto di beni (~410). I lavori pubblici stanno nel mezzo (~610).
-Suggerisce che i colli di bottiglia non sono solo nei cantieri, ma anche nei trasferimenti alle imprese.
+**Tempi di esecuzione.** Ogni progetto ha una fase di "esecuzione", non solo le opere: per un
+lavoro pubblico è il cantiere, per un incentivo è la realizzazione dell'investimento da parte
+dell'impresa, con rendicontazione ed erogazione a tranche. La sorpresa è che la fase più lunga non
+è quella dei cantieri (~610 giorni) ma quella degli **incentivi alle imprese** (~840); l'acquisto
+di beni è il più rapido (~410). Attenzione però a non leggere le durate come ritardi: i piani di
+investimento sono spesso pluriennali per costruzione. Resta il fatto che i tempi lunghi non
+abitano solo nei cantieri.
 
 ![Durata della fase di esecuzione per natura del progetto]({{ site.baseurl }}/assets/images/eda/11_fase_esecuzione.png){: .img-fluid }
 

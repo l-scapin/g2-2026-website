@@ -49,36 +49,25 @@ navbar:
     img: "./assets/images/Logo_masthead_dark.png" # versione scura per navbar chiara (skin journal)
     url: /
   nav:
-    # Ordine narrativo: esplorazione → modello (verdetto) → profili → testi → sintesi
-    - title: EDA
-      url: /eda.html
-    - title: Modello
-      url: /modello.html
-    - title: Clustering
-      url: /clustering.html
-    - title: Text analysis
-      url: /text-analysis.html
-    - title: Conclusioni
-      url: /conclusions.html
-    # TODO: prima della pubblicazione valutare se togliere "Guida" e "Approfondimenti"
-    # (pagine demo del template, non contenuti del progetto)
-    - title: Guida
-      url: /guide.html
-    - title: Approfondimenti
+    # Ristrutturata il 14/07/2026: la landing È l'articolo in 3 atti → i primi tre pulsanti
+    # puntano alle sue ancore; le pagine analitiche stanno nel dropdown "Le analisi".
+    # Rimossi: "Guida" e "Approfondimenti" (demo del template), "Conclusioni" (assorbita nell'Atto III).
+    - title: Il problema
+      url: /#il-problema
+    - title: Perché succede
+      url: /#perche-succede
+    - title: Cosa fare
+      url: /#cosa-fare
+    - title: Le analisi
       child:
-        - title: Markdown
-          url: /markdown.html
-        - title: Grafici Altair
-          url: /charts.html
-        - title: Grafici Plotly
-          url: /plotly.html
-        - title: Folium
-          url: /folium.html
-        - title: Slider
-          url: /slider.html
-        - title: Scrollytelling
-          url: /scrollama.html
-
+        - title: EDA
+          url: /eda.html
+        - title: Modello
+          url: /modello.html
+        - title: Clustering
+          url: /clustering.html
+        - title: Text analysis
+          url: /text-analysis.html
     - title: SBD Master # deve essere sempre l'ultimo elemento della navbar, non modificarlo
       url: https://masterbigdata.it/
 
