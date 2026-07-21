@@ -62,8 +62,10 @@ navbar:
       child:
         - title: EDA
           url: /eda.html
-        - title: Modello
-          url: /modello.html
+        - title: Regressione
+          url: /regressione.html
+        - title: Random Forest
+          url: /random-forest.html
         - title: Clustering
           url: /clustering.html
         - title: Text analysis

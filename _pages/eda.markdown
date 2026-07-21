@@ -24,7 +24,7 @@ i progetti **si concludono**? Sono **a rischio**? Fondi ed esiti sono **equi tra
 
 Il dataset non ha righe duplicate: ogni progetto è identificato in modo univoco dalla coppia
 CUP + codice locale. I valori mancanti ci sono, ma quasi tutti sono *strutturali*, non errori.
-Per esempio, il ritardo e la data di fine effettiva mancano sui progetti non ancora conclusi —
+Per esempio, il ritardo e la data di fine effettiva mancano sui progetti non ancora conclusi,
 semplicemente perché una fine non c'è ancora. Le descrizioni tematiche e il fondo europeo mancano
 invece sui progetti a finanziamento puramente nazionale (FSC, PAC): anche questo è atteso, non un buco.
 
@@ -32,8 +32,8 @@ invece sui progetti a finanziamento puramente nazionale (FSC, PAC): anche questo
 
 Prima di ogni analisi fine teniamo a mente due trappole nei dati: alcuni pagamenti sono
 **negativi** (rettifiche contabili, pochi ma da azzerare nelle somme), e circa l'1% dei progetti è
-**multi-regione**, con i nomi delle regioni concatenati da `:::` — vanno esclusi prima di costruire
-mappe o classifiche regionali.
+**multi-regione**, con i nomi delle regioni concatenati da `:::`, e vanno esclusi prima di
+costruire mappe o classifiche regionali.
 
 ![Distribuzione dello stato dei progetti]({{ site.baseurl }}/assets/images/eda/01_stato_progetto.png){: .img-fluid }
 
@@ -44,28 +44,26 @@ chiuso. **A rischio**: la nostra variabile chiave, definita nel box qui sotto. *
 assorbimento**: quanto è stato effettivamente pagato rispetto al finanziamento pubblico (da 0 a 2,
 dove valori sopra 1 segnalano un forte cofinanziamento privato).
 
-<!-- BOX DEFINIZIONE — stessa definizione dichiarata in home: è la variabile target
-     del modello, quindi qui la versione con i dettagli operativi. -->
 <div class="def-box">
   <p class="def-box__label">La nostra variabile chiave (e target del modello)</p>
   <h4>Quando un progetto è «a rischio»?</h4>
   <p>Il dataset non contiene un'etichetta di rischio: <strong>la costruiamo noi</strong>, in modo
-  conservativo, da due condizioni osservabili alla data di riferimento dei dati (6 maggio 2025).
+  conservativo, da due condizioni osservabili alla data di riferimento dei dati: il <strong>31 dicembre 2025</strong>, lo snapshot a cui è aggiornato il dataset OpenCoesione.
   <code>A_RISCHIO = 1</code> se il progetto:</p>
-  <p><strong>1 · non è mai partito</strong> — stato «non avviato», qualunque sia la sua data
+  <p><strong>1 · non è mai partito</strong>: stato «non avviato», qualunque sia la sua data
   prevista di fine (16.261 progetti, 7,9%), <em>oppure</em><br>
-  <strong>2 · è in corso fuori tempo massimo</strong> — stato «in corso» con data di fine
-  prevista anteriore alla data di riferimento (48.910 progetti, 23,7%).</p>
-  <p>In totale: <strong>65.171 progetti, il 31,5%</strong>.</p>
+  <strong>2 · è in corso fuori tempo massimo</strong>: stato «in corso» con data di fine
+  prevista anteriore alla data di riferimento (51.237 progetti, 24,8%).</p>
+  <p>In totale: <strong>67.498 progetti, il 32,6%</strong>.</p>
   <p class="def-box__note">Due esclusioni deliberate: i progetti <em>conclusi</em> in ritardo non
   contano (la metrica guarda chi è ancora per strada, non chi è arrivato tardi) e i
   <em>liquidati</em> sono una categoria a parte. È la fotografia di un istante: un progetto oggi
-  a rischio può ancora concludersi — per questo «a rischio», non «fallito».</p>
+  a rischio può ancora concludersi: per questo «a rischio», non «fallito».</p>
 </div>
 
-Nel complesso circa **metà** dei progetti è conclusa e quasi un terzo (**31,5%**) è a rischio. L'assorbimento merita
-attenzione: la sua distribuzione è **bimodale** — tanti progetti fermi a 0 e un grande picco intorno
-a 1 (spesa completa). La media (0,72) da sola dice poco: va sempre letta insieme allo stato e al ciclo.
+Nel complesso circa **metà** dei progetti è conclusa e quasi un terzo (**32,6%**) è a rischio. L'assorbimento merita
+attenzione: la sua distribuzione è **bimodale**, con tanti progetti fermi a 0 e un grande picco
+intorno a 1 (spesa completa). La media (0,72) da sola dice poco: va sempre letta insieme allo stato e al ciclo.
 
 ![Distribuzione del tasso di assorbimento]({{ site.baseurl }}/assets/images/eda/03_assorbimento_dist.png){: .img-fluid }
 
@@ -73,7 +71,7 @@ a 1 (spesa completa). La media (0,72) da sola dice poco: va sempre letta insieme
 
 È il cuore del progetto. Confrontando Centro-Nord e Mezzogiorno il divario è netto: il Centro-Nord
 conclude il **58,8%** dei progetti contro il **41,6%** del Sud, ed è a rischio molto meno
-(**20,1% vs 40,3%**). Sull'assorbimento la distanza è più contenuta (**0,75 vs 0,69**). Va detto che
+(**20,5% vs 42,0%**). Sull'assorbimento la distanza è più contenuta (**0,75 vs 0,69**). Va detto che
 il Mezzogiorno gestisce molti più fondi (**215 vs 79 mld €**): è coerente con la missione redistributiva
 della politica di coesione.
 
@@ -81,14 +79,15 @@ della politica di coesione.
 
 Un divario così grande potrebbe però essere solo un effetto di composizione: se il ciclo più recente
 (appena partito, quindi con pochi conclusi) pesasse di più al Sud, il gap sarebbe un artefatto.
-Lo verifichiamo **dentro ogni ciclo** — e il risultato regge: in *tutti* i cicli il Centro-Nord
+Lo verifichiamo **dentro ogni ciclo**, e il risultato regge: in *tutti* i cicli il Centro-Nord
 conclude di più. Il divario è **persistente**: non dipende dal calendario dei cicli. Il ciclo, però,
-è solo una delle composizioni possibili: resta da pesare quella per **dimensione** e tema — i
-progetti grandi concludono meno ovunque, e se al Sud pesassero di più, parte del gap potrebbe
-spiegarsi così. Quanto conta il territorio *in sé* lo stimerà il modello multivariato.
+è solo una delle composizioni possibili: resta da pesare quella per **dimensione** e tema, perché
+i progetti grandi concludono meno ovunque e se al Sud pesassero di più, parte del gap potrebbe
+spiegarsi così. Quanto conta il territorio *in sé* lo misura la
+[regressione multivariata]({{ site.baseurl }}/regressione.html).
 
-<!-- TODO (fattibile subito, è EDA): incrocio macroarea × classe di importo.
-     Se il divario regge dentro ogni classe, il claim si rafforza già in descrittiva. -->
+<!-- TODO: incrocio macroarea × classe di importo. Se il divario regge dentro ogni classe,
+     il claim si rafforza già in descrittiva. -->
 
 ![Divario di conclusione Nord-Sud, per ciclo]({{ site.baseurl }}/assets/images/eda/07_divario_per_ciclo.png){: .img-fluid }
 
@@ -113,16 +112,16 @@ che assorbe la fetta maggiore.
   <div style="display: flex; flex-wrap: wrap; gap: 0.6rem 1.4rem;">
     <div style="flex: 1 1 300px; min-width: 260px;">
       <p style="font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: .04em; color: #555; margin-bottom: 0.4rem;">Fondi europei</p>
-      <p style="margin: 0 0 0.5rem;"><span style="display:inline-block;width:12px;height:12px;background:#177E89;border-radius:2px;margin-right:6px;"></span><strong>FESR (UE)</strong> — Fondo Europeo di Sviluppo Regionale. Il principale fondo UE: infrastrutture, imprese, innovazione e ambiente.</p>
-      <p style="margin: 0 0 0.5rem;"><span style="display:inline-block;width:12px;height:12px;background:#4FA7B1;border-radius:2px;margin-right:6px;"></span><strong>FSE (UE)</strong> — Fondo Sociale Europeo. Il fondo UE dedicato alle persone: lavoro, formazione e inclusione sociale.</p>
+      <p style="margin: 0 0 0.5rem;"><span style="display:inline-block;width:12px;height:12px;background:#177E89;border-radius:2px;margin-right:6px;"></span><strong>FESR (UE)</strong>: Fondo Europeo di Sviluppo Regionale. Il principale fondo UE: infrastrutture, imprese, innovazione e ambiente.</p>
+      <p style="margin: 0 0 0.5rem;"><span style="display:inline-block;width:12px;height:12px;background:#4FA7B1;border-radius:2px;margin-right:6px;"></span><strong>FSE (UE)</strong>: Fondo Sociale Europeo. Il fondo UE dedicato alle persone: lavoro, formazione e inclusione sociale.</p>
     </div>
     <div style="flex: 1 1 300px; min-width: 260px;">
       <p style="font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: .04em; color: #555; margin-bottom: 0.4rem;">Fondi nazionali</p>
-      <p style="margin: 0 0 0.5rem;"><span style="display:inline-block;width:12px;height:12px;background:#D1573B;border-radius:2px;margin-right:6px;"></span><strong>FSC (nazionale)</strong> — Fondo Sviluppo e Coesione. Il grande fondo <em>italiano</em> (non UE) contro i divari territoriali; al Sud è la voce più pesante.</p>
-      <p style="margin: 0 0 0.5rem;"><span style="display:inline-block;width:12px;height:12px;background:#E1876B;border-radius:2px;margin-right:6px;"></span><strong>Fondo di rotazione (naz.)</strong> — La quota di cofinanziamento che lo Stato affianca ai programmi europei (L. 183/1987).</p>
-      <p style="margin: 0 0 0.5rem;"><span style="display:inline-block;width:12px;height:12px;background:#A83E27;border-radius:2px;margin-right:6px;"></span><strong>PAC (nazionale)</strong> — Programma di Azione e Coesione. Risorse nazionali complementari ai programmi UE.</p>
-      <p style="margin: 0 0 0.5rem;"><span style="display:inline-block;width:12px;height:12px;background:#8c6bb1;border-radius:2px;margin-right:6px;"></span><strong>Regione/locale</strong> — Cofinanziamento messo direttamente da Regioni ed enti locali.</p>
-      <p style="margin: 0 0 0.5rem;"><span style="display:inline-block;width:12px;height:12px;background:#bdbdbd;border-radius:2px;margin-right:6px;"></span><strong>Altro pubblico</strong> — Altre fonti pubbliche senza voce dedicata (comuni, province, completamenti): fa quadrare i totali.</p>
+      <p style="margin: 0 0 0.5rem;"><span style="display:inline-block;width:12px;height:12px;background:#D1573B;border-radius:2px;margin-right:6px;"></span><strong>FSC (nazionale)</strong>: Fondo Sviluppo e Coesione. Il grande fondo <em>italiano</em> (non UE) contro i divari territoriali; al Sud è la voce più pesante.</p>
+      <p style="margin: 0 0 0.5rem;"><span style="display:inline-block;width:12px;height:12px;background:#E1876B;border-radius:2px;margin-right:6px;"></span><strong>Fondo di rotazione (naz.)</strong>: la quota di cofinanziamento che lo Stato affianca ai programmi europei (L. 183/1987).</p>
+      <p style="margin: 0 0 0.5rem;"><span style="display:inline-block;width:12px;height:12px;background:#A83E27;border-radius:2px;margin-right:6px;"></span><strong>PAC (nazionale)</strong>: Programma di Azione e Coesione. Risorse nazionali complementari ai programmi UE.</p>
+      <p style="margin: 0 0 0.5rem;"><span style="display:inline-block;width:12px;height:12px;background:#8c6bb1;border-radius:2px;margin-right:6px;"></span><strong>Regione/locale</strong>: cofinanziamento messo direttamente da Regioni ed enti locali.</p>
+      <p style="margin: 0 0 0.5rem;"><span style="display:inline-block;width:12px;height:12px;background:#bdbdbd;border-radius:2px;margin-right:6px;"></span><strong>Altro pubblico</strong>: altre fonti pubbliche senza voce dedicata (comuni, province, completamenti): fa quadrare i totali.</p>
     </div>
   </div>
 </div>
@@ -135,11 +134,6 @@ Tre tagli aiutano a capire *chi* conclude e *chi* no.
 (dal 53,6% dei piccoli al 13,8% degli oltre 50 milioni) e meno assorbe (da 0,75 a 0,42). I progetti
 piccoli (100–500k) sono il 70% del totale ma solo il ~10% dei fondi; i 623 progetti sopra i 50 milioni
 valgono da soli 120 miliardi. Morale: i risultati vanno pesati per importo, non solo per numero.
-
-<!-- Conclusione e assorbimento erano un unico grafico barre+linea a doppio asse: separati
-     il 15/07 (il doppio asse rende ambigua la lettura). Sul sito teniamo solo la conclusione,
-     che racconta il pattern; l'assorbimento (stesso gradiente monotono) è nei numeri del testo
-     e nel notebook (figure 05b/06b). -->
 
 ![Percentuale di progetti conclusi per classe di importo]({{ site.baseurl }}/assets/images/eda/05_dimensione.png){: .img-fluid }
 
@@ -158,7 +152,7 @@ concludono poco (46%): un'area da tenere d'occhio.
 # La mappa regionale
 
 Portando i tassi a livello regionale, il gradiente Nord→Sud si conferma quasi senza eccezioni:
-in coda Sicilia (31% concluso, 50% a rischio), con Lazio, Calabria e Campania subito sopra;
+in coda Sicilia (31% concluso, 54% a rischio), con Lazio, Calabria e Campania subito sopra;
 in testa Liguria (76%), Molise e Piemonte. La dashboard qui sotto è interattiva: con il menu a tendina scegli la metrica
 (completamento, rischio o assorbimento), la mappa si ricolora e la classifica regionale si aggiorna;
 passando il mouse su una regione la evidenzi in entrambe le viste.
@@ -185,35 +179,55 @@ abitano solo nei cantieri.
 **Governance e ritardi.** Un'ipotesi diffusa è che più enti coinvolti significhino più ritardi.
 Sui nostri dati la correlazione è praticamente nulla (≈ −0,04): questa vista descrittiva **non** la
 sostiene. Va letta con prudenza (il ritardo è misurato quasi solo sui progetti conclusi): il test
-più pulito arriverà dal modello multivariato, dove il numero di enti entra tra i predittori.
-<!-- ⚠️ SLOT MODELLO: quando pronto, riportare qui il risultato reale (enti associati o no al
-     rischio). Non affermare l'esito prima di averlo. -->
+pulito è quello della [regressione multivariata]({{ site.baseurl }}/regressione.html#odds-ratio), dove il
+numero di enti entra tra i predittori sul *rischio* (che include anche i progetti mai partiti):
+l'esito è **odds ratio 0,96**: a parità di dimensione, tema, tipo di intervento, fonte di
+finanziamento e territorio, più enti non significano più rischio. Ipotesi archiviata.
 
 ![Numero di enti e ritardo medio]({{ site.baseurl }}/assets/images/eda/12_governance.png){: .img-fluid }
 
-# Correlazioni
+# Correlazioni {#correlazioni}
 
-Infine, uno sguardo d'insieme alle variabili numeriche. Concluso e a rischio sono fortemente
-anti-correlati (per costruzione); l'assorbimento cresce con la conclusione (chi conclude ha speso);
-le variabili finanziarie assolute sono molto correlate tra loro, quindi in fase di modello se ne usa
-una sola per evitare collinearità.
+Prima di passare al modello serve capire quali variabili portano informazione davvero diversa. La
+prima matrice mette a confronto tutte le variabili numeriche continue e fa emergere **tre gruppi
+ridondanti**: le grandezze finanziarie assolute (finanziamento, pagamenti, costo realizzato, con
+correlazioni fino a 0,90), i due contatori di governance (numero di attuatori e numero di enti, di
+fatto la stessa variabile: 0,98) e le quote UE e Stato, quasi complementari per costruzione (−0,72).
+Da ciascun gruppo il modello prenderà una variabile sola, per non contarne due volte la stessa cosa.
 
-![Matrice di correlazione]({{ site.baseurl }}/assets/images/eda/10_correlazione.png){: .img-fluid }
+Gli esiti (concluso, a rischio) restano fuori dalla griglia: sono variabili binarie, e i loro
+coefficienti non sarebbero confrontabili con quelli calcolati tra variabili continue. Il loro legame
+con le altre variabili si legge nei tassi per gruppo di queste pagine e nella regressione.
+
+![Matrice di correlazione di tutte le variabili continue]({{ site.baseurl }}/assets/images/eda/10_correlazione.png){: .img-fluid }
+
+Tenendo una variabile per gruppo, e scartando tutto ciò che si osserva solo **dopo** l'avvio del
+progetto (pagamenti, assorbimento, ritardi: sono misure di esito, non condizioni di partenza), resta
+un nucleo di quattro variabili note fin dal **giorno zero**: importo, quota di fondi europei, numero
+di enti e quota di capitale privato. Da qui partono le analisi successive: il clustering usa tutte e
+quattro, la regressione ne usa tre (importo in fasce, quota europea e numero di enti).
+
+![Matrice di correlazione delle sole variabili note alla partenza]({{ site.baseurl }}/assets/images/eda/10c_correlazione_ripulita.png){: .img-fluid }
+
+La seconda matrice serve a verificare che l'operazione sia riuscita, e il risultato è netto: fuori
+dalla diagonale la correlazione più alta è **0,20**. Le quattro variabili raccontano cose diverse, e
+i coefficienti del modello si potranno leggere uno per uno senza il sospetto che si stiano rubando
+informazione a vicenda.
 
 # In sintesi
 
 I progetti si concludono a metà, con forte dipendenza dall'età del ciclo e dalla dimensione: i grandi
-concludono molto meno. Il rischio (31,5%) si concentra sui progetti medio-grandi e sui cicli recenti.
+concludono molto meno. Il rischio (32,6%) si concentra sui progetti medio-grandi e sui cicli recenti.
 Il **divario territoriale** è netto e resiste al controllo per ciclo (conclusione +17 punti, rischio
-−20 a favore del Nord). La complessità di governance, invece, **non** spiega i ritardi.
+−21 a favore del Nord). La complessità di governance, invece, **non** spiega i ritardi.
 
 Restano due avvertenze prima di trarre conclusioni causali: le differenze descrittive non bastano, e
 le analisi sui ritardi coprono solo la parte di progetti con una fine effettiva. Per questo il passo
-successivo è un **modello multivariato** — che stima il peso del territorio a parità di dimensione,
-ciclo e tema.
+successivo è la [**regressione multivariata**]({{ site.baseurl }}/regressione.html), che stima il
+peso del territorio a parità di dimensione, tema, tipo di intervento e fonte di finanziamento.
 
 <hr>
 
 <p style="font-size: 0.8rem; color: #888; margin-top: 1.5rem;">
-  Immagine di copertina: <a href="https://unsplash.com/it/@upmanis" target="_blank" rel="noopener">Kaspars Upmanis</a> — Matera, su <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>.
+  Immagine di copertina: <a href="https://unsplash.com/it/@upmanis" target="_blank" rel="noopener">Kaspars Upmanis</a>, Matera, su <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>.
 </p>

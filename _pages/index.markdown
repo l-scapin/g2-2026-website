@@ -23,7 +23,8 @@ subtitle: "315 miliardi per riequilibrare l'Italia. Ma i progetti si fermano pro
                              sui fondi di coesione, che sono un canale diverso.
      [DATO ISTAT DA INSERIRE] = data-hero sul contesto: cercare e verificare prima di scrivere.
      TODO scrollytelling: il tema ha scrollama (vedi demo) — da valutare sugli atti in seconda battuta.
-     Tutti i numeri già presenti sono VERIFICATI (RECAP.md, 12-14/07/2026). Non arrotondare 31,5 → 31.
+     Tutti i numeri sono stati RICALCOLATI il 17/07/2026 con la data di riferimento corretta
+     (31/12/2025 = snapshot del dataset; prima era 06/05/2025 per refuso). Non arrotondare 32,6 → 32.
      ═══════════════════════════════════════════════════════════════════ -->
 
 <div class="big-numbers big-numbers--straddle big-numbers--bleed">
@@ -40,7 +41,7 @@ subtitle: "315 miliardi per riequilibrare l'Italia. Ma i progetti si fermano pro
     <p class="lbl">conclusi a oggi</p>
   </div>
   <div class="stat stat-sud">
-    <p class="num">31,5%</p>
+    <p class="num">32,6%</p>
     <p class="lbl">a rischio: mai partiti o oltre scadenza</p>
   </div>
   <div class="stat">
@@ -64,7 +65,7 @@ scuole, servizi. **Chi paga**: fondi europei (FESR, FSE) più un consistente cof
 nazionale — il solo Fondo Sviluppo e Coesione vale circa 99 miliardi. In entrambi i casi la
 fonte ultima è la stessa: le tasse di tutti. **Quanto**: nei progetti monitorati da
 **OpenCoesione** — il portale pubblico che li documenta uno per uno — passano oltre **315
-miliardi di euro** di finanziamento pubblico. **Dove e quando**: in tutta Italia, per cicli di
+miliardi di euro** di finanziamento pubblico (qui fotografati al **31 dicembre 2025**). **Dove e quando**: in tutta Italia, per cicli di
 programmazione di sette anni (dal 2000-2006 al 2021-2027), con più risorse al Mezzogiorno,
 coerentemente con la missione redistributiva. **Perché**: l'obiettivo dichiarato è l'**equità
 territoriale** — che nascere a Enna o a Bolzano non determini la qualità dei servizi a cui hai
@@ -77,17 +78,25 @@ fuori) con i metodi statistici presentati nelle [pagine tecniche](#approfondire)
 > (in particolare dei giovani laureati), eventualmente un indicatore di servizi (asili nido,
 > tempo pieno, trasporti). Nessun numero va scritto qui prima di averlo verificato alla fonte.
 
-<!-- 🎙️ SLOT INTERVISTA (frase breve) — regola: MAI virgolettati non realmente pronunciati.
-     Quando l'intervista sarà fatta e autorizzata: qui UNA frase breve e d'effetto (max 2 righe);
-     la citazione estesa va nell'Atto III — stessa voce che apre e chiude il racconto.
-     ⚠️ Contestualizzare: l'intervistato lavora sul PNRR, non sulla coesione. -->
+<!-- 🎙️ INTERVISTA (frase breve) — riempito il 16/07/2026 con citazione VERBATIM dalla
+     trascrizione (Data Journalism e struttura/Intervista_esperto_CNR_fondi_coesione.docx;
+     selezione completa in virgolettati_intervista.md). ⚠️ DA AUTORIZZARE: l'intervistato ha
+     chiesto di rivedere il lavoro prima della consegna. Decidere col gruppo: nome esplicito o
+     "dirigente CNR". Contesto dichiarato nel testo: la sua esperienza è PNRR/fondi nazionali,
+     non coesione. Stessa voce chiude l'articolo nell'Atto III. -->
 <div style="border-left: 4px solid #177E89; padding: 0.6rem 0 0.6rem 1.2rem; margin: 2.2rem 0;">
-  <p style="font-size: 1.05rem; color: #2b2b2b; margin-bottom: 0.5rem;">
-    🎙️ <strong>La voce di chi i fondi li gestisce.</strong> Stiamo intervistando un dirigente con
-    esperienza diretta nella gestione di fondi pubblici: la sua lettura di questi numeri comparirà qui.
+  <p style="font-size: 1.15rem; color: #2b2b2b; margin-bottom: 0.5rem;">
+    🎙️ «Io ho sì la data d'inizio, ma non posso avere la persona reclutata per quella data.»
+  </p>
+  <p style="font-size: 0.95rem; color: #2b2b2b; margin-bottom: 0.5rem;">
+    A raccontarci come un progetto pubblico possa restare al palo prima ancora di partire —
+    con le persone chiave che arrivano, «se tutto va bene», sei mesi o un anno dopo l'avvio
+    formale — è un dirigente del CNR con esperienza diretta nella gestione di fondi pubblici
+    (PNRR e fondi nazionali: un canale diverso dalla coesione, ma la stessa macchina
+    amministrativa). La sua lettura completa chiude questo articolo.
   </p>
   <p style="font-size: 0.82rem; color: #888; margin: 0;">
-    Intervista in corso — 2026
+    Dalla trascrizione dell'intervista — luglio 2026 · citazioni in attesa di revisione finale dell'intervistato
   </p>
 </div>
 
@@ -101,9 +110,9 @@ desiderio è l'**equità territoriale**. E come in ogni storia, a un certo punto
 inceppa: **non tutti i progetti si concludono, e falliscono più spesso proprio dove servirebbero
 di più**.
 
-I numeri dell'inciampo, alla data di riferimento (6 maggio 2025): dei 206.777 progetti,
-è concluso il **48,9%**, mentre il **31,5%** è **a rischio**. Al Centro-Nord il rischio tocca il
-**20,1%** dei progetti; nel Mezzogiorno il **40,3%**: **il doppio**. Eppure il Sud gestisce
+I numeri dell'inciampo, alla data di riferimento (31 dicembre 2025): dei 206.777 progetti,
+è concluso il **48,9%**, mentre il **32,6%** è **a rischio**. Al Centro-Nord il rischio tocca il
+**20,5%** dei progetti; nel Mezzogiorno il **42,0%**: **il doppio**. Eppure il Sud gestisce
 **215 miliardi** contro i 79 del Centro-Nord: i soldi ci sono, è il percorso che si interrompe.
 
 <!-- BOX DEFINIZIONE — "a rischio" è la nostra variabile chiave e la definiamo noi:
@@ -112,12 +121,13 @@ I numeri dell'inciampo, alla data di riferimento (6 maggio 2025): dei 206.777 pr
   <p class="def-box__label">La nostra variabile chiave</p>
   <h4>Quando un progetto è «a rischio»?</h4>
   <p>Non esiste un'etichetta ufficiale: <strong>l'abbiamo costruita noi</strong>, da due segnali
-  osservabili nei dati alla data di riferimento (6 maggio 2025). Un progetto è «a rischio» se:</p>
+  osservabili nei dati alla data di riferimento: il <strong>31 dicembre 2025</strong>, la data
+  a cui è aggiornato il dataset. Un progetto è «a rischio» se:</p>
   <p><strong>1 · non è mai partito</strong> — risulta ancora «non avviato»
   (16.261 progetti, il 7,9%), <em>oppure</em><br>
   <strong>2 · è fuori tempo massimo</strong> — è «in corso» ma la sua data di fine prevista
-  è già passata (48.910 progetti, il 23,7%).</p>
-  <p>In totale: <strong>65.171 progetti, il 31,5%</strong>. «A rischio» non significa fallito:
+  è già passata (51.237 progetti, il 24,8%).</p>
+  <p>In totale: <strong>67.498 progetti, il 32,6%</strong>. «A rischio» non significa fallito:
   significa che il percorso si è inceppato e l'esito è in dubbio.</p>
   <p class="def-box__note">Nota di trasparenza: un progetto <em>concluso</em> in ritardo non conta
   come a rischio — la definizione guarda chi è ancora per strada, non chi è arrivato tardi. Ed è la
@@ -143,10 +153,10 @@ I numeri dell'inciampo, alla data di riferimento (6 maggio 2025): dei 206.777 pr
 </figure>
 
 E parliamo di cifre che si fanno fatica a immaginare: nei progetti a rischio sono impegnati
-**115,6 miliardi di euro** di finanziamento pubblico — più di un terzo dell'intero portafoglio —
-di cui risultano pagati finora solo 43,2. Ci sono **26,3 miliardi** fermi in 16.261 progetti
+**122,5 miliardi di euro** di finanziamento pubblico — più di un terzo dell'intero portafoglio —
+di cui risultano pagati finora solo 45,5. Ci sono **26,3 miliardi** fermi in 16.261 progetti
 **mai avviati**, con zero pagamenti. E la geografia del denaro fermo ricalca quella del bisogno:
-**93,5 miliardi a rischio nel Mezzogiorno**, 17,5 nel Centro-Nord.
+**99,4 miliardi a rischio nel Mezzogiorno**, 18,5 nel Centro-Nord.
 
 <!-- GRAFICO · Mappa del rischio (statica, dall'EDA — era il candidato indicato per l'Atto I).
      È l'immagine-chiave dell'atto: "si fermano dove servono di più" reso geografia. -->
@@ -174,11 +184,11 @@ si allontana esattamente dove era più urgente.
 Se il problema fosse casuale, colpirebbe a caso. Invece ha un identikit preciso. Il rischio
 cresce con la **dimensione**: i progetti piccoli si concludono nel 53,6% dei casi, quelli sopra
 i 50 milioni solo nel **13,8%** — e i 623 progetti giganti valgono da soli 120,5 miliardi. Cresce
-con la **giovinezza del ciclo**: il 2014-2020 è a rischio al 36,0%, il 2021-2027 già al 36,5%
+con la **giovinezza del ciclo**: il 2014-2020 è a rischio al 38,2%, il 2021-2027 già al 37,1%
 quando la corsa è appena iniziata. Cambia con il **tema**: in testa la **competitività delle
-imprese** (37,7% a rischio, ed è anche il tema con meno progetti conclusi), poi **trasporti**
-(35,5%) e **ambiente** (33,6%) — mentre welfare e istruzione, contrariamente a quanto si
-potrebbe pensare, stanno alla media o sotto. E soprattutto cresce **a Sud**, dentro ogni ciclo
+imprese** (39,6% a rischio, ed è anche il tema con meno progetti conclusi), poi **trasporti**
+(37,2%) e **ambiente** (34,9%) — mentre welfare e istruzione, contrariamente a quanto si
+potrebbe pensare, restano attorno alla media, lontani dalla testa della classifica. E soprattutto cresce **a Sud**, dentro ogni ciclo
 di programmazione: il divario Centro-Nord/Mezzogiorno nei conclusi è **persistente**, non
 l'effetto di una stagione sfortunata.
 
@@ -228,17 +238,36 @@ da soli la macchina amministrativa che serve a spenderli.
 > (Corte dei Conti / SVIMEZ / Banca d'Italia) a sostegno dell'ipotesi sulla capacità
 > amministrativa. Finché non c'è, l'ipotesi resta dichiarata come tale nel paragrafo sopra.
 
-<!-- ⚠️ SLOT MODELLO — da completare con i risultati DEFINITIVI del Notebook 02.
-     Scritto per reggere QUALSIASI esito: scegliere l'esito vero, non piegare i dati alla frase.
-     Il preliminare esiste (logistica IRLS) ma i numeri NON vanno pubblicati finché non sono finali. -->
-> **[DA COMPLETARE — risultato del modello]** Ma il territorio conta *di per sé*, o è solo il
-> riflesso di dimensione, ciclo e tema dei progetti che ospita? Il **modello multivariato**
-> (pagina [modello]({{ site.baseurl }}/modello.html)) mette tutti i fattori sullo stesso piano.
-> **[Esito A: il territorio resta tra i fattori più rilevanti → il divario non si spiega con la
-> composizione dei portafogli. / Esito B: pesano soprattutto dimensione e ciclo → più che un
-> "problema Sud", un problema di come sono fatti i progetti.]** In entrambi i casi è una notizia.
-> Nello stesso modello verifichiamo formalmente anche il ruolo del numero di enti coinvolti:
-> **[risultato]**.
+<!-- ✅ MODELLO: aggiornato con la regressione estesa del Notebook 02 (sm.Logit su 206.757
+     progetti, 25 parametri): OR Mezzogiorno 2,789 [2,731–2,849]; natura dell'intervento
+     (rif. acquisto beni) contributi ad altri 2,31 · lavori pubblici 1,80 · incentivi 1,43 ·
+     servizi 1,24; quota fondi UE 0,764 (2,12 sulla conclusione); NUM_ENTI 0,959; stima dentro
+     ogni ciclo: 17,1 / 3,80 / 3,77 / 1,47; AUC 0,668, test 0,665. PROSA DA RIFINIRE COL GRUPPO. -->
+Ma il territorio conta *di per sé*, o è solo il riflesso di come sono fatti i progetti che
+ospita? Il **modello multivariato** (pagina [regressione]({{ site.baseurl }}/regressione.html)) mette
+tutti i fattori sullo stesso piano, confrontando progetti **a parità di** tipo di intervento,
+tema, dimensione e fonte di finanziamento. Il verdetto: **il divario non si spiega con la
+composizione dei portafogli**. A parità di tutto il resto, per un progetto del Mezzogiorno il
+rapporto tra la probabilità di incepparsi e quella di non incepparsi è **quasi il triplo** che
+al Centro-Nord (odds ratio **2,79**, IC 95% 2,73–2,85) e, specularmente, concludere è molto
+meno probabile. Rifacendo il conto **dentro ogni ciclo di programmazione**, uno alla volta, il
+divario non sparisce mai: enorme nei cicli ormai chiusi, più contenuto nel 2021-2027 appena
+partito, ma sempre lì. Nei due cicli centrali, quelli con più progetti e più storia, vale
+addirittura **quasi quattro volte**.
+
+Il modello aggiunge però una cosa che l'esplorazione non aveva visto: **conta moltissimo che
+cosa il progetto fa**. Rispetto a un intervento che si limita ad acquistare beni, erogare
+contributi ad altri soggetti moltiplica per **2,3** le odds di finire a rischio, e realizzare
+lavori pubblici per **1,8**. Costruire un'opera, o passare i soldi a qualcun altro perché li
+spenda, è molto più fragile che comprare, ed è una leva su cui, a differenza della geografia,
+si può agire scrivendo diversamente i bandi. Nella stessa direzione va un secondo risultato: i
+progetti finanziati con **fondi europei** sono meno a rischio e concludono di più, a parità di
+tutto il resto. Sono anche quelli che arrivano con scadenze vincolanti e regole di disimpegno.
+
+E i due sospettati di partenza? La **dimensione** pesa, ma il rischio non cresce all'infinito:
+è massimo nelle fasce intermedie. Il **numero di enti coinvolti** invece esce assolto in via
+definitiva: a parità del resto, più mani sul progetto non significano più rischio (odds ratio
+0,96, semmai leggermente meno).
 
 # Cosa fare: il bicchiere, il verdetto e una via d'uscita {#cosa-fare}
 
@@ -261,8 +290,8 @@ Ma il bicchiere non è vuoto, e dirlo è parte dell'onestà del racconto. I cicl
 il tempo di finire la corsa **arrivano in fondo**: il 2000-2006 è concluso al 76,5%, il
 2007-2013 al 66% — il sistema, col tempo, chiude. Metà dei progetti spende praticamente tutto
 il proprio budget (assorbimento mediano 0,986). Ci sono regioni che funzionano — la Liguria
-conclude il 76,4% con appena il 9,1% a rischio — e temi che viaggiano bene, come **energia** e
-**reti digitali** (conclusi al 64% e 69%, rischio sotto il 21,4%). Il problema non è "nulla
+conclude il 76,4% con appena il 9,2% a rischio — e temi che viaggiano bene, come **energia** e
+**reti digitali** (conclusi al 64% e 69%, rischio sotto il 25%). Il problema non è "nulla
 funziona": è che il funzionamento è **diseguale**, e la disuguaglianza ricalca proprio i divari
 che i fondi dovrebbero chiudere.
 
@@ -281,7 +310,7 @@ che i fondi dovrebbero chiudere.
 
 ## Cosa ci portiamo a casa
 
-Tre messaggi restano in piedi qualunque cosa dica il modello. Primo: **contare i progetti
+Tre messaggi che reggono da soli, prima ancora del verdetto del modello. Primo: **contare i progetti
 inganna** — vanno pesati per importo, e i progetti grandi sono l'anello debole del sistema
 (sopra i 50 milioni si conclude il 13,8%). Secondo: c'è un **falso colpevole** — la complessità
 di governance, misurata dal numero di enti coinvolti, non spiega il rischio; le apparenti
@@ -290,8 +319,13 @@ eccezioni riportano a pochi programmi in due regioni del Sud. Terzo: il **divari
 leva più concreta che emerge dai dati descrittivi non è *quanti* soldi arrivano, ma *come sono
 disegnati* i progetti — e *chi ha gli strumenti* per spenderli.
 
-<!-- ⚠️ FRASE FINALE — da chiudere col verdetto del modello: territorio o dimensione? -->
-**[DA COMPLETARE — la chiusura del racconto: quale dei due indiziati pesa di più?]**
+<!-- ✅ FRASE FINALE — riempita il 16/07/2026 col verdetto del modello (nb 02: territorio
+     rilevante a parità di composizione). PROPOSTA: prosa da validare col gruppo. -->
+E il verdetto sugli indiziati è arrivato: la dimensione conta, il tipo di intervento conta molto,
+ma **il territorio pesa anche a parità di tutto il resto**: stesso importo, stesso tema, stesso
+tipo di opera, stessi fondi, un progetto del Mezzogiorno parte comunque con odds di rischio quasi
+tre volte più alte. Il divario non è il riflesso di come sono fatti i progetti: è il segno che,
+per arrivare in fondo, conta ancora **dove** un progetto nasce.
 
 ## E adesso? Due leve (e una parte che spetta a te)
 
@@ -307,18 +341,41 @@ in gioco tu: cerca il tuo comune su [OpenCoesione](https://opencoesione.gov.it),
 hanno fatto i suoi progetti, e chiedi. **I soldi per l'equità ci sono già: quello che manca si
 può costruire.**
 
-<!-- 🎙️ SLOT INTERVISTA (citazione estesa) — regola: MAI virgolettati non realmente pronunciati.
-     Qui la CITAZIONE ESTESA autorizzata; in apertura la stessa voce con una frase breve.
-     ⚠️ L'intervistato si occupa di PNRR: introdurlo per quello che è (esperienza diretta di
-     gestione/attuazione di fondi pubblici, canale PNRR) e usare le sue parole sul funzionamento
-     della macchina amministrativa — NON come testimonianza specifica sui fondi di coesione. -->
+<!-- 🎙️ INTERVISTA (citazione estesa) — riempito il 16/07/2026 con citazioni VERBATIM dalla
+     trascrizione (selezione completa in Data Journalism e struttura/virgolettati_intervista.md).
+     ⚠️ DA AUTORIZZARE prima della pubblicazione (l'intervistato rivedrà il lavoro). L'esperienza
+     dell'intervistato è PNRR/fondi nazionali: le sue parole descrivono la macchina amministrativa
+     pubblica, NON sono testimonianza specifica sui fondi di coesione — contesto dichiarato nel testo.
+     Stessa voce che apre l'articolo (frase breve dopo il contesto 5W). -->
 <div style="border-left: 4px solid #D1573B; padding: 0.6rem 0 0.6rem 1.2rem; margin: 2rem 0;">
+  <p style="font-size: 0.95rem; color: #2b2b2b; margin-bottom: 0.5rem;">
+    🎙️ <strong>La voce di chi i fondi li gestisce.</strong> Il dirigente del CNR che apre questo
+    articolo gestisce fondi PNRR e nazionali — un canale diverso dalla coesione, ma la stessa
+    macchina pubblica che deve trasformare i finanziamenti in risultati. Dal campo, l'antagonista
+    che abbiamo solo ipotizzato ha un volto concreto:
+  </p>
   <p style="font-size: 1.05rem; color: #2b2b2b; margin-bottom: 0.5rem;">
-    🎙️ <strong>La voce di chi i fondi li gestisce.</strong> Qui entrerà l'intervista a un dirigente
-    con esperienza diretta nella gestione di fondi pubblici: che cosa vede, dal campo, dietro questi numeri?
+    «Qualsiasi attività di ricerca non è soltanto ideazione e articolo pubblicato: c'è tutta una
+    serie di procedure contabili che devono essere gestite dal personale amministrativo, e di
+    questo noi abbiamo una grande carenza, come CNR ma in generale come Paese. Siamo molto più
+    in basso rispetto alla Spagna o alla Francia.»
+  </p>
+  <p style="font-size: 0.95rem; color: #2b2b2b; margin-bottom: 0.5rem;">
+    E alla domanda sul divario territoriale, la sua risposta tiene insieme il bicchiere e il verdetto:
+  </p>
+  <p style="font-size: 1.05rem; color: #2b2b2b; margin-bottom: 0.5rem;">
+    «Io personalmente vedo il bicchiere sempre pieno […]: ci sono moltissime eccellenze, ma il
+    sistema non è solido come Paese, e quindi necessariamente ci sono gruppi più forti che vanno
+    più avanti, e tendenzialmente sono nella parte del Centro-Nord su molte partite.»
+  </p>
+  <p style="font-size: 0.95rem; color: #2b2b2b; margin-bottom: 0.5rem;">
+    Anche la via d'uscita, vista dal campo, è la stessa che indicano i dati — investire sulle
+    persone che i fondi li fanno camminare: «La Spagna, per esempio, con i fondi del PNRR ha
+    formato moltissime persone nel capire e scrivere il progetto europeo […] in Spagna c'è stato
+    un piano di formazione, un intervento da parte dello Stato, come non c'è stato da noi.»
   </p>
   <p style="font-size: 0.82rem; color: #888; margin: 0;">
-    Intervista in corso — 2026
+    Dalla trascrizione dell'intervista — luglio 2026 · citazioni in attesa di revisione finale dell'intervistato
   </p>
 </div>
 
@@ -330,10 +387,10 @@ Secondo: il **ritardo** è misurato quasi solo sui progetti con una fine effetti
 analisi sui tempi vanno prese con prudenza. Terzo: nella nostra definizione di "concluso" i
 progetti **liquidati** (un ulteriore 6,9%) sono esclusi: includendoli si sale al 55,8% — la
 sostanza del racconto non cambia, ma il numero sì. Quarto: qui guardiamo la sola politica di
-**coesione** — il **PNRR resta fuori**, e confrontare i due canali richiede cautela metodologica
-(regole, tempistiche e sistemi di monitoraggio diversi). Infine, una domanda che il dataset non
+**coesione** — il **PNRR resta fuori**: è un canale con regole, tempistiche e sistemi di
+monitoraggio diversi, e questa analisi non dice nulla su di esso. Infine, una domanda che il dataset non
 può chiudere: *che fine fanno i soldi dei progetti che non si concludono?* Possiamo dire quanti
-sono fermi (115,6 miliardi nei progetti a rischio, 43,2 già pagati), ma non il loro destino —
+sono fermi (122,5 miliardi nei progetti a rischio, 45,5 già pagati), ma non il loro destino —
 riprogrammazioni e disimpegni non sono tracciati qui.
 
 # Per approfondire: il percorso tecnico {#approfondire}
@@ -348,9 +405,8 @@ Questa storia poggia su un percorso analitico completo, documentato nelle pagine
   </div>
   <div class="qcard">
     <h5>Sono a rischio?</h5>
-    <p>Chi rischia di non partire o di sforare i tempi. Un modello impara a riconoscerli.</p>
-    <!-- Quando il modello è pronto, puntare questa card a modello.html -->
-    <a href="{{ site.baseurl }}/eda.html#metriche">Vai all'analisi →</a>
+    <p>Chi rischia di non partire o di sforare i tempi, e quanto pesa ogni fattore a parità degli altri.</p>
+    <a href="{{ site.baseurl }}/regressione.html">Vai alla regressione →</a>
   </div>
   <div class="qcard qcard--sud">
     <h5>Sono equi tra Nord e Sud?</h5>
@@ -360,7 +416,7 @@ Questa storia poggia su un percorso analitico completo, documentato nelle pagine
 </div>
 
 <p style="text-align: center; font-size: 0.85rem; color: #888; margin-top: 1.2rem;">
-  In arrivo: <a href="{{ site.baseurl }}/modello.html">modello predittivo del rischio</a> ·
+  In arrivo: <a href="{{ site.baseurl }}/random-forest.html">Random Forest e SHAP</a> ·
   <a href="{{ site.baseurl }}/clustering.html">clustering dei profili regionali</a> ·
   <a href="{{ site.baseurl }}/text-analysis.html">text analysis delle descrizioni</a>
 </p>
@@ -368,6 +424,11 @@ Questa storia poggia su un percorso analitico completo, documentato nelle pagine
 <hr>
 
 <p style="font-size: 0.8rem; color: #888; margin-top: 1.5rem;">
+  Dati: <a href="https://opencoesione.gov.it" target="_blank" rel="noopener">OpenCoesione</a>,
+  progetti ≥100.000 € pubblicati — snapshot al <strong>31 dicembre 2025</strong> (download del 6 maggio 2026).
+  La data di riferimento di tutte le metriche («a rischio» inclusa) è la data dello snapshot.<br>
   Immagine di copertina: foto di <a href="https://unsplash.com/photos/zN4mtLHkHn4" target="_blank" rel="noopener">Fahrul Azmi</a> su <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>.
   Svincolo aereo: foto di <a href="https://unsplash.com/photos/zBrnXi2IgpY" target="_blank" rel="noopener">Rodrigo Kugnharski</a> — Parco del Portello, Milano, su <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>.
+  Nave portacontainer (pagina Regressione): foto di <a href="https://unsplash.com/photos/1cqIcrWFQBI" target="_blank" rel="noopener">Venti Views</a> su <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>.<br>
+  Immagine di anteprima (thumbnail): ID <a href="https://www.dreamstime.com/royalty-free-stock-image-italy-euro-image22014316" target="_blank" rel="noopener">22014316</a> © <a href="https://www.dreamstime.com/zimmytws_info" target="_blank" rel="noopener">Zimmytws</a> | <a href="https://www.dreamstime.com/" target="_blank" rel="noopener">Dreamstime.com</a>.
 </p>

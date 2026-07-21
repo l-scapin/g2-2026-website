@@ -1,49 +1,15 @@
 ---
+# PAGINA RINOMINATA (21/07/2026): la vecchia pagina unica "Modello" è stata divisa in due —
+# /regressione.html (logistica: quanto pesa ciascun fattore) e /random-forest.html (previsione).
+# Questo stub evita 404 su vecchi link e segnalibri. Eliminabile quando il gruppo è sicuro
+# che non esistano riferimenti esterni.
 layout: default
 title: "Modello"
-vega: true
-show_sidetoc: true
-header_type: hero #base, post, hero, image, splash
-header_img: assets/images/header.svg
-header_title: "Il modello predittivo"
-subtitle: "Territorio o dimensione: chi pesa di più nel rischio?"
+header_type: base
 ---
 
-L'EDA lascia aperta la domanda decisiva: il divario Nord-Sud conta *di per sé*, o riflette la
-dimensione, il ciclo e il tema dei progetti? Qui un modello impara a riconoscere i progetti a
-rischio e ci dice quali variabili pesano davvero. **[DA COMPLETARE — Notebook 02]**
-{: .lead }
+<meta http-equiv="refresh" content="0; url={{ site.baseurl }}/regressione.html">
 
-<!-- NOTA METODO: la Random Forest dà importanza delle variabili, non effetti "a parità di
-     condizioni" (+X punti, odds ratio). Per una frase del tipo "a parità di dimensione e ciclo,
-     il Sud ha +X punti di rischio" affiancare una regressione logistica semplice. -->
-<!-- Scrivere l'interpretazione in modo che regga entrambi gli esiti (territorio rilevante o no):
-     lo slot corrispondente nell'articolo in home (Atto II, #perche-succede) è già impostato così. -->
-
-# Feature e preparazione del dataset
-
-<!-- Variabili predittive, gestione dei mancanti, train/test split. -->
-
-# Addestramento e validazione
-
-<!-- Iperparametri, metriche (accuracy, ROC/AUC), curva ROC. -->
-
-<!-- ---- SEGNAPOSTO GRAFICO (Altair/Vega) ----
-<div style="height: 400px">
-<vegachart schema-url="{{site.baseurl}}/assets/charts/NOME_FILE.json" style="width: 100%; height: 100%"></vegachart>
-</div>
--->
-
-# Importanza delle variabili
-
-<!-- Feature importance / SHAP: quali variabili pesano di più. -->
-
-<!-- ---- SEGNAPOSTO GRAFICO ----
-<div style="height: 400px">
-<vegachart schema-url="{{site.baseurl}}/assets/charts/NOME_FILE.json" style="width: 100%; height: 100%"></vegachart>
-</div>
--->
-
-# Interpretazione
-
-<!-- Cosa dice il modello rispetto alle domande del progetto. -->
+La pagina del modello è stata divisa in due:
+[la regressione]({{ site.baseurl }}/regressione.html) (quanto pesa ciascun fattore) e
+[il Random Forest]({{ site.baseurl }}/random-forest.html) (quanto si riesce a prevedere).
