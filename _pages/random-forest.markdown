@@ -33,8 +33,8 @@ Non è una gara fra algoritmi: i due modelli rispondono a domande diverse, e nes
 sostituire l'altro.
 
 La **regressione logistica** *spiega*. Ogni fattore ha un coefficiente che diventa un odds ratio
-con il suo intervallo di confidenza: «al Sud le odds di rischio sono 2,79 volte, fra 2,73 e
-2,85». È il modello che permette di dire *quanto* pesa il territorio a parità di tutto il resto.
+con il suo intervallo di confidenza: «al Sud le odds di rischio sono 2,80 volte, fra 2,74 e
+2,86». È il modello che permette di dire *quanto* pesa il territorio a parità di tutto il resto.
 Il prezzo è una forma imposta: gli effetti sono additivi, e le eccezioni (una curva, una
 combinazione particolare di fattori) entrano nel modello solo se qualcuno le specifica a mano.
 
@@ -50,8 +50,8 @@ Perché il confronto significhi qualcosa, deve essere ad armi pari. Tre vincoli 
 dati **prima** di eseguire il modello:
 
 - **Stesse variabili.** Il Random Forest riceve la stessa matrice della regressione: territorio,
-  tipo di intervento, tema, dimensione, quota di fondi europei, numero di enti. Se cambiassero le
-  variabili, il confronto misurerebbe i dati, non gli algoritmi.
+  tipo di intervento, tema, dimensione, quota di fondi europei, quota di capitale privato, numero
+  di enti. Se cambiassero le variabili, il confronto misurerebbe i dati, non gli algoritmi.
 - **Valutazione solo su dati mai visti.** Un Random Forest può arrivare a memorizzare i dati su
   cui è addestrato: la sua accuratezza «in casa» non significa nulla. L'unica misura onesta è su
   un insieme di progetti tenuto fuori dall'addestramento.
@@ -76,7 +76,11 @@ Il risultato interessante non è «il Random Forest vince». Sono due, e sono en
 
 - **Se il guadagno rispetto alla regressione è ampio**, vuol dire che nel rischio ci sono
   combinazioni e soglie che un modello additivo non cattura: varrà la pena cercarle con SHAP e
-  raccontarle.
+  raccontarle. Una candidata è già nota: il **capitale privato** riduce il rischio solo dentro gli
+  incentivi alle imprese e per niente altrove (lo mostra la
+  [regressione]({{ site.baseurl }}/regressione.html#odds-ratio)). Alla logistica quella
+  distinzione va dichiarata a mano; un Random Forest dovrebbe trovarla da solo. Se SHAP la fa
+  riemergere è una conferma incrociata, e lo scriviamo avendolo previsto prima.
 - **Se il guadagno è modesto**, la conclusione è altrettanto netta, e forse più utile: con le
   sole caratteristiche note alla nascita di un progetto, il segnale disponibile è quello. Per
   prevedere meglio non servirebbero modelli più potenti, ma **dati diversi**: l'avanzamento dei

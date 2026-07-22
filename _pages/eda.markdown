@@ -130,18 +130,33 @@ che assorbe la fetta maggiore.
 
 Tre tagli aiutano a capire *chi* conclude e *chi* no.
 
-**Dimensione.** La relazione è netta e monotona: più il progetto è grande, meno si conclude
-(dal 53,6% dei piccoli al 13,8% degli oltre 50 milioni) e meno assorbe (da 0,75 a 0,42). I progetti
-piccoli (100–500k) sono il 70% del totale ma solo il ~10% dei fondi; i 623 progetti sopra i 50 milioni
-valgono da soli 120 miliardi. Morale: i risultati vanno pesati per importo, non solo per numero.
+**Dimensione.** Il rischio non cresce all'infinito con la taglia del progetto: disegna una
+**campana**. Sale dal 29,4% dei progetti piccoli fino al **43,9% della fascia 5-10 milioni**, poi
+ridiscende (38,5% sopra i 50 milioni). Il punto critico non sono i progetti giganti ma quelli
+**medio-grandi**: abbastanza complessi da incepparsi, non abbastanza grandi da essere seguiti uno
+per uno.
 
-![Percentuale di progetti conclusi per classe di importo]({{ site.baseurl }}/assets/images/eda/05_dimensione.png){: .img-fluid }
+![Percentuale di progetti a rischio per classe di importo]({{ site.baseurl }}/assets/images/eda/05_dimensione_rischio.png){: .img-fluid }
 
-**Ciclo.** Come atteso, conta l'età del ciclo: i cicli chiusi (2000-06, 2007-13) sono conclusi al
-76% e 66%; il 2014-20 è a metà; il **2021-2027 è appena iniziato** (5% concluso). Confrontare
-l'efficienza tra cicli senza tenerne conto sarebbe fuorviante.
+La conclusione racconta invece una storia monotona (dal 53,6% dei piccoli al 13,8% degli oltre 50
+milioni, con l'assorbimento che scende da 0,75 a 0,42), ma va letta con una cautela: i progetti
+giganti sono concentrati nei cicli più recenti, quindi parte di quel calo è semplicemente meno
+tempo a disposizione. Resta un dato di peso: i progetti piccoli (100-500k) sono il 70% del totale
+ma circa il 10% dei fondi, mentre i 623 progetti sopra i 50 milioni valgono da soli 120 miliardi.
+I risultati vanno pesati per importo, non solo contati.
 
-![Percentuale di progetti conclusi per ciclo di programmazione]({{ site.baseurl }}/assets/images/eda/06_ciclo.png){: .img-fluid }
+**Ciclo.** Qui il confronto fra le due metriche è il risultato. Guardando i **conclusi** si legge
+solo l'età del ciclo: i cicli chiusi sono al 76% e al 66%, il 2014-20 a metà, il 2021-2027 appena
+iniziato al 5%. È quasi una tautologia. Guardando il **rischio** emerge invece qualcosa che non ci
+si aspetta: il ciclo peggiore non è quello appena partito, è il **2014-2020 con il 38,5%**, sopra
+il 2021-2027 fermo al 36,8%. Il ciclo che a questo punto dovrebbe essere in chiusura è quello con
+la quota più alta di progetti fermi o fuori tempo massimo.
+
+![Percentuale di progetti a rischio per ciclo di programmazione]({{ site.baseurl }}/assets/images/eda/06_ciclo_rischio.png){: .img-fluid }
+
+Una cautela sul 2021-2027: è un dato **censurato**. Molti dei suoi progetti hanno ancora una
+scadenza davanti, quindi non possono essere a rischio per definizione, e quella percentuale può
+solo salire.
 
 **Tema.** "Competitività delle imprese" è il tema che conclude meno (37%) e assorbe meno (0,57);
 vanno meglio digitale, energia e occupazione. I "trasporti" muovono i fondi maggiori (~100 mld) ma
@@ -204,8 +219,10 @@ con le altre variabili si legge nei tassi per gruppo di queste pagine e nella re
 Tenendo una variabile per gruppo, e scartando tutto ciò che si osserva solo **dopo** l'avvio del
 progetto (pagamenti, assorbimento, ritardi: sono misure di esito, non condizioni di partenza), resta
 un nucleo di quattro variabili note fin dal **giorno zero**: importo, quota di fondi europei, numero
-di enti e quota di capitale privato. Da qui partono le analisi successive: il clustering usa tutte e
-quattro, la regressione ne usa tre (importo in fasce, quota europea e numero di enti).
+di enti e quota di capitale privato. Da qui partono le analisi successive, che usano tutte e quattro
+lo stesso insieme: il clustering le prende così come sono, la
+[regressione]({{ site.baseurl }}/regressione.html#matrice) e il Random Forest usano l'importo in
+fasce e le altre tre invariate.
 
 ![Matrice di correlazione delle sole variabili note alla partenza]({{ site.baseurl }}/assets/images/eda/10c_correlazione_ripulita.png){: .img-fluid }
 
@@ -217,7 +234,8 @@ informazione a vicenda.
 # In sintesi
 
 I progetti si concludono a metà, con forte dipendenza dall'età del ciclo e dalla dimensione: i grandi
-concludono molto meno. Il rischio (32,6%) si concentra sui progetti medio-grandi e sui cicli recenti.
+concludono molto meno. Il rischio (32,6%) si concentra sui progetti **medio-grandi** (picco del 43,9%
+fra 5 e 10 milioni) e sul ciclo **2014-2020** (38,5%), non su quello appena partito.
 Il **divario territoriale** è netto e resiste al controllo per ciclo (conclusione +17 punti, rischio
 −21 a favore del Nord). La complessità di governance, invece, **non** spiega i ritardi.
 

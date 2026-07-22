@@ -62,12 +62,12 @@ navbar:
       child:
         - title: EDA
           url: /eda.html
+        - title: Clustering
+          url: /clustering.html
         - title: Regressione
           url: /regressione.html
         - title: Random Forest
           url: /random-forest.html
-        - title: Clustering
-          url: /clustering.html
         - title: Text analysis
           url: /text-analysis.html
     - title: SBD Master # deve essere sempre l'ultimo elemento della navbar, non modificarlo

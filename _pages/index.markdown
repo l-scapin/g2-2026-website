@@ -182,10 +182,12 @@ si allontana esattamente dove era più urgente.
 <!-- ATTO II — effetti + antagonista. BOZZA: prosa da rifinire, numeri verificati il 12-14/07. -->
 
 Se il problema fosse casuale, colpirebbe a caso. Invece ha un identikit preciso. Il rischio
-cresce con la **dimensione**: i progetti piccoli si concludono nel 53,6% dei casi, quelli sopra
-i 50 milioni solo nel **13,8%** — e i 623 progetti giganti valgono da soli 120,5 miliardi. Cresce
-con la **giovinezza del ciclo**: il 2014-2020 è a rischio al 38,2%, il 2021-2027 già al 37,1%
-quando la corsa è appena iniziata. Cambia con il **tema**: in testa la **competitività delle
+cresce con la **dimensione**, ma non all'infinito: il punto critico sono i progetti
+**medio-grandi**, quelli fra 5 e 10 milioni, a rischio nel **43,9%** dei casi contro il 29,4% dei
+più piccoli. Sopra i 50 milioni scende al 38,5%, e restano comunque 623 progetti che da soli
+valgono 120,5 miliardi: pochi e pesantissimi. Il **ciclo** riserva la sorpresa più grande. Il più
+impantanato non è quello appena partito ma il **2014-2020, a rischio al 38,5%**, sopra il
+2021-2027 che si ferma al 36,8% pur avendo davanti ancora tutta la corsa. Cambia con il **tema**: in testa la **competitività delle
 imprese** (39,6% a rischio, ed è anche il tema con meno progetti conclusi), poi **trasporti**
 (37,2%) e **ambiente** (34,9%) — mentre welfare e istruzione, contrariamente a quanto si
 potrebbe pensare, restano attorno alla media, lontani dalla testa della classifica. E soprattutto cresce **a Sud**, dentro ogni ciclo
@@ -197,12 +199,12 @@ l'effetto di una stagione sfortunata.
      appesantirebbero l'atto. -->
 
 <figure class="fig-home">
-  <img src="{{ site.baseurl }}/assets/images/eda/05_dimensione.png"
-       alt="Grafico a barre: la percentuale di progetti conclusi cala al crescere della classe di importo, dal 53,6% al 13,8%">
+  <img src="{{ site.baseurl }}/assets/images/eda/05_dimensione_rischio.png"
+       alt="Grafico a barre: la percentuale di progetti a rischio sale fino al 43,9% nella fascia 5-10 milioni e poi ridiscende">
   <figcaption>
-    Più grandi, più fragili: la conclusione scende dal 53,6% dei progetti piccoli (100–500k €)
-    al 13,8% degli oltre 50 milioni. E la spesa segue lo stesso gradiente: l'assorbimento
-    cala da 0,75 a 0,42.
+    Il rischio non cresce all'infinito con la taglia: disegna una campana. Dal 29,4% dei progetti
+    piccoli (100–500k €) sale al <strong>43,9% della fascia 5-10 milioni</strong>, poi ridiscende
+    al 38,5% sopra i 50 milioni. Il punto debole sono i progetti medio-grandi.
   </figcaption>
 </figure>
 
@@ -240,16 +242,17 @@ da soli la macchina amministrativa che serve a spenderli.
 
 <!-- ✅ MODELLO: aggiornato con la regressione estesa del Notebook 02 (sm.Logit su 206.757
      progetti, 25 parametri): OR Mezzogiorno 2,789 [2,731–2,849]; natura dell'intervento
-     (rif. acquisto beni) contributi ad altri 2,31 · lavori pubblici 1,80 · incentivi 1,43 ·
-     servizi 1,24; quota fondi UE 0,764 (2,12 sulla conclusione); NUM_ENTI 0,959; stima dentro
-     ogni ciclo: 17,1 / 3,80 / 3,77 / 1,47; AUC 0,668, test 0,665. PROSA DA RIFINIRE COL GRUPPO. -->
+     (rif. acquisto beni) contributi ad altri 2,34 · lavori pubblici 1,81 · incentivi 1,54 ·
+     servizi 1,25; quota fondi UE 0,783; quota capitale privato 0,681 (effetto concentrato sugli
+     incentivi); NUM_ENTI 0,957; stima dentro ogni ciclo: 17,3 / 3,84 / 3,72 / 1,42;
+     AUC 0,668, test 0,665. PROSA DA RIFINIRE COL GRUPPO. -->
 Ma il territorio conta *di per sé*, o è solo il riflesso di come sono fatti i progetti che
 ospita? Il **modello multivariato** (pagina [regressione]({{ site.baseurl }}/regressione.html)) mette
 tutti i fattori sullo stesso piano, confrontando progetti **a parità di** tipo di intervento,
 tema, dimensione e fonte di finanziamento. Il verdetto: **il divario non si spiega con la
 composizione dei portafogli**. A parità di tutto il resto, per un progetto del Mezzogiorno il
 rapporto tra la probabilità di incepparsi e quella di non incepparsi è **quasi il triplo** che
-al Centro-Nord (odds ratio **2,79**, IC 95% 2,73–2,85) e, specularmente, concludere è molto
+al Centro-Nord (odds ratio **2,80**, IC 95% 2,74–2,86) e, specularmente, concludere è molto
 meno probabile. Rifacendo il conto **dentro ogni ciclo di programmazione**, uno alla volta, il
 divario non sparisce mai: enorme nei cicli ormai chiusi, più contenuto nel 2021-2027 appena
 partito, ma sempre lì. Nei due cicli centrali, quelli con più progetti e più storia, vale
@@ -263,6 +266,9 @@ spenda, è molto più fragile che comprare, ed è una leva su cui, a differenza 
 si può agire scrivendo diversamente i bandi. Nella stessa direzione va un secondo risultato: i
 progetti finanziati con **fondi europei** sono meno a rischio e concludono di più, a parità di
 tutto il resto. Sono anche quelli che arrivano con scadenze vincolanti e regole di disimpegno.
+Vale qualcosa di simile per il **capitale privato**, ma solo dove il privato cofinanzia il proprio
+investimento: negli incentivi alle imprese chi mette dei soldi propri è a rischio nel 31,8% dei
+casi contro il 36,6%, mentre altrove la differenza sparisce.
 
 E i due sospettati di partenza? La **dimensione** pesa, ma il rischio non cresce all'infinito:
 è massimo nelle fasce intermedie. Il **numero di enti coinvolti** invece esce assolto in via
@@ -310,14 +316,15 @@ che i fondi dovrebbero chiudere.
 
 ## Cosa ci portiamo a casa
 
-Tre messaggi che reggono da soli, prima ancora del verdetto del modello. Primo: **contare i progetti
-inganna** — vanno pesati per importo, e i progetti grandi sono l'anello debole del sistema
-(sopra i 50 milioni si conclude il 13,8%). Secondo: c'è un **falso colpevole** — la complessità
-di governance, misurata dal numero di enti coinvolti, non spiega il rischio; le apparenti
-eccezioni riportano a pochi programmi in due regioni del Sud. Terzo: il **divario Nord-Sud non
-è un incidente di percorso** — persiste in ogni ciclo, nonostante al Sud arrivino più fondi. La
-leva più concreta che emerge dai dati descrittivi non è *quanti* soldi arrivano, ma *come sono
-disegnati* i progetti — e *chi ha gli strumenti* per spenderli.
+Tre messaggi che reggono da soli, prima ancora del verdetto del modello. Primo: **contare i
+progetti inganna**, vanno pesati per importo, e l'anello debole non sta dove ce lo si aspetta:
+il rischio è massimo sui progetti medio-grandi (43,9% fra 5 e 10 milioni), mentre i 623 giganti
+sopra i 50 milioni, pur rischiando meno in proporzione, valgono da soli 120 miliardi. Secondo:
+c'è un **falso colpevole**, la complessità di governance, misurata dal numero di enti coinvolti,
+non spiega il rischio; le apparenti eccezioni riportano a pochi programmi in due regioni del Sud.
+Terzo: il **divario Nord-Sud non è un incidente di percorso**, persiste in ogni ciclo nonostante
+al Sud arrivino più fondi. La leva più concreta che emerge dai dati descrittivi non è *quanti*
+soldi arrivano, ma *come sono disegnati* i progetti e *chi ha gli strumenti* per spenderli.
 
 <!-- ✅ FRASE FINALE — riempita il 16/07/2026 col verdetto del modello (nb 02: territorio
      rilevante a parità di composizione). PROPOSTA: prosa da validare col gruppo. -->
@@ -400,7 +407,7 @@ Questa storia poggia su un percorso analitico completo, documentato nelle pagine
 <div class="qcards">
   <div class="qcard">
     <h5>Si concludono?</h5>
-    <p>Quanti arrivano davvero a chiusura — e perché i progetti grandi si fermano più spesso.</p>
+    <p>Quanti arrivano davvero a chiusura, e su quali progetti il rischio si concentra.</p>
     <a href="{{ site.baseurl }}/eda.html">Esplorazione dei dati (EDA) →</a>
   </div>
   <div class="qcard">
