@@ -109,12 +109,14 @@ altro modo di vedere lo stesso fenomeno.
 
 ![Beeswarm SHAP: direzione dell'impatto di ogni variabile]({{ site.baseurl }}/assets/images/modello/rf_shap_beeswarm.png){: .img-fluid }
 
-Il secondo grafico mostra anche la **direzione**. Ogni punto è un progetto: a destra i casi in cui
-la variabile spinge verso il rischio, a sinistra quelli in cui lo riduce. La banda del territorio è
-la più netta e si divide in due nuvole nettamente separate: i progetti del Mezzogiorno (in rosso) a
-destra, quelli del Centro-Nord (in blu) a sinistra. Il capitale privato mostra il comportamento
-opposto, con i valori alti che spingono a sinistra, verso meno rischio: la stessa direzione trovata
-dalla regressione, ottenuta per una strada completamente diversa.
+Il secondo grafico mostra anche la **direzione**. A destra troviamo i casi in cui la variabile
+spinge verso il rischio, a sinistra quelli in cui lo riduce. Il territorio si divide in **due nuvole
+nettamente separate**: i progetti del Mezzogiorno (in rosso) a destra, quelli del Centro-Nord (in
+blu) a sinistra, la stessa direzione trovata dalla regressione. Molto diverso è il comportamento
+del capitale privato (`QUOTA_PRIVATO`): la maggior parte dei progetti non ne ha (la macchia blu al
+centro), ma quando è presente (i punti rossi) l'impatto **si biforca**, sia a destra sia a sinistra.
+Questo ci dice che i fondi privati non abbassano il rischio in modo universale, ma hanno un effetto
+che dipende dall'**interazione con altre caratteristiche** del progetto.
 
 # Il dettaglio, fattore per fattore {#dipendenze}
 
@@ -155,15 +157,12 @@ riesce a mostrare.
 ![Contributo SHAP per classe di importo]({{ site.baseurl }}/assets/images/modello/rf_shap_dimensione.png){: .img-fluid }
 
 I progetti più piccoli (100k-500k) sono l'unico gruppo prevalentemente sotto lo zero: la taglia
-minima protegge. Tutte le classi intermedie contribuiscono positivamente al rischio, con le nuvole
-più dense e più alte fra 1 e 10 milioni. La fascia oltre i 50 milioni ha pochissimi punti, perché
-sono appena 623 progetti in tutto l'archivio e nel campione usato per il grafico ne finiscono
-pochi: da quella colonna non si può leggere granché.
-
-⚠️ Una nota per leggere il grafico senza sbagliare: **le classi sull'asse orizzontale non sono in
-ordine di grandezza** ma in ordine alfabetico, per come sono state codificate le categorie. Il
-salto da «10M-50M» a «1M-5M» non è un andamento, è un artefatto dell'etichetta. La forma a campana
-si vede nei valori, non nella sequenza da sinistra a destra.
+minima protegge. Salendo di taglia il contributo diventa positivo e raggiunge il massimo nelle
+fasce centrali, fra 1 e 10 milioni: le classi sull'asse sono in ordine di grandezza, quindi questa
+**campana** si legge direttamente nella sequenza da sinistra a destra, ed è la stessa forma trovata
+dalla regressione. La fascia oltre i 50 milioni ha pochissimi punti, perché sono appena 623
+progetti in tutto l'archivio e nel campione usato per il grafico ne finiscono pochi: da quella
+colonna non si può leggere granché.
 
 # Che cosa ci dice, in conclusione
 
