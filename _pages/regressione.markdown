@@ -65,7 +65,10 @@ tecnico che li isola, così da non finire confusi con il Centro-Nord.
 
 L'**odds ratio (OR)** dice quanto cambiano le probabilità relative di finire a rischio rispetto
 alla categoria di riferimento, tenendo fisso tutto il resto: sopra 1 più rischio, sotto 1 meno.
-Il grafico mostra tutti gli OR con il loro intervallo di confidenza al 95%.
+Il grafico mostra tutti gli OR con il loro intervallo di confidenza al 95%. È la versione completa
+della [figura che compare nell'articolo]({{ site.baseurl }}/#perche-succede): stessa lettura, qui
+con tutti i fattori invece degli otto principali. L'asse è **logaritmico**, così un raddoppio e un
+dimezzamento occupano la stessa distanza dalla linea dell'1.
 
 ![Forest plot degli odds ratio sul rischio]({{ site.baseurl }}/assets/images/modello/mod_forest_rischio.png){: .img-fluid }
 

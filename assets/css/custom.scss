@@ -87,6 +87,25 @@ iframe {
   padding-inline-end: 0.4em;
 }
 
+// ── Navbar: distinguere l'articolo dalle pagine tecniche ─────────────────────
+// Nella navbar convivono TRE affordance diverse che avevano tutte lo stesso
+// aspetto, e l'unico segno di differenza era la freccina del dropdown:
+//   1-2-3        = ancore DENTRO la pagina corrente (i tre atti dell'articolo)
+//   Le analisi   = ALTRE pagine di questo sito
+//   SBD Master   = sito ESTERNO, già marcato dal riquadro qui sopra
+// Il riquadro è quindi un significato già occupato ("esci dal sito") e non va
+// riusato per "Le analisi": servono due segnali distinti. Gli atti li marcano i
+// numeri (nei title del _config.yml), il salto di categoria lo marca questa
+// riga verticale. Solo da md in su: sotto, la navbar alternativa manda gli item
+// a capo e un bordo laterale cadrebbe in un punto arbitrario.
+@media (min-width: 768px) {
+  .navbar-chulapa .navbar-nav .nav-item.dropdown {
+    border-left: 1px solid rgba(128, 128, 128, 0.4);
+    margin-left: 0.5rem;
+    padding-left: 0.5rem;
+  }
+}
+
 @media (max-width: 767px) {
   #projects-container {
     h5 {
@@ -187,7 +206,7 @@ iframe {
   margin: 0;
 }
 // Variante "fuori margine": la fascia sfonda la colonna del testo e occupa
-// (quasi) tutta la finestra — 5 caselle respirano meglio che strette nei margini.
+// (quasi) tutta la finestra: 5 caselle respirano meglio che strette nei margini.
 // Trucco: larghezza 100vw riagganciata al centro (come .full-width-wrapper);
 // il padding-inline con max() centra il contenuto e lo blocca a 1300px sugli schermi larghi.
 .big-numbers--bleed {

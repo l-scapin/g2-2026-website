@@ -52,11 +52,17 @@ navbar:
     # Ristrutturata il 14/07/2026: la landing È l'articolo in 3 atti → i primi tre pulsanti
     # puntano alle sue ancore; le pagine analitiche stanno nel dropdown "Le analisi".
     # Rimossi: "Guida" e "Approfondimenti" (demo del template), "Conclusioni" (assorbita nell'Atto III).
-    - title: Il problema
+    #
+    # 22/07/2026: numerati. Nella navbar convivono TRE tipi di destinazione che prima avevano
+    # tutti lo stesso aspetto: ancore dentro la pagina corrente (questi tre), altre pagine del
+    # sito ("Le analisi"), e un sito esterno ("SBD Master", già marcato dal riquadro in
+    # custom.scss). I numeri dicono "siamo una sequenza sola, sei già nella pagina giusta";
+    # il separatore prima di "Le analisi" sta in custom.scss.
+    - title: 1. Il problema
       url: /#il-problema
-    - title: Perché succede
+    - title: 2. Perché succede
       url: /#perche-succede
-    - title: Cosa fare
+    - title: 3. Cosa fare
       url: /#cosa-fare
     - title: Le analisi
       child:

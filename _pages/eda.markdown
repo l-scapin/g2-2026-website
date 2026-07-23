@@ -5,7 +5,8 @@ vega: true
 plotly: true
 show_sidetoc: true
 header_type: hero #base, post, hero, image, splash
-header_img: assets/images/kaspars-upmanis-Z0AcAo2luII-unsplash.jpg
+header_img: assets/images/hero_eda.jpg
+header_img_position: center
 header_title: "Analisi Esplorativa dei Dati"
 subtitle: "Qualità dei dati, le tre metriche di esito e i primi pattern"
 ---

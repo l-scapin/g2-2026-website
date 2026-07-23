@@ -3,80 +3,108 @@ layout: default
 title: "Text Analysis"
 vega: true
 show_sidetoc: true
-header_type: hero 
-header_img: assets/images/header.svg
+header_type: hero
+header_img: assets/images/hero_text_analysis.jpg
+header_img_position: center
 header_title: "Text Analysis"
-subtitle: "Le descrizioni dei progetti raccontano il loro esito?"
+subtitle: "Le parole di un progetto dicono qualcosa sul suo destino?"
 ---
 
-Analizziamo le etichette e i testi con cui i progetti sono descritti per capire se 
-emergono parole, temi o tipi di intervento associati a una maggiore o minore 
-probabilità di successo o di stallo.
+<!-- PAGINA IN PREPARAZIONE: l'analisi testuale sopra il Random Forest non è ancora stata
+     eseguita. Qui ci sono la domanda, il metodo e il criterio di lettura, scritti PRIMA di
+     vedere i risultati: è una garanzia contro il racconto costruito a posteriori. La sezione
+     "I risultati" va riempita quando il notebook è pronto ed è formulata per reggere
+     qualunque esito.
+     ⚠️ La versione precedente di questa pagina era costruita sul PNRR, fuori dallo scope
+     deciso il 18/07/2026, e conteneva nome e indirizzo di un'impresa privata associati a una
+     previsione di fallimento al 100%: è stata sostituita. Copia conservata fuori dal repo.
+     Regole editoriali: mai "causale", "persistente" e NON "strutturale", niente virgolettati
+     inventati, nessun risultato pre-affermato. -->
+
+<div class="full-width-wrapper">
+    <img src="{{ site.baseurl }}/assets/images/header.svg" alt="sbd-pattern" class="full-width-image">
+</div>
+
+Finora abbiamo trattato ogni progetto come una riga di tabella: un territorio, un importo, un
+tema, una natura. Ma ogni progetto porta con sé anche **una descrizione scritta da chi lo ha
+proposto**. È l'unico punto in cui l'amministrazione racconta, con parole sue, che cosa intende
+fare. La domanda di questa pagina è se in quelle parole ci sia informazione che le colonne non
+contengono.
 {: .lead }
 
-# Corpus e preprocessing
-
-Per condurre questa analisi abbiamo studiato le sintesi testuali di decine di migliaia di progetti PNRR e OpenCoesione. 
-Il linguaggio amministrativo è spesso standardizzato; per questo, dopo una pulizia iniziale del testo, abbiamo filtrato attivamente le "stop-word di dominio", rimuovendo termini onnipresenti e neutri come *progetto, intervento, finanziamento, comune*. 
-
-Abbiamo così isolato il "cuore" semantico di ogni proposta: sono le parole distintive — quelle che descrivono l'oggetto specifico dell'azione — a rivelare i pattern nascosti dietro la burocrazia.
-
-# Parole e temi ricorrenti
-
-Confrontando i due programmi, emerge un salto generazionale nel "vocabolario del rischio". 
-Nello storico di OpenCoesione, i progetti più a rischio erano associati alla burocrazia tradizionale (*dipartimento*, *credito imposta*) e agli interventi di natura fisica o di welfare (*metanizzazione*, *servizio civile*). Nel PNRR, i termini di allerta si spostano sull'ambito formativo e accademico (*percorsi*, *politecnico*, *università studio*, *partecipante*).
-
-D'altro canto, il PNRR vanta un chiarissimo "vocabolario del successo". I termini che abbattono maggiormente il rischio sono tutti legati alla transizione digitale: *piattaforma, cie (Carta d'Identità Elettronica), api, cms, id*.
-
-<!-- Grafico Parole -->
-<div style="height: 400px">
-<vegachart schema-url="{{site.baseurl}}/assets/charts/rischio_words_chart.json" style="width: 100%; height: 100%"></vegachart>
+<div class="def-box" markdown="1">
+**Analisi in corso.** Questa pagina descrive la domanda, il metodo e il criterio con cui
+leggeremo i risultati. I numeri arriveranno alla chiusura dell'analisi.
 </div>
 
-# Testo ed esito
+# La domanda {#domanda}
 
-Ma il testo ha un reale potere predittivo? Abbiamo addestrato un modello di Intelligenza Artificiale per scoprirlo. 
-Il risultato è eccellente: il nostro modello semantico ha raggiunto un'**AUC di 0.853** nell'identificare i progetti a rischio. 
+Il [Random Forest]({{ site.baseurl }}/random-forest.html) si ferma a **AUC 0,813** usando sette
+caratteristiche strutturali. Sappiamo anche che una parte di quel risultato dipende dal
+riconoscere il piano di finanziamento più che il progetto in sé. La domanda naturale è se il
+**testo della descrizione** aggiunga qualcosa di diverso: non «quanto vale e dove nasce» ma
+«che cosa dice di voler fare, e come lo dice».
 
-Questo significa che leggere la descrizione di un progetto è estremamente informativo. Le parole scelte non sono una mera formalità per ottenere i fondi: sono indicatori accurati della reale complessità che il progetto incontrerà sul campo.
+L'ipotesi è ragionevole. Un progetto descritto in modo preciso e circoscritto racconta un'idea
+già messa a fuoco; una descrizione generica e formulare può segnalare un intervento ancora da
+definire. Ma è appunto un'ipotesi, e va misurata.
 
-# Controllo: è il testo o il tipo di progetto?
+# Il metodo {#metodo}
 
-Un errore comune nell'analisi testuale è confondere l'effetto delle parole con quello del contesto (es. progetti al Sud rispetto a quelli al Nord). 
-Abbiamo quindi eseguito una *Feature Union*, integrando la matrice semantica con i dati strutturati (es. territorio). L'analisi dimostra che **il segnale testuale resiste e innalza le performance del modello**: il modo in cui un progetto è descritto aggiunge un valore predittivo indipendente e non è una semplice ombra della sua geografia.
+**Il corpus è `OC_SINTESI_PROGETTO`**, la sintesi testuale dei progetti OpenCoesione. Solo
+OpenCoesione: il PNRR resta fuori dal perimetro del progetto.
 
-# Indice di Rischio Storico: guardare al passato per prevedere il presente
+Il testo viene ripulito e trasformato in numeri con una vettorizzazione classica, poi le feature
+testuali vengono affiancate a quelle strutturali già usate dagli altri modelli. Il confronto è
+fra due Random Forest identici in tutto tranne che nell'input:
 
-Per tradurre queste stime in un indicatore concreto, abbiamo creato un "ponte semantico" tra il PNRR e i dati certificati di OpenCoesione. 
-Dato un campione esplorativo di 10.000 progetti PNRR, il nostro algoritmo ha cercato per ciascuno i suoi 5 "gemelli storici", ovvero i progetti passati più simili testualmente. La percentuale di fallimento di questi gemelli ha generato un **Indice di Rischio Storico** per il PNRR.
+- il modello **con le sole variabili strutturali**, che è il nostro riferimento a 0,813;
+- il modello **con testo e variabili strutturali insieme**.
 
-<!-- Grafico Missioni -->
-<div style="height: 400px">
-<vegachart schema-url="{{site.baseurl}}/assets/charts/rischio_per_missione.json" style="width: 100%; height: 100%"></vegachart>
+La differenza fra i due, misurata **sugli stessi progetti tenuti fuori dall'addestramento**, è
+il guadagno attribuibile al testo. È l'unica misura che conta: valutare il testo sui dati con cui
+il modello è stato addestrato produce numeri lusinghieri e privi di significato.
+
+# Le tre trappole che dobbiamo evitare {#cautele}
+
+Sono dichiarate qui, prima di avere i risultati, perché sono esattamente i punti in cui
+un'analisi testuale può auto-ingannarsi.
+
+**Il testo che riscopre quello che già sappiamo.** Le descrizioni contengono spesso nomi di
+programmi, di luoghi e di strumenti di finanziamento. Un modello che impara a riconoscere
+«POR FESR Sicilia» dentro una sintesi non ha scoperto niente sul linguaggio: ha ritrovato per
+un'altra strada il territorio e il ciclo, che sono già in tabella. Il guadagno del testo si
+misura **in aggiunta** alle variabili strutturali, mai da solo.
+
+**Le etichette travestite da testo.** Il tema sintetico e la natura dell'intervento sono
+classificazioni, non prosa. Usarle come se fossero testo significa prevedere una colonna con se
+stessa, e produce accuratezze altissime e prive di valore. Nel corpus entra solo la descrizione
+libera.
+
+**Il vocabolario che è solo un calendario.** Il linguaggio amministrativo cambia nel tempo: certi
+termini appartengono a una stagione di programmazione, e i cicli hanno tassi di rischio molto
+diversi fra loro. Un modello può quindi imparare a datare il progetto invece di capirlo. Va
+verificato se il segnale testuale sopravvive **dentro un singolo ciclo**.
+
+# I risultati {#risultati}
+
+<div class="def-box" markdown="1">
+**[SEZIONE DA COMPLETARE]**: qui andranno il guadagno del testo sul modello strutturale, i termini
+più associati al rischio e alla conclusione, e l'esito dei tre controlli descritti sopra.
 </div>
 
-# Due storie a confronto: proiezioni di successo e di rischio
+Le due letture possibili sono entrambe informative, e le dichiariamo adesso.
 
-Per rendere concreto l'algoritmo, abbiamo estratto due progetti-simbolo dal nostro dataset. Guardando al passato, il nostro motore di ricerca ha individuato le traiettorie più probabili per questi due interventi.
+**Se il testo aggiunge poco**, la conclusione è che le descrizioni sono in larga parte
+**linguaggio formulare**: dicono come si compila una domanda di finanziamento, non come andrà il
+progetto. Sarebbe un risultato utile, perché ridimensiona un'idea molto diffusa.
 
-**🔴 Il progetto a Rischio**
-* **Missione:** REPowerEU
-* **Sintesi:** *VISUALPLEX S.R.L.*Credito di imposta riconosciuto ai sensi dellarticolo 38 del DL 19/2024 -(M7I.15).*VIA FERRUCCIO PARRI 9/11/13*
-* **Indice di Rischio Storico:** 100.0%
-> Questo intervento si basa sul "credito d'imposta", un termine che la nostra analisi ha identificato tra le top 10 parole a maggior rischio storico in OpenCoesione. I progetti gemelli del passato hanno subito ritardi o blocchi nella totalità dei casi esaminati dal modello.
+**Se il testo aggiunge molto**, la domanda successiva diventa *quali* parole pesano, e lì serve
+la massima prudenza: un termine associato al rischio non è una causa e non è una colpa. È il
+segno che un certo tipo di intervento, descritto in un certo modo, storicamente si è inceppato
+più spesso.
 
-**🟢 Il progetto di Successo**
-* **Missione:** Digitalizzazione, innovazione, competitività e cultura
-* **Sintesi:** *MIGRAZIONE DI SERVIZI DIGITALI*PIAZZA CINELLI 4 - 61121 PESARO*19 SU PSN1 SU CLOUD QUALIFICATO E 5 SU INFRASTRUTTURA DELLA PA ADEGUATA*
-* **Indice di Rischio Storico:** 0.0%
-> Al contrario, questo intervento utilizza un lessico fortemente orientato all'IT (*servizi digitali*, *cloud*). I suoi "gemelli" storici in OpenCoesione si sono conclusi regolarmente, confermando la stabilità amministrativa di questo tipo di misure.
-
-# Cosa emerge
-
-La nostra analisi semantica, incrociata con l'indagine esplorativa (EDA), ci permette di concludere che:
-
-1. **La digitalizzazione è un fattore di stabilità:** i progetti orientati alla transizione digitale (M1) mostrano l'Indice di Rischio Storico più basso (~25%). Le descrizioni tecniche e standardizzate (*piattaforma, api, cloud*) si traducono in una messa a terra più sicura e prevedibile.
-2. **Il peso degli strumenti e della natura del progetto:** le missioni legate alla transizione energetica (REPowerEU) e alla transizione ecologica registrano i rischi storici più alti (rispettivamente ~77% e ~48%). Questo non dipende dal numero di attori coinvolti, ma dalla natura dello strumento finanziario (come i crediti d'imposta, storicamente problematici per i tempi di rendicontazione) o dalla complessità fisica dell'intervento.
-3. **Il linguaggio è un segnale d'allarme:** l'accuratezza semantica predice il rischio con un'efficacia (AUC 0.853) superiore a quella delle sole variabili strutturali. La chiarezza progettuale iniziale è, a tutti gli effetti, la prima garanzia di completamento di un'opera.
-
-*Nota metodologica: L'Indice di Rischio Storico è stato calcolato per ragioni computazionali su un campione rappresentativo di 10.000 progetti PNRR, impiegando un motore di ricerca semantico (BM25) che confronta il progetto attuale con i "gemelli storici" nel database di OpenCoesione.*
+In nessuno dei due casi pubblicheremo previsioni riferite a progetti singoli riconoscibili. Un
+modello che assegna una probabilità di fallimento a un intervento identificabile, con il nome
+dell'ente o dell'impresa che lo realizza, non è un risultato di ricerca: è un giudizio su
+soggetti reali basato su una correlazione. Le analisi di questa pagina restano aggregate.
