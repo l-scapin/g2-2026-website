@@ -95,7 +95,8 @@ Un modello che segnala progetti senza dire perché è inutilizzabile per chi dev
 questo il Random Forest è accompagnato da un'analisi **SHAP**, che scompone ogni singola previsione
 nei contributi dei diversi fattori.
 
-![Importanza globale delle variabili secondo SHAP]({{ site.baseurl }}/assets/images/modello/rf_shap_importanza.png){: .img-fluid }
+<!-- Inserisci qui l'embed del grafico a barre dell'importanza globale -->
+<div id="vis-importanza-globale"></div>
 
 In cima c'è il **territorio**, seguito dalla quota di fondi europei, dal tipo di intervento e dal
 tema. Il verdetto della regressione regge anche qui, con un modello che di quel verdetto non sa
@@ -107,32 +108,26 @@ misura tende a premiare le variabili con moltissimi valori distinti, esattamente
 descritto qui sopra, mentre SHAP ne risente molto meno. Le due classifiche a confronto sono un
 altro modo di vedere lo stesso fenomeno.
 
-![Beeswarm SHAP: direzione dell'impatto di ogni variabile]({{ site.baseurl }}/assets/images/modello/rf_shap_beeswarm.png){: .img-fluid }
+<!-- Inserisci qui l'embed del boxplot del territorio -->
+<div id="vis-territorio-direzione"></div>
 
-Il secondo grafico mostra anche la **direzione**. A destra troviamo i casi in cui la variabile
-spinge verso il rischio, a sinistra quelli in cui lo riduce. Il territorio si divide in **due nuvole
-nettamente separate**: i progetti del Mezzogiorno (in rosso) a destra, quelli del Centro-Nord (in
-blu) a sinistra, la stessa direzione trovata dalla regressione. Molto diverso è il comportamento
-del capitale privato (`QUOTA_PRIVATO`): la maggior parte dei progetti non ne ha (la macchia blu al
-centro), ma quando è presente (i punti rossi) l'impatto **si biforca**, sia a destra sia a sinistra.
-Questo ci dice che i fondi privati non abbassano il rischio in modo universale, ma hanno un effetto
-che dipende dall'**interazione con altre caratteristiche** del progetto.
+I boxplot ci permettono di valutare anche la **direzione** e la distribuzione dell'impatto senza la sovrapposizione disordinata di migliaia di punti. A destra (valori maggiori di zero) troviamo i casi in cui la variabile spinge verso il rischio, a sinistra quelli in cui lo riduce. Il territorio mostra **due distribuzioni nettamente separate**: la mediana dei progetti del Mezzogiorno (in color oro) si colloca a destra, indicando un maggiore rischio, mentre quella del Centro-Nord (in viola) si trova a sinistra. È la stessa direzione trovata dalla regressione.
+
+Molto diverso è il comportamento del capitale privato (`QUOTA_PRIVATO`): la maggior parte dei progetti non ne ha, ma quando è presente l'impatto **si biforca**, sia a destra sia a sinistra. Questo ci dice che i fondi privati non abbassano il rischio in modo universale, ma hanno un effetto che dipende dall'**interazione con altre caratteristiche** del progetto.
 
 # Il dettaglio, fattore per fattore {#dipendenze}
 
 I grafici precedenti dicono *quanto* pesa ciascuna variabile. I tre qui sotto dicono **quali
 valori** di quella variabile spingono verso il rischio e quali lo allontanano. Si leggono così:
-ogni punto è un progetto del test set, la posizione verticale è il contributo che quella
-caratteristica dà alla sua previsione. Sopra lo zero il modello alza il rischio, sotto lo abbassa.
+ogni boxplot riassume la distribuzione dei progetti del test set per una determinata categoria; la
+posizione verticale indica il contributo che quella caratteristica dà alla previsione. Sopra lo zero il modello alza il rischio, sotto lo abbassa.
 
 ## Il tipo di intervento {#dip-natura}
 
-![Contributo SHAP per tipo di intervento]({{ site.baseurl }}/assets/images/modello/rf_shap_natura.png){: .img-fluid }
+<!-- Inserisci qui l'embed del boxplot NATURA -->
+<div id="vis-natura"></div>
 
-È il grafico più netto dei tre. L'**acquisto di beni** è l'unica categoria interamente sotto lo
-zero: comprare è l'operazione che il modello considera più sicura. All'estremo opposto i
-**contributi ad altri soggetti**, con contributi che arrivano a +0,2, seguiti da incentivi e
-lavori pubblici. I **servizi** stanno a cavallo dello zero, quindi vicini alla media.
+È il grafico più netto dei tre. L'**acquisto di beni** è l'unica categoria in cui quasi l'intera distribuzione si trova sotto lo zero: comprare è l'operazione che il modello considera più sicura. All'estremo opposto i **contributi ad altri soggetti**, con la mediana nettamente spostata verso l'alto, seguiti da incentivi e lavori pubblici. I **servizi** stanno a cavallo dello zero, quindi vicini alla media.
 
 L'ordine è **identico a quello degli odds ratio della regressione** (contributi 2,34, lavori
 pubblici 1,81, incentivi 1,54, servizi 1,25, acquisto beni come riferimento). Due modelli che non
@@ -140,44 +135,24 @@ si parlano, con matematiche diverse, mettono le cinque categorie nella stessa se
 
 ## Il tema {#dip-tema}
 
-![Contributo SHAP per tema]({{ site.baseurl }}/assets/images/modello/rf_shap_tema.png){: .img-fluid }
+<!-- Inserisci qui l'embed del boxplot TEMA -->
+<div id="vis-tema"></div>
 
 Anche qui la corrispondenza regge. Spingono verso il rischio **competitività delle imprese**,
 **istruzione e formazione** e **occupazione e lavoro**, che sono i tre temi con gli odds ratio più
 alti nella regressione. Restano intorno allo zero o sotto **ambiente**, **energia**, **cultura** e
 **reti e servizi digitali**, cioè quelli che la regressione non distingue dal riferimento.
 
-La nuvola di ciascun tema è però ampia e attraversa lo zero quasi ovunque: il tema da solo non
-decide quasi nulla, sposta la previsione di poco e in entrambe le direzioni a seconda del resto
-del progetto. È una sfumatura che il forest plot della regressione, fatto di punti singoli, non
-riesce a mostrare.
+L'estensione dei baffi di ciascun tema è però ampia e attraversa lo zero quasi ovunque: il tema da solo non decide quasi nulla, sposta la previsione di poco e in entrambe le direzioni a seconda del resto del progetto. È una sfumatura molto più facile da leggere qui rispetto alla fitta nuvola di punti singoli.
 
 ## La dimensione {#dip-dimensione}
 
-![Contributo SHAP per classe di importo]({{ site.baseurl }}/assets/images/modello/rf_shap_dimensione.png){: .img-fluid }
+<!-- Inserisci qui l'embed del boxplot DIMENSIONE -->
+<div id="vis-dimensione"></div>
 
 I progetti più piccoli (100k-500k) sono l'unico gruppo prevalentemente sotto lo zero: la taglia
-minima protegge. Salendo di taglia il contributo diventa positivo e raggiunge il massimo nelle
-fasce centrali, fra 1 e 10 milioni: le classi sull'asse sono in ordine di grandezza, quindi questa
+minima protegge. Salendo di taglia la mediana diventa positiva e raggiunge il massimo nelle
+fasce centrali, fra 1 e 10 milioni: le classi sull'asse orizzontale sono in ordine di grandezza, quindi questa
 **campana** si legge direttamente nella sequenza da sinistra a destra, ed è la stessa forma trovata
-dalla regressione. La fascia oltre i 50 milioni ha pochissimi punti, perché sono appena 623
-progetti in tutto l'archivio e nel campione usato per il grafico ne finiscono pochi: da quella
-colonna non si può leggere granché.
-
-# Che cosa ci dice, in conclusione
-
-**Prevedere si può, e meglio di quanto pensassimo.** Con le sole caratteristiche note alla nascita
-di un progetto si arriva a un'accuratezza discreta, sufficiente a costruire una lista di
-sorveglianza: non a dire «questo progetto fallirà», ma a dire «questi meritano un controllo prima
-degli altri».
-
-**Il verdetto sul territorio non cambia.** Due modelli con logiche opposte, uno che impone una
-forma e uno che la cerca da solo, mettono il Mezzogiorno in cima alla lista dei fattori. È la
-conferma incrociata più solida che potessimo avere.
-
-**Ma prevedere non è spiegare.** Il Random Forest vince sulla previsione e resta muto sul perché,
-mentre la regressione dice di quanto pesa ciascun fattore e sa dichiarare la propria incertezza.
-Per il racconto pubblico e per qualunque proposta di intervento, il numero da citare resta quello
-della [regressione]({{ site.baseurl }}/regressione.html); il Random Forest serve a stabilire fin
-dove ci si può spingere, e a ricordare che una parte di ciò che sembra previsione è, in realtà,
-riconoscere l'amministrazione che ha aperto il bando.
+dalla regressione. La fascia oltre i 50 milioni ha pochissimi elementi, in quanto composta da appena 623
+progetti in tutto l'archivio: i suoi baffi si estendono meno per via della scarsa numerosità campionaria.
