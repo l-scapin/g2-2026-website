@@ -96,6 +96,23 @@ con i metodi statistici documentati nelle pagine tecniche del menu «Le analisi�
   </figcaption>
 </figure>
 
+<!-- GRAFICO · bilanciamento del dataset (nb 01 §3, stesso file usato dall'EDA). Sta qui, subito
+     sotto il Sankey: il Sankey mostra che i FONDI sono sbilanciati verso il Sud, questo mostra che
+     i PROGETTI no, e prepara il confronto in percentuale del paragrafo successivo. -->
+
+<figure class="fig-home">
+  <img src="{{ site.baseurl }}/assets/images/eda/04b_bilanciamento.png"
+       alt="Barra divisa in due: il 44,0% dei progetti sta nel Centro-Nord e il 56,0% nel Mezzogiorno, quindi vicino alla metà esatta">
+  <figcaption>
+    Quanti progetti stanno da una parte e dall'altra: dei <strong>204.060</strong> progetti
+    localizzati in una delle due aree, il <strong>44,0%</strong> è nel Centro-Nord (89.831) e il
+    <strong>56,0%</strong> nel Mezzogiorno (114.229). Serve a leggere tutto quello che viene dopo:
+    i due gruppi sono di taglia simile, quindi il divario del prossimo capitolo non è l'effetto di
+    quanti progetti ci sono da una parte e dall'altra. I <strong>soldi</strong>, invece, sono
+    sbilanciati, e si vede nel diagramma qui sopra: <strong>73% al Sud contro 27%</strong>.
+  </figcaption>
+</figure>
+
 # Il problema: i progetti si fermano dove servono di più {#il-problema}
 
 Dei 206.777 progetti, il **48,9%** si è concluso, mentre il **32,6%** è **a rischio**. Al
@@ -272,7 +289,7 @@ Forest conferma quanto visto nella regressione: mette in cima ai fattori di risc
 i contributi ad altri soggetti, e colloca l'acquisto di beni in fondo. Due modelli costruiti su
 logiche diverse arrivano così alle stesse conclusioni.
 
-# Cosa fare: il bicchiere, il verdetto e una via d'uscita {#cosa-fare}
+# Cosa fare: il verdetto e una via d'uscita {#cosa-fare}
 
 <figure style="margin: 1.5rem 0;">
   <img src="{{ site.baseurl }}/assets/images/hero_conclusions.jpg" alt="Svincolo autostradale visto dall'alto"
@@ -292,9 +309,10 @@ solo il **9,2%** a rischio) e temi che viaggiano bene, come **energia** e **reti
 sotto il 25%).
 
 <!-- 🎙️ INTERVISTA (bicchiere, Atto III) · citazione VERBATIM (sez. C di virgolettati_intervista.md). -->
-<!-- ⚠️ Variante PULL QUOTE (virgoletta in filigrana): è LA citazione da ricordare e va
-     tenuta UNA SOLA per pagina. Se se ne aggiunge un'altra, questa perde la sua funzione. -->
-<div class="quote-int quote-int--pull">
+<!-- Stile unico dei virgolettati (25/07): era la variante pull quote con la virgoletta in
+     filigrana, ora usa la stessa `.quote-int` delle altre due citazioni della pagina. -->
+<div class="quote-int">
+  <p class="quote-int__label">Dall'intervista</p>
   <blockquote>
     «Io personalmente vedo il bicchiere sempre pieno […]: ci sono moltissime eccellenze, ma il
     sistema non è solido come Paese, e quindi necessariamente ci sono gruppi più forti che vanno

@@ -351,12 +351,15 @@ iframe {
   margin: .25rem 0 0;
 }
 
-// ---- Variante pull quote: UNA sola per pagina ----
+// ---- Variante pull quote: NON PIÙ USATA (25/07) ----
+// ⚠️ Nessuna pagina applica più questa classe: il sito ha un solo stile di virgolettato,
+// quello sopra, su tutte e tre le citazioni della home. La variante restava sulla
+// citazione del bicchiere e faceva convivere due trattamenti diversi nella stessa pagina.
+// Le regole restano qui, inattive, se un giorno si volesse tornare a distinguere la
+// citazione "da ricordare": in quel caso vale ancora il vincolo di UNA SOLA per pagina,
+// perché con più pull quote la variante perde la sua funzione e i box si appiattiscono.
 // La virgoletta gigante in filigrana (16% di opacità) è il segno classico del pull
-// quote di NYT e Washington Post. Va usata sulla citazione che vuoi che il lettore si
-// porti via, non su tutte: con tre box identici si appiattirebbero, e il senso di
-// questa variante è proprio distinguere la citazione "da ricordare" da quelle di
-// servizio. Sulla home è quella del bicchiere, in chiusura dell'Atto III.
+// quote di NYT e Washington Post.
 .quote-int--pull {
   border-left: 0;
   position: relative;
