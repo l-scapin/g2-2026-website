@@ -156,3 +156,19 @@ fasce centrali, fra 1 e 10 milioni: le classi sull'asse orizzontale sono in ordi
 **campana** si legge direttamente nella sequenza da sinistra a destra, ed è la stessa forma trovata
 dalla regressione. La fascia oltre i 50 milioni ha pochissimi elementi, in quanto composta da appena 623
 progetti in tutto l'archivio: i suoi baffi si estendono meno per via della scarsa numerosità campionaria.
+
+<!-- Carica le librerie necessarie per i grafici -->
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+<!-- Script per iniettare i json nei div -->
+<script type="text/javascript">
+  var opt = { "actions": false }; // Rimuove il menu con i tre puntini
+
+  // Collega i div ai file json corretti dentro assets/charts/
+  vegaEmbed('#vis-territorio-direzione', '{{ site.baseurl }}/assets/charts/vis_territorio.json', opt).catch(console.error);
+  vegaEmbed('#vis-natura', '{{ site.baseurl }}/assets/charts/vis_natura.json', opt).catch(console.error);
+  vegaEmbed('#vis-tema', '{{ site.baseurl }}/assets/charts/vis_tema.json', opt).catch(console.error);
+  vegaEmbed('#vis-dimensione', '{{ site.baseurl }}/assets/charts/vis_dimensione.json', opt).catch(console.error);
+</script>
