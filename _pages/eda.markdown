@@ -134,6 +134,24 @@ che assorbe la fetta maggiore.
   metriche: in queste pagine l'arancio significa «rischio», e un territorio non è un esito.</p>
 </div>
 
+## I due gruppi sono confrontabili? {#bilanciamento}
+
+Un controllo di base, prima di cambiare taglio. Un divario fra due gruppi si legge solo se i gruppi
+hanno una numerosità paragonabile: se il Mezzogiorno fosse una manciata di progetti, la sua
+percentuale ballerebbe a ogni caso e il confronto non reggerebbe. Non è così. Dei **204.060**
+progetti localizzati in una delle due macroaree, il **44,0%** sta nel Centro-Nord (89.831) e il
+**56,0%** nel Mezzogiorno (114.229); restano fuori 2.717 progetti (1,3%) di ambito nazionale,
+estero o trasversale, che non appartengono a nessuna delle due aree.
+
+![Quota di progetti nel Centro-Nord e nel Mezzogiorno]({{ site.baseurl }}/assets/images/eda/04b_bilanciamento.png){: .img-fluid }
+
+Lo scarto dalla metà esatta è modesto e va nella direzione attesa, visto che la politica di coesione
+destina al Sud la quota maggiore delle risorse. Le due percentuali di rischio sono quindi calcolate
+su decine di migliaia di casi ciascuna, e il divario che abbiamo visto non è un effetto della
+numerosità. Sui **fondi**, invece, lo squilibrio c'è ed è forte, come mostra il diagramma qui sopra:
+**73% contro 27%** (215 contro 79 miliardi). I progetti si dividono quasi a metà, i soldi no: è
+un'altra ragione per leggere sempre il confronto in percentuale e mai in valore assoluto.
+
 # Dimensione, ciclo e tema
 
 Tre tagli aiutano a capire *chi* si inceppa e *chi* no.
