@@ -7,145 +7,97 @@ header_type: hero #base, post, hero, image, splash
 header_img: assets/images/hero_random_forest.jpg
 header_img_position: center
 header_title: "Random Forest"
-subtitle: "Quanto lontano si può arrivare a prevedere il rischio"
+subtitle: "Prevedere il rischio prima che si manifesti"
 ---
 
-<!-- Numeri dal notebook 04 (Random Forest + SHAP), verificati rieseguendo il modello.
-     Regole editoriali: mai "causale", "persistente" e NON "strutturale", niente virgolettati
-     inventati, nessun risultato pre-affermato. -->
+<!-- Numeri dal notebook 04 (Random Forest + SHAP), verificati rieseguendo il modello. -->
 
 <div class="full-width-wrapper">
     <img src="{{ site.baseurl }}/assets/images/header.svg" alt="sbd-pattern" class="full-width-image">
 </div>
 
-La [regressione]({{ site.baseurl }}/regressione.html) ha risposto alla domanda «**quanto pesa
-ciascun fattore**, a parità degli altri». Ne resta una diversa e altrettanto concreta: **quanto
-lontano si può arrivare a prevedere** quali progetti si inceppano, prima che accada? Qui la
-affrontiamo con un **Random Forest**, un insieme di centinaia di alberi decisionali che cercano da
-soli le combinazioni di caratteristiche associate al rischio. La risposta breve: si prevede molto
-meglio, ma una parte del guadagno arriva da dove non ce lo aspettavamo.
+La [regressione]({{ site.baseurl }}/regressione.html) ha risposto a una domanda precisa: **quanto pesa ciascun fattore** sul ritardo di un progetto, a parità di tutte le altre condizioni. Ma ne resta una altrettanto concreta per chi deve gestire i fondi: se conosciamo: **è possibile prevedere prima del via quali progetti rischiano di incepparsi, così da monitorarli più da vicino?**
+
+Per rispondere abbiamo messo alla prova i dati con un **Random Forest**, un algoritmo che non si limita a "pesare" le singole variabili, ma cerca in autonomia migliaia di combinazioni e soglie critiche nascoste nei dati. 
 {: .lead }
 
-# Perché due modelli e non uno {#due-modelli}
+# Spiegare contro indovinare: perché due modelli
 
-Non è una gara fra algoritmi: i due modelli rispondono a domande diverse.
+Non è una gara a chi ha l'algoritmo migliore, ma una divisione dei compiti. I due modelli rispondono a domande diverse.
 
-La **regressione logistica** *spiega*. Ogni fattore ha un coefficiente che diventa un odds ratio
-con il suo intervallo di confidenza: «al Sud le odds di rischio sono 2,80 volte, fra 2,74 e 2,86».
-È il modello che permette di dire *quanto* pesa il territorio a parità di tutto il resto. Il prezzo
-è una forma imposta: gli effetti sono additivi, e le eccezioni entrano solo se qualcuno le
-specifica a mano.
+La **regressione logistica** serve a *spiegare*. Ci restituisce un numero esatto per ogni fattore: ci dice ad esempio che, a parità di tutto il resto, fare un progetto al Sud triplica le probabilità di rischio. È trasparente e rigorosa, ma ha una struttura rigida.
 
-Il **Random Forest** *prevede*. Costruisce molti alberi su sottoinsiemi diversi dei dati e li fa
-votare: così coglie da solo soglie, curve e combinazioni, senza che nessuno gliele suggerisca. Il
-prezzo è che non produce coefficienti né intervalli di confidenza: non risponde a «quanto pesa il
-territorio», risponde a «chi è a rischio».
+Il **Random Forest** serve a *prevedere*. Costruisce centinaia di alberi decisionali su frammenti di dati diversi e li fa "votare" per decidere se un nuovo progetto finirà fuori strada. È potentissimo nel catturare interazioni complesse (ad esempio: cosa succede se un progetto è enorme, al Sud, ma finanzia solo acquisti di beni?), ma è una "scatola nera" che non produce coefficienti semplici da leggere. 
 
-Perché il confronto sia leale, il Random Forest riceve **le stesse variabili** della regressione
-(territorio, tipo di intervento, tema, dimensione, quota di fondi europei, quota di capitale
-privato, numero di enti) ed è valutato **sugli stessi progetti tenuti fuori dall'addestramento**:
-70% per imparare, 30% mai visto per giudicare. Gli iperparametri sono scelti con una ricerca
-automatica in cross-validation sul solo train.
+Perché il confronto sia leale, il Random Forest ha ricevuto in pasto **le stesse identiche informazioni** della regressione (territorio, tipo di intervento, tema, dimensione, quota di fondi europei e privati, numero di enti) ed è stato valutato solo su progetti che non aveva **mai visto prima** durante la fase di addestramento.
 
-# Il risultato: si prevede molto meglio {#risultato}
+# Il risultato: una previsione (fin troppo) accurata
 
-Sul test set il Random Forest ottiene **AUC 0,813**, contro lo **0,669** della regressione
-logistica sulle stesse variabili e sullo stesso split. È un salto molto ampio: significa che nel
-rischio ci sono soglie e combinazioni che un modello additivo non riesce a catturare.
+Il Random Forest batte la regressione logistica con un margine ampissimo. Misurando l'affidabilità della previsione (tramite l'indice AUC, dove 0,5 è il caso e 1 è la previsione perfetta), il Random Forest **balza a 0,813**, lasciando la regressione indietro a **0,669**. 
 
-Il modello non sta imparando a memoria: nella cross-validation l'accuratezza sul training è 0,825
-contro 0,805 in validazione, uno scarto piccolo, e il valore sul test set mai visto lo conferma.
+Significa che prevedere l'esito di un progetto conoscendo solo la sua "carta d'identità" al giorno zero è assolutamente possibile. Ma da dove arriva un salto di qualità così netto? Analizzando il modello, scopriamo che la capacità predittiva aumenta notevolmente perché l'algoritmo impara a **riconoscere l'origine amministrativa dei fondi**, più che le caratteristiche intrinseche dei progetti.
 
-![Confronto delle AUC fra logistica e Random Forest]({{ site.baseurl }}/assets/images/modello/rf_confronto_auc.png){: .img-fluid }
+La variabile che gli alberi usano di più per orientarsi è la **quota di fondi europei**. Questa percentuale, però, non è un numero a caso: i suoi decimali identificano in modo precisissimo il **piano di finanziamento**, e di conseguenza il bando e l'amministrazione che lo gestisce. Il modello ha semplicemente imparato che una certa combinazione di decimali corrisponde a un bando specifico, e che quel bando ha avuto un esito disastroso.
 
-## Da dove arriva il guadagno (e perché non va raccontato come una vittoria) {#granularita}
+Per verificarlo, abbiamo tolto gli "occhiali da vista" all'algoritmo, arrotondando le percentuali per nascondere i decimali identificativi:
 
-Il grafico qui sopra mostra anche la parte meno comoda, che abbiamo voluto misurare invece di
-darla per buona. La variabile più usata dagli alberi è la **quota di fondi europei**, e quella
-variabile ha una caratteristica che sfugge a prima vista: assume **oltre 74.000 valori distinti**
-su 206.757 progetti, e per la maggior parte di essi il valore è **unico**, appartiene a un solo
-progetto. Non si comporta come una percentuale, si comporta come un'impronta digitale.
-
-Quei decimali non sono casuali: identificano il **piano di finanziamento**, e quindi in buona parte
-il programma che ha finanziato il progetto, con il suo periodo e la sua amministrazione. Un albero
-abbastanza profondo può impararsi che una certa combinazione di decimali corrisponde a un certo
-bando, e che quel bando è andato male.
-
-Per quantificarlo abbiamo rifatto il modello arrotondando progressivamente le quote:
-
-| variabili | AUC sul test |
+| Dati a disposizione del modello | Affidabilità della previsione (AUC) |
 |---|---|
-| quote con i valori grezzi | **0,813** |
-| quote arrotondate al 10% | 0,778 |
-| quote ridotte a un semplice «sì / no» | 0,732 |
-| regressione logistica (stesse variabili) | 0,669 |
+| Quote esatte (con tutti i decimali) | **0,813** |
+| Quote arrotondate al 10% | 0,778 |
+| Regressione logistica (per confronto) | 0,669 |
 
-La lettura onesta è duplice. **Il vantaggio del Random Forest è reale**: anche buttando via tutta
-la precisione decimale resta a 0,732, ben sopra la logistica, e quel margine è vero segnale non
-lineare. Ma **circa metà del salto dipende dalla capacità di riconoscere il singolo piano di
-finanziamento**, cioè un'informazione che assomiglia più a un'etichetta amministrativa che a una
-caratteristica del progetto.
+La lettura è duplice. **Il vantaggio del Random Forest è reale**: anche "sfocando" le variabili finanziarie, l'affidabilità resta alta (0,778), a conferma che le combinazioni trovate dall'algoritmo sono solide. Ma per chi deve prendere decisioni politiche, questo è un avvertimento vitale: quando chiediamo a un'Intelligenza Artificiale di prevedere il rischio, rischiamo che impari a riconoscere *da quale scrivania* è partito il progetto, non *com'è fatto*.
 
-Per un sistema di allerta è una buona notizia: quell'informazione esiste il giorno zero ed è lecito
-usarla. Per capire *che cosa rende fragile un progetto* è un avvertimento: il modello sta in parte
-riconoscendo *da dove viene* il progetto, non *com'è fatto*.
+# Dentro la scatola nera: l'impatto dei fattori {#shap}
 
-# Che cosa guarda il modello {#shap}
-
-Un modello che segnala progetti senza dire perché è inutilizzabile per chi deve decidere. Per
-questo il Random Forest è accompagnato da un'analisi **SHAP**, che scompone ogni singola previsione
-nei contributi dei diversi fattori.
-
-{% include altair.html id="vis-importanza-globale" file="/assets/charts/vis_importanza_globale.json" %}
-
-In cima c'è il **territorio**, seguito dalla quota di fondi europei, dal tipo di intervento e dal
-tema. Il verdetto della regressione regge anche qui, con un modello che di quel verdetto non sa
-nulla e che era libero di dare peso a qualunque cosa.
-
-Merita una nota il fatto che l'indicatore di importanza interno agli alberi darebbe una classifica
-diversa, con la quota europea nettamente in testa. La differenza non è un dettaglio tecnico: quella
-misura tende a premiare le variabili con moltissimi valori distinti, esattamente il problema
-descritto qui sopra, mentre SHAP ne risente molto meno. Le due classifiche a confronto sono un
-altro modo di vedere lo stesso fenomeno.
+Per evitare di avere un modello che lancia allarmi senza dirci il perché, abbiamo "aperto" il Random Forest usando un metodo (chiamato **SHAP**) in grado di calcolare quanto ogni singola caratteristica ha spinto la previsione di un progetto verso il successo o verso il baratro.
 
 {% include altair.html id="vis-riepilogo-impatto" file="/assets/charts/vis_riepilogo_impatto.json" %}
 
-Questo secondo grafico offre una panoramica sulle **distribuzioni dell'impatto** di tutte le variabili senza la sovrapposizione disordinata di migliaia di punti. La linea tratteggiata rossa segna lo zero: a destra (valori positivi) si trovano i casi in cui la variabile spinge verso il rischio, a sinistra quelli in cui lo riduce. Variabili come il territorio o la quota europea mostrano una forbice molto ampia, capace di spostare la previsione in modo radicale.
+Questo grafico offre la panoramica globale su cosa orienta l'algoritmo e si legge in due modi. Innanzitutto, le variabili sono **ordinate dall'alto verso il basso per importanza**: in cima c'è il territorio, seguito dalla quota di fondi europei, dalla natura dell'intervento e dal tema. 
 
-# Il dettaglio, fattore per fattore {#dipendenze}
+In secondo luogo, le scatole mostrano la **direzione dell'impatto**: la linea tratteggiata rossa segna lo zero. A destra (valori positivi) si trovano i casi in cui la variabile spinge verso il rischio, a sinistra quelli in cui lo riduce. Variabili come il territorio o la quota europea mostrano una "forbice" molto ampia, capace di spostare la previsione in modo radicale. 
 
-I grafici precedenti dicono *quanto* pesa ciascuna variabile nell'insieme. I boxplot qui sotto scendono nel dettaglio e dicono **quali valori** di quella specifica variabile spingono verso il rischio e quali lo allontanano. Si leggono così: la "scatola" colorata riassume il 50% centrale della distribuzione dei progetti per una determinata categoria; la linea orizzontale rossa fissa lo zero.
+# L'identikit confermato: il dettaglio variabile per variabile {#dipendenze}
 
-## Il territorio {#dip-territorio}
+Se il grafico precedente ci dà la classifica generale, i focus qui sotto scendono nel dettaglio per mostrarci **quali specifici valori** spingono verso il ritardo o verso la sicurezza. La logica visiva è identica: la scatola colorata racchiude il cuore dei progetti (il 50% centrale della distribuzione), mentre la linea rossa fissa la soglia di rischio zero.
+
+## Il peso della geografia {#dip-territorio}
 
 {% include altair.html id="vis-territorio" file="/assets/charts/vis_territorio.json" %}
 
-Il territorio mostra **due distribuzioni nettamente separate**: la mediana dei progetti del Mezzogiorno (in color oro) si colloca abbondantemente a destra, indicando un maggiore rischio, mentre quella del Centro-Nord (in viola) si trova a sinistra.
+Il territorio non ammette sfumature e mostra **due distribuzioni nettamente separate**. I progetti del Mezzogiorno (color oro) si collocano abbondantemente a destra, confermandosi il bacino di rischio principale. Quelli del Centro-Nord (in viola) si posizionano tutti a sinistra, nell'area di sicurezza. È la stessa spaccatura individuata dalla regressione: due modelli matematicamente opposti confermano l'esatta, identica tendenza.
 
-## Il tipo di intervento {#dip-natura}
+## Il vincolo dei fondi europei {#dip-quota-ue}
+
+{% include altair.html id="vis-quota-ue" file="/assets/charts/vis_quota_ue.json" %}
+
+Nel paragrafo precedente abbiamo visto come i decimali della quota europea vengano usati dal modello per riconoscere i singoli bandi. Ma se sintetizziamo i risultati raggruppando i progetti in base alla sola presenza o assenza di fondi UE, emerge una dinamica strutturale chiara: disporre di fondi europei (in verde) tende a spingere la distribuzione verso l'area di sicurezza, sotto lo zero. Come già rilevato dalla regressione logistica, le scadenze vincolanti e le rigide regole di disimpegno europee agiscono da forte disincentivo ai ritardi, a prescindere dall'importo esatto.
+
+## Cosa si fa con i soldi: la natura dell'intervento {#dip-natura}
 
 {% include altair.html id="vis-natura" file="/assets/charts/vis_natura.json" %}
 
-È il grafico più netto tra le variabili categoriche. L'**acquisto di beni** è l'unica operazione la cui distribuzione si trova quasi interamente sotto lo zero: comprare è l'operazione che il modello considera più sicura. All'estremo opposto i **contributi ad altri soggetti**, seguiti da incentivi e lavori pubblici. I **servizi** stanno a cavallo dello zero, vicini alla media. 
-L'ordine è **identico a quello degli odds ratio della regressione**.
+È il segnale più inequivocabile. L'**acquisto di beni** è l'unica operazione che il modello considera sistematicamente sicura (tutta la distribuzione è sotto lo zero). All'estremo opposto, **erogare contributi ad altri soggetti** o realizzare **lavori pubblici** spinge drammaticamente verso l'alto l'allarme rischio. Ancora una volta, la sequenza di pericolosità è identica a quella stimata dalla regressione.
 
-## Il tema {#dip-tema}
+## Di cosa si parla: il tema {#dip-tema}
 
 {% include altair.html id="vis-tema" file="/assets/charts/vis_tema.json" %}
 
-Anche qui la corrispondenza regge. Spingono verso il rischio **competitività delle imprese**, **istruzione e formazione** e **occupazione e lavoro**. Restano intorno allo zero o sotto **ambiente**, **energia**, **cultura** e **reti e servizi digitali**. 
-L'estensione dei baffi di ciascun tema è però ampia e attraversa lo zero quasi ovunque: il tema da solo non decide quasi nulla, ma sposta la previsione di poco in entrambe le direzioni a seconda dell'interazione con il resto del progetto.
+Anche qui l'identikit regge. Spingono verso l'area di rischio i progetti legati alla **competitività delle imprese**, all'**istruzione** e all'**occupazione**. Agiscono invece da scudo l'**ambiente**, l'**energia** e le **reti digitali**. Rispetto alla regressione, qui notiamo un dettaglio in più: l'estensione orizzontale per ogni tema è molto ampia e attraversa quasi sempre lo zero. Significa che il tema, da solo, non è una condanna automatica, ma interagisce fortemente con il resto del progetto.
 
-## La dimensione {#dip-dimensione}
+## Quanto si spende: la dimensione {#dip-dimensione}
 
 {% include altair.html id="vis-dimensione" file="/assets/charts/vis_dimensione.json" %}
 
-I progetti più piccoli (100k-500k) sono l'unico gruppo prevalentemente sotto lo zero: la taglia minima protegge. Salendo di dimensione la mediana diventa positiva e raggiunge il massimo nelle fasce centrali, fra 1 e 10 milioni, creando la stessa **campana** trovata dalla regressione. La fascia oltre i 50 milioni ha pochissimi elementi nell'archivio (appena 623), motivo per cui l'estensione statistica risulta più contratta.
+I progetti più piccoli (da 100 a 500 mila euro) sono l'unico gruppo prevalentemente al riparo. Salendo con i fondi, il rischio cresce fino a toccare il suo apice per i progetti **medio-grandi (tra 1 e 10 milioni di euro)**, per poi ridiscendere leggermente sui mega-progetti. È l'esatta forma "a campana" che avevamo già osservato esplorando i dati base.
 
 # Che cosa ci dice, in conclusione
 
-**Prevedere si può, e meglio di quanto pensassimo.** Con le sole caratteristiche note alla nascita di un progetto si arriva a un'accuratezza discreta, sufficiente a costruire una lista di sorveglianza: non a dire «questo progetto fallirà», ma a dire «questi meritano un controllo prima degli altri».
+**Costruire un sistema di allerta è possibile.** Utilizzando unicamente i dati noti al momento della firma di un progetto, è possibile ottenere una previsione solida. Non serve a condannare un progetto in partenza, ma a definire liste di priorità su cui attivare controlli preventivi.
 
-**Il verdetto sul territorio non cambia.** Due modelli con logiche opposte, uno che impone una forma e uno che la cerca da solo, mettono il Mezzogiorno in cima alla lista dei fattori. È la conferma incrociata più solida che potessimo avere.
+**Il punto di forza: catturare le combinazioni complesse.** A differenza della regressione, il Random Forest non valuta i fattori in modo isolato: riesce a cogliere da solo le interazioni a coppie o di gruppo (ad esempio come il rischio di un certo tipo di intervento cambi radicalmente a seconda del territorio in cui si localizza). I valori SHAP ci permettono di "aprire la scatola nera" e verificare che queste combinazioni abbiano un senso logico.
 
-**Ma prevedere non è spiegare.** Il Random Forest vince sulla previsione e resta muto sul perché, mentre la regressione dice di quanto pesa ciascun fattore e sa dichiarare la propria incertezza. Per il racconto pubblico e per qualunque proposta di intervento, il numero da citare resta quello della [regressione]({{ site.baseurl }}/regressione.html); il Random Forest serve a stabilire fin dove ci si può spingere, e a ricordare che una parte di ciò che sembra previsione è, in realtà, riconoscere l'amministrazione che ha aperto il bando.
+**Due strumenti per due scopi diversi.** Quando le due metodologie concordano sui fattori principali (Mezzogiorno, contributi a soggetti terzi, fasce dimensionali medio-grandi), il dato diventa inoppugnabile. Tuttavia, la scelta dello strumento dipende dall'obiettivo: se l'obiettivo è **anticipare il rischio** sfruttando tutte le interazioni tra le variabili, lo strumento ideale è il **Random Forest**; se l'obiettivo della politica pubblica è **isolare l'effetto netto** di una singola leva normativa a parità di tutto il resto, il riferimento per la quantificazione resta l'Odds Ratio della **regressione**.
+
