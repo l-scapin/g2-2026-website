@@ -272,25 +272,6 @@ Forest conferma quanto visto nella regressione: mette in cima ai fattori di risc
 i contributi ad altri soggetti, e colloca l'acquisto di beni in fondo. Due modelli costruiti su
 logiche diverse arrivano così alle stesse conclusioni.
 
-C'è però un dettaglio. Una parte della capacità di previsione non viene dalle caratteristiche del
-progetto, ma dai **decimali del suo piano di finanziamento**: cifre che identificano il bando da cui
-il progetto è nato. Semplificando quel dato, la capacità predittiva cala. Per indovinare quali
-progetti si fermeranno, sapere **da quale programma arrivano** conta quasi quanto sapere **come sono
-fatti**.
-
-<!-- GRAFICO · confronto AUC (pagina Random Forest, in palette del sito). -->
-
-<figure class="fig-home">
-  <img src="{{ site.baseurl }}/assets/images/modello/rf_confronto_auc.png"
-       alt="Barre orizzontali: la capacità di previsione passa da 0,669 della regressione a 0,813 del Random Forest, ma scende a 0,732 se si semplificano le quote di finanziamento">
-  <figcaption>
-    Quanto bene i modelli riconoscono in anticipo un progetto a rischio, misurato su progetti
-    <strong>mai visti prima</strong> (0,5 = tirare a indovinare, 1 = previsione perfetta). Il
-    Random Forest stacca nettamente la regressione. Il dettaglio del calcolo è
-    <a href="{{ site.baseurl }}/random-forest.html">nella pagina dedicata</a>.
-  </figcaption>
-</figure>
-
 # Cosa fare: il bicchiere, il verdetto e una via d'uscita {#cosa-fare}
 
 <figure style="margin: 1.5rem 0;">
