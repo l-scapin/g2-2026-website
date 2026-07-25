@@ -61,26 +61,19 @@ fondi. E non è l'incidente di un anno storto: il divario **resiste dentro ogni 
 programmazione.
 {: .lead }
 
-# Che cos'è la politica di coesione (e perché ti riguarda) {#coesione}
+# Le politiche di coesione {#coesione}
 
-**Che cosa.** Le politiche di coesione sono lo strumento con cui l'Unione Europea e lo Stato
-italiano finanziano interventi per ridurre i divari tra territori: infrastrutture, ricerca,
-ambiente, scuole, servizi. **Chi paga**: fondi europei più un consistente cofinanziamento
-nazionale (il solo Fondo Sviluppo e Coesione vale circa 99 miliardi). In entrambi i casi la
-fonte ultima è la stessa: le tasse di tutti. **Quanto**: nei progetti monitorati da
-**OpenCoesione** (il portale pubblico che li documenta uno per uno) passano oltre **315
-miliardi di euro** di finanziamento pubblico (qui fotografati al **31 dicembre 2025**).
-**Dove e quando**: in tutta Italia, per cicli di programmazione di sette anni (dal 2000-2006 al
-2021-2027), con più risorse al Mezzogiorno, coerentemente con la missione redistributiva.
-**Perché**: l'obiettivo dichiarato è l'**equità territoriale**, che nascere a Enna o a Bolzano non
-determini la qualità dei servizi a cui hai accesso. Noi analizziamo i progetti da almeno 100.000 €
-con i metodi statistici documentati nelle pagine tecniche del menu «Le analisi»:
-[esplorazione dei dati]({{ site.baseurl }}/eda.html), [clustering]({{ site.baseurl }}/clustering.html),
-[regressione]({{ site.baseurl }}/regressione.html), [Random Forest]({{ site.baseurl }}/random-forest.html).
+Sono lo strumento con cui l'Unione Europea e lo Stato italiano finanziano interventi per ridurre i divari tra territori: infrastrutture, ricerca, ambiente, scuole, servizi. 
 
-<!-- GRAFICO · Sankey (versione leggera, la stessa dell'EDA). Spostato qui il 24/07: chiude la
-     sezione "Che cos'è" visualizzando il flusso dei 315 mld da fonte a territorio a tema, cioè
-     esattamente il "Chi paga / Quanto" appena descritto. -->
+L'origine di questi finanziamenti risiede nei fondi europei, affiancati da un consistente cofinanziamento nazionale (il solo Fondo Sviluppo e Coesione vale circa 99 miliardi di euro). In entrambi i casi la fonte ultima è la stessa: le **tasse di tutti**. Nei progetti monitorati da **OpenCoesione** (il portale pubblico che ne raccoglie i dati) si raggiungono oltre **315 miliardi di euro** di finanziamento pubblico (fotografati al **31 dicembre 2025**).
+
+Questi progetti si distribuiscono in tutta Italia e si articolano su cicli di programmazione di sette anni (dal 2000-2006 al 2021-2027), destinando una quota maggiore di risorse al Mezzogiorno in coerenza con la propria missione redistributiva. L'obiettivo dichiarato è l'**equità territoriale**: far sì che la qualità dei servizi a disposizione di un cittadino non dipenda dalla provincia in cui risiede. 
+
+Il nostro lavoro nasce per rispondere a tre quesiti fondamentali: capire quali progetti **non vanno a buon fine**, individuare i **fattori** che ne condizionano l'esito e verificare se sia possibile **prevedere** le opere potenzialmente più a rischio fin dal primo giorno di cantiere. 
+
+Per farlo, abbiamo ristretto il campo ai progetti con un importo pari ad almeno 100.000 euro: una scelta che ci permette di analizzare ben 249 miliardi di euro, pari al **93% delle risorse totali**.
+
+Il grafico Sankey ricostruisce il percorso di questi 249 miliardi: dalla fonte (europea o nazionale), attraverso il territorio di destinazione, fino al tema dell'intervento. Emerge subito un primo marcato squilibrio finanziario: il **73% delle risorse** è destinato al Mezzogiorno, mentre solo il **27%** va al Centro-Nord.
 
 <figure class="fig-home">
   <iframe src="{{ site.baseurl }}/assets/charts/plotly/sankey_fondi.html"
@@ -88,30 +81,28 @@ con i metodi statistici documentati nelle pagine tecniche del menu «Le analisi�
           style="width: 100%; height: 520px; border: none;"
           loading="lazy"></iframe>
   <figcaption>
-    Il percorso dei 315 miliardi: da ogni <strong>fonte</strong>, europea o nazionale (FSC, PAC,
+    Il percorso dei fondi: da ogni <strong>fonte</strong>, europea o nazionale (FSC, PAC,
     rotazione), al <strong>territorio</strong>, fino al <strong>tema</strong>. Lo spessore dei flussi
-    è proporzionale ai fondi pubblici. Due letture: al Sud la coesione è più nazionale (FSC) che
-    europea, e i trasporti assorbono la fetta maggiore. Passa il mouse sui flussi per i valori;
+    è proporzionale ai fondi pubblici. Passa il mouse sui flussi per i valori;
     la legenda completa delle fonti è <a href="{{ site.baseurl }}/eda.html#dove-passano-i-fondi">nell'EDA</a>.
   </figcaption>
 </figure>
 
-<!-- GRAFICO · bilanciamento del dataset (nb 01 §3, stesso file usato dall'EDA). Sta qui, subito
-     sotto il Sankey: il Sankey mostra che i FONDI sono sbilanciati verso il Sud, questo mostra che
-     i PROGETTI no, e prepara il confronto in percentuale del paragrafo successivo. -->
+A fronte di un volume di risorse nettamente sbilanciato verso il Sud, il **numero di progetti** risulta invece distribuito in modo quasi paritario tra le due macro-aree (56,0% al Mezzogiorno contro 44,0% al Centro-Nord). Questa sostanziale equivalenza di numerosità campionaria è un elemento metodologico cruciale, poiché garantisce l'assenza di bias nei confronti statistici successivi.
 
 <figure class="fig-home">
   <img src="{{ site.baseurl }}/assets/images/eda/04b_bilanciamento.png"
        alt="Barra divisa in due: il 44,0% dei progetti sta nel Centro-Nord e il 56,0% nel Mezzogiorno, quindi vicino alla metà esatta">
   <figcaption>
-    Quanti progetti stanno da una parte e dall'altra: dei <strong>204.060</strong> progetti
-    localizzati in una delle due aree, il <strong>44,0%</strong> è nel Centro-Nord (89.831) e il
-    <strong>56,0%</strong> nel Mezzogiorno (114.229). Serve a leggere tutto quello che viene dopo:
-    i due gruppi sono di taglia simile, quindi il divario del prossimo capitolo non è l'effetto di
-    quanti progetti ci sono da una parte e dall'altra. I <strong>soldi</strong>, invece, sono
-    sbilanciati, e si vede nel diagramma qui sopra: <strong>73% al Sud contro 27%</strong>.
+    La distribuzione dei progetti: dei <strong>oltre 200.000</strong> interventi localizzati, il <strong>44,0%</strong> si trova nel Centro-Nord (89.831) e il <strong>56,0%</strong> nel Mezzogiorno (114.229). I <strong>fondi</strong>, al contrario, sono fortemente concentrati a Sud (<strong>73% contro 27%</strong>), come evidenziato nel diagramma precedente.
   </figcaption>
 </figure>
+
+Per esplorare ed elaborare questa massa di dati abbiamo applicato una serie di metodologie statistiche e di Machine Learning, i cui dettagli ed esiti tecnici sono approfonditi nelle sezioni dedicate del menu «Le analisi»:
+[esplorazione dei dati]({{ site.baseurl }}/eda.html), [clustering]({{ site.baseurl }}/clustering.html),
+[regressione]({{ site.baseurl }}/regressione.html) e [Random Forest]({{ site.baseurl }}/random-forest.html).
+
+
 
 # Il problema: i progetti si fermano dove servono di più {#il-problema}
 
