@@ -10,6 +10,12 @@ strong {
   font-weight: 600;
 }
 
+// Occhiello (.lead): resta più grande ma con lo stesso peso del testo,
+// così il salto con il paragrafo normale è meno brusco.
+.lead {
+  font-weight: 400;
+}
+
 // pattern full width
 .full-width-wrapper {
             width: 100vw;
@@ -65,6 +71,11 @@ iframe {
 .navbar-brand {
   text-decoration: none;
 }
+// spazio tra il logo e il titolo del sito nella navbar
+// (.75rem: un filo più arioso di .55, il logo "respira" meglio accanto al testo)
+.navbar-brand img {
+  margin-right: .75rem !important;
+}
 .navbar {
   //border-bottom: 1px solid white;
   z-index: 1000;
@@ -74,6 +85,25 @@ iframe {
   border: 1px solid var(--secondary);
   padding-inline-start: 0.4em;
   padding-inline-end: 0.4em;
+}
+
+// ── Navbar: distinguere l'articolo dalle pagine tecniche ─────────────────────
+// Nella navbar convivono TRE affordance diverse che avevano tutte lo stesso
+// aspetto, e l'unico segno di differenza era la freccina del dropdown:
+//   1-2-3        = ancore DENTRO la pagina corrente (i tre atti dell'articolo)
+//   Le analisi   = ALTRE pagine di questo sito
+//   SBD Master   = sito ESTERNO, già marcato dal riquadro qui sopra
+// Il riquadro è quindi un significato già occupato ("esci dal sito") e non va
+// riusato per "Le analisi": servono due segnali distinti. Gli atti li marcano i
+// numeri (nei title del _config.yml), il salto di categoria lo marca questa
+// riga verticale. Solo da md in su: sotto, la navbar alternativa manda gli item
+// a capo e un bordo laterale cadrebbe in un punto arbitrario.
+@media (min-width: 768px) {
+  .navbar-chulapa .navbar-nav .nav-item.dropdown {
+    border-left: 1px solid rgba(128, 128, 128, 0.4);
+    margin-left: 0.5rem;
+    padding-left: 0.5rem;
+  }
 }
 
 @media (max-width: 767px) {
@@ -98,3 +128,290 @@ iframe {
   display: flex;
   justify-content: center;
 }
+
+// =====================================================================
+//  PALETTE A DUE POLI  (Nord/concluso = freddo, Sud/rischio = caldo)
+//  Usa queste variabili anche nei grafici Altair per coerenza.
+// =====================================================================
+:root {
+  --nord: #177E89;        // freddo: Nord / concluso
+  --nord-dark: #0E5A63;
+  --sud: #D1573B;         // caldo: Sud / a rischio
+  --ink: #1a1a1a;
+  --muted: #6b7280;
+}
+
+// Classi utility rapide da usare nel testo o inline
+.text-nord { color: var(--nord) !important; }
+.text-sud  { color: var(--sud)  !important; }
+.bg-nord   { background: var(--nord) !important; color: #fff !important; }
+.bg-sud    { background: var(--sud)  !important; color: #fff !important; }
+
+// ---- Header della home (sfondo sobrio, titolo leggibile) ----
+// text-shadow per far risaltare il titolo bianco sull'immagine full-page (splash)
+.hero-chulapa-image h1,
+.hero-chulapa-image .p-summary,
+.header-chulapa h1 {
+  letter-spacing: .5px;
+  color: #ffffff;
+  text-shadow: 0 2px 14px rgba(0,0,0,.45);
+}
+
+// ---- Sottotitolo hero: leggibile anche su immagini chiare ----
+// Il colore di default (bianco) arriva dal tema chulapa (.chulapa-subtitle),
+// non da questo file: qui lo sovrascriviamo aggiungendo un'ombra scura.
+.hero-chulapa-image .chulapa-subtitle,
+.header-chulapa-img .chulapa-subtitle {
+  color: #ffffff;
+  text-shadow: 0 2px 12px rgba(0,0,0,.80);
+}
+
+// ---- Fascia "big numbers" della home ----
+.big-numbers {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: .8rem;
+  margin: 2.5rem 0;
+}
+// Variante "a cavallo": tira su le caselle sul bordo hero / sezione bianca
+.big-numbers--straddle {
+  position: relative;
+  z-index: 10;
+  margin-top: -4rem;        // regola qui l'overlap sull'immagine (es. -3rem / -5rem)
+  margin-bottom: 2.5rem;
+}
+@media (max-width: 575px) {
+  .big-numbers { grid-template-columns: repeat(2, 1fr); }
+  .big-numbers--straddle { margin-top: -3rem; }
+}
+.big-numbers .stat {
+  background: var(--nord);
+  color: #fff;
+  border-radius: .5rem;
+  padding: 1.4rem 1rem;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(0,0,0,.08);
+}
+.big-numbers .stat.stat-sud { background: var(--sud); }   // il dato "a rischio/Sud"
+.big-numbers--straddle .stat { box-shadow: 0 10px 28px rgba(0,0,0,.22); }  // "galleggiano" sul bordo
+.big-numbers .stat .num {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: .3rem;
+}
+.big-numbers .stat .lbl {
+  font-size: .95rem;
+  opacity: .95;
+  margin: 0;
+}
+// Variante "fuori margine": la fascia sfonda la colonna del testo e occupa
+// (quasi) tutta la finestra: 5 caselle respirano meglio che strette nei margini.
+// Trucco: larghezza 100vw riagganciata al centro (come .full-width-wrapper);
+// il padding-inline con max() centra il contenuto e lo blocca a 1300px sugli schermi larghi.
+.big-numbers--bleed {
+  grid-template-columns: repeat(5, 1fr);
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+  padding-inline: max(1.2rem, calc((100vw - 1300px) / 2));
+}
+// La casella dei soldi usa il colore base: la palette è a due poli (freddo/caldo)
+// e l'unico accento deve restare l'arancio di "a rischio". La classe .stat-money
+// serve comunque: sotto i 992px la casella va a tutta riga (vedi media query).
+// Sotto i 992px si torna nel flusso normale su 2 colonne,
+// con la casella dei soldi a tutta riga (5 caselle = 1 piena + 2×2, niente buchi)
+@media (max-width: 991px) {
+  .big-numbers--bleed {
+    grid-template-columns: repeat(2, 1fr);
+    width: auto;
+    left: auto;
+    margin-left: 0;
+    padding-inline: 0;
+  }
+  .big-numbers--bleed .stat-money { grid-column: 1 / -1; }
+}
+
+// ---- Figure dell'articolo in home ----
+// Una classe sola per tutte le figure dell'articolo, così non si ripetono
+// stili inline a ogni immagine. La variante --narrow serve alle immagini
+// verticali (es. la mappa dell'Italia), che a piena colonna sarebbero enormi.
+.fig-home {
+  margin: 2.2rem auto;
+}
+.fig-home img {
+  width: 100%;
+  border-radius: 4px;
+}
+.fig-home--narrow {
+  max-width: 540px;   // larghezza massima per le figure verticali
+}
+.fig-home figcaption {
+  font-size: .8rem;
+  color: #888;
+  margin-top: .45rem;
+  line-height: 1.45;
+}
+
+// ---- Box definizione (per la variabile chiave "a rischio") ----
+// La definiamo noi, quindi va dichiarata in modo inequivocabile: box dedicato,
+// nella palette del sito (polo caldo = rischio), riusabile in home e nell'EDA.
+.def-box {
+  border: 1px solid rgba(209, 87, 59, .35);
+  border-left: 6px solid var(--sud);
+  background: #FBF1ED;           // variante molto chiara dell'arancio "a rischio"
+  border-radius: .5rem;
+  padding: 1.3rem 1.5rem 1.1rem;
+  margin: 2.2rem 0;
+}
+.def-box .def-box__label {
+  font-size: .78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--sud);
+  margin-bottom: .35rem;
+}
+.def-box h4 {
+  margin-top: 0;
+  margin-bottom: .6rem;
+}
+.def-box p {
+  margin-bottom: .6rem;
+}
+.def-box p:last-child {
+  margin-bottom: 0;
+}
+.def-box .def-box__note {
+  font-size: .85rem;
+  color: #6b7280;
+}
+
+// =====================================================================
+//  VIRGOLETTATI DELL'INTERVISTA  (.quote-int)
+// =====================================================================
+// Sostituiscono i div con stili inline e l'emoji 🎙️ (25/07). L'emoji aveva due
+// difetti: è a colori pieni e non si può intonare alla palette, e ha un disegno
+// diverso su ogni sistema operativo. In un articolo legge come chat, non come stampa.
+//
+// La convenzione dei quotidiani è che il virgolettato NON ha un simbolo: a dire
+// "questa è la voce di qualcuno" ci pensano tre segnali tipografici, ed è quello
+// che fanno queste classi:
+//   1. l'occhiello in alto, piccolo e maiuscoletto, nel colore d'accento;
+//   2. il cambio di font: la citazione è in SERIF, il corpo dell'articolo in sans;
+//   3. la firma sotto, con il nome in evidenza e ruolo/data attenuati.
+//
+// ⚠️ Il serif è **Georgia**, cioè un font di sistema: nessun @import aggiunto, nessuna
+// richiesta di rete in più. È disponibile su macOS, Windows e Android, e ha virgolette
+// basse « » ben disegnate (in News Cycle sono sottilissime e a queste dimensioni
+// sembrano virgolette dritte, quindi il font dei titoli qui non va bene).
+.quote-int {
+  border-left: 3px solid var(--nord);
+  padding: .1rem 0 .1rem 1.4rem;
+  margin: 2.4rem 0;
+}
+.quote-int__label {
+  font-family: "Space Mono", monospace;   // già caricato dal _config.yml
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--nord);
+  margin: 0 0 .55rem;
+}
+// blockquote è l'elemento semanticamente corretto (conta per screen reader e SEO),
+// ma il tema gli mette fondo grigio, rientro e padding suoi, che qui vanno azzerati
+// per non sommarli al filetto della classe.
+// ⚠️ Il padding del tema è dichiarato `!important` (chulapa applica a blockquote le
+// utility .py-1 / .px-2 di Bootstrap), quindi la specificità da sola non basta e serve
+// `!important` anche qui: è l'unico punto del file in cui è giustificato.
+.quote-int blockquote {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.18rem;
+  line-height: 1.55;
+  color: #2b2b2b;
+  margin: 0 0 .7rem;
+  padding: 0 !important;
+  border: 0;
+  background: none;
+}
+.quote-int__source {
+  font-size: .84rem;
+  color: var(--muted);
+  margin: 0;
+}
+.quote-int__source strong {
+  color: #4b5563;
+  font-weight: 600;
+}
+.quote-int__note {
+  font-size: .76rem;
+  color: #9ca3af;
+  margin: .25rem 0 0;
+}
+
+// ---- Variante pull quote: UNA sola per pagina ----
+// La virgoletta gigante in filigrana (16% di opacità) è il segno classico del pull
+// quote di NYT e Washington Post. Va usata sulla citazione che vuoi che il lettore si
+// porti via, non su tutte: con tre box identici si appiattirebbero, e il senso di
+// questa variante è proprio distinguere la citazione "da ricordare" da quelle di
+// servizio. Sulla home è quella del bicchiere, in chiusura dell'Atto III.
+.quote-int--pull {
+  border-left: 0;
+  position: relative;
+  padding: 1.5rem 0 .2rem 3.6rem;
+}
+.quote-int--pull::before {
+  content: "\201C";
+  position: absolute;
+  left: -.1rem;
+  top: -1.4rem;
+  font-family: Georgia, serif;
+  font-size: 7.5rem;
+  line-height: 1;
+  color: var(--nord);
+  opacity: .16;
+  pointer-events: none;
+}
+.quote-int--pull blockquote {
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+// La firma prende un trattino di stacco al posto del filetto verticale che qui non c'è.
+.quote-int--pull .quote-int__source::before {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 1px;
+  background: var(--nord);
+  vertical-align: middle;
+  margin-right: .5rem;
+}
+// Su schermo stretto la virgoletta ruberebbe metà larghezza al testo: la rimpiccioliamo
+// e riduciamo il rientro.
+@media (max-width: 575px) {
+  .quote-int--pull { padding-left: 2.2rem; }
+  .quote-int--pull::before { font-size: 5rem; top: -.9rem; }
+  .quote-int--pull blockquote { font-size: 1.15rem; }
+}
+
+// ---- Teaser "tre domande" ----
+.qcards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1rem 0 2rem;
+}
+@media (max-width: 575px) {
+  .qcards { grid-template-columns: 1fr; }
+}
+.qcards .qcard {
+  border: 1px solid #e5e7eb;
+  border-left: 5px solid var(--nord);
+  border-radius: .4rem;
+  padding: 1.1rem 1.2rem;
+  background: #fff;
+}
+.qcards .qcard--sud { border-left-color: var(--sud); }   // la domanda "centrale" Nord/Sud
+.qcards .qcard h5 { margin-top: 0; }
