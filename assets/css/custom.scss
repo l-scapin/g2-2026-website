@@ -288,6 +288,114 @@ iframe {
   color: #6b7280;
 }
 
+// =====================================================================
+//  VIRGOLETTATI DELL'INTERVISTA  (.quote-int)
+// =====================================================================
+// Sostituiscono i div con stili inline e l'emoji 🎙️ (25/07). L'emoji aveva due
+// difetti: è a colori pieni e non si può intonare alla palette, e ha un disegno
+// diverso su ogni sistema operativo. In un articolo legge come chat, non come stampa.
+//
+// La convenzione dei quotidiani è che il virgolettato NON ha un simbolo: a dire
+// "questa è la voce di qualcuno" ci pensano tre segnali tipografici, ed è quello
+// che fanno queste classi:
+//   1. l'occhiello in alto, piccolo e maiuscoletto, nel colore d'accento;
+//   2. il cambio di font: la citazione è in SERIF, il corpo dell'articolo in sans;
+//   3. la firma sotto, con il nome in evidenza e ruolo/data attenuati.
+//
+// ⚠️ Il serif è **Georgia**, cioè un font di sistema: nessun @import aggiunto, nessuna
+// richiesta di rete in più. È disponibile su macOS, Windows e Android, e ha virgolette
+// basse « » ben disegnate (in News Cycle sono sottilissime e a queste dimensioni
+// sembrano virgolette dritte, quindi il font dei titoli qui non va bene).
+.quote-int {
+  border-left: 3px solid var(--nord);
+  padding: .1rem 0 .1rem 1.4rem;
+  margin: 2.4rem 0;
+}
+.quote-int__label {
+  font-family: "Space Mono", monospace;   // già caricato dal _config.yml
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--nord);
+  margin: 0 0 .55rem;
+}
+// blockquote è l'elemento semanticamente corretto (conta per screen reader e SEO),
+// ma il tema gli mette fondo grigio, rientro e padding suoi, che qui vanno azzerati
+// per non sommarli al filetto della classe.
+// ⚠️ Il padding del tema è dichiarato `!important` (chulapa applica a blockquote le
+// utility .py-1 / .px-2 di Bootstrap), quindi la specificità da sola non basta e serve
+// `!important` anche qui: è l'unico punto del file in cui è giustificato.
+.quote-int blockquote {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.18rem;
+  line-height: 1.55;
+  color: #2b2b2b;
+  margin: 0 0 .7rem;
+  padding: 0 !important;
+  border: 0;
+  background: none;
+}
+.quote-int__source {
+  font-size: .84rem;
+  color: var(--muted);
+  margin: 0;
+}
+.quote-int__source strong {
+  color: #4b5563;
+  font-weight: 600;
+}
+.quote-int__note {
+  font-size: .76rem;
+  color: #9ca3af;
+  margin: .25rem 0 0;
+}
+
+// ---- Variante pull quote: UNA sola per pagina ----
+// La virgoletta gigante in filigrana (16% di opacità) è il segno classico del pull
+// quote di NYT e Washington Post. Va usata sulla citazione che vuoi che il lettore si
+// porti via, non su tutte: con tre box identici si appiattirebbero, e il senso di
+// questa variante è proprio distinguere la citazione "da ricordare" da quelle di
+// servizio. Sulla home è quella del bicchiere, in chiusura dell'Atto III.
+.quote-int--pull {
+  border-left: 0;
+  position: relative;
+  padding: 1.5rem 0 .2rem 3.6rem;
+}
+.quote-int--pull::before {
+  content: "\201C";
+  position: absolute;
+  left: -.1rem;
+  top: -1.4rem;
+  font-family: Georgia, serif;
+  font-size: 7.5rem;
+  line-height: 1;
+  color: var(--nord);
+  opacity: .16;
+  pointer-events: none;
+}
+.quote-int--pull blockquote {
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+// La firma prende un trattino di stacco al posto del filetto verticale che qui non c'è.
+.quote-int--pull .quote-int__source::before {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 1px;
+  background: var(--nord);
+  vertical-align: middle;
+  margin-right: .5rem;
+}
+// Su schermo stretto la virgoletta ruberebbe metà larghezza al testo: la rimpiccioliamo
+// e riduciamo il rientro.
+@media (max-width: 575px) {
+  .quote-int--pull { padding-left: 2.2rem; }
+  .quote-int--pull::before { font-size: 5rem; top: -.9rem; }
+  .quote-int--pull blockquote { font-size: 1.15rem; }
+}
+
 // ---- Teaser "tre domande" ----
 .qcards {
   display: grid;

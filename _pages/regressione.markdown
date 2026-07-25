@@ -179,18 +179,6 @@ visto (**0,665** su un test set tenuto da parte, cross-validation fra 0,665 e 0,
 c'è ma **non basta per un allarme operativo affidabile**. Servirebbero variabili di processo:
 l'avanzamento dei pagamenti nel tempo, i passaggi amministrativi, i tempi delle gare.
 
-# Il modello speculare: chi arriva in fondo
-
-Stimare gli stessi fattori sulla probabilità di **concludere** il progetto restituisce l'immagine
-allo specchio, come atteso. Il Mezzogiorno ha OR **0,46** sulla conclusione: a parità di tutto,
-arrivare in fondo è molto meno probabile. I progetti sopra i 50 milioni concludono pochissimo
-(OR 0,15) e i lavori pubblici meno degli acquisti (0,74), mentre entrambe le fonti di finanziamento
-vanno nella direzione opposta: quota europea OR 1,87 e capitale privato OR 8,6. Quest'ultimo numero
-è vistoso e va letto con la stessa cautela di prima: i progetti cofinanziati da privati sono quasi
-tutti incentivi alle imprese, che si chiudono con la rendicontazione dell'investimento. Rischio e
-conclusione restano comunque due facce dello stesso fenomeno, e il modello le legge in modo
-coerente.
-
 # In sintesi
 
 Il verdetto sulla domanda di apertura: **il territorio pesa di per sé**. Al Sud le odds di
