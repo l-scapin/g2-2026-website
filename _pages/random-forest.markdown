@@ -96,7 +96,7 @@ Un modello che segnala progetti senza dire perché è inutilizzabile per chi dev
 questo il Random Forest è accompagnato da un'analisi **SHAP**, che scompone ogni singola previsione
 nei contributi dei diversi fattori.
 
-![Importanza globale delle variabili secondo SHAP]({{ site.baseurl }}/assets/images/modello/rf_shap_importanza.png){: .img-fluid }
+{% include altair.html id="vis-importanza-globale" file="/assets/charts/vis_importanza_globale.json" %}
 
 In cima c'è il **territorio**, seguito dalla quota di fondi europei, dal tipo di intervento e dal
 tema. Il verdetto della regressione regge anche qui, con un modello che di quel verdetto non sa
@@ -108,65 +108,44 @@ misura tende a premiare le variabili con moltissimi valori distinti, esattamente
 descritto qui sopra, mentre SHAP ne risente molto meno. Le due classifiche a confronto sono un
 altro modo di vedere lo stesso fenomeno.
 
-{% include altair.html id="vis-territorio" file="/assets/charts/vis_territorio.json" %}
+{% include altair.html id="vis-riepilogo-impatto" file="/assets/charts/vis_riepilogo_impatto.json" %}
 
-I boxplot ci permettono di valutare anche la **direzione** e la distribuzione dell'impatto senza la sovrapposizione disordinata di migliaia di punti. A destra (valori maggiori di zero) troviamo i casi in cui la variabile spinge verso il rischio, a sinistra quelli in cui lo riduce. Il territorio mostra **due distribuzioni nettamente separate**: la mediana dei progetti del Mezzogiorno (in color oro) si colloca a destra, indicando un maggiore rischio, mentre quella del Centro-Nord (in viola) si trova a sinistra. È la stessa direzione trovata dalla regressione.
-
-Molto diverso è il comportamento del capitale privato (`QUOTA_PRIVATO`): la maggior parte dei progetti non ne ha, ma quando è presente l'impatto **si biforca**, sia a destra sia a sinistra. Questo ci dice che i fondi privati non abbassano il rischio in modo universale, ma hanno un effetto che dipende dall'**interazione con altre caratteristiche** del progetto.
+Questo secondo grafico offre una panoramica sulle **distribuzioni dell'impatto** di tutte le variabili senza la sovrapposizione disordinata di migliaia di punti. La linea tratteggiata rossa segna lo zero: a destra (valori positivi) si trovano i casi in cui la variabile spinge verso il rischio, a sinistra quelli in cui lo riduce. Variabili come il territorio o la quota europea mostrano una forbice molto ampia, capace di spostare la previsione in modo radicale.
 
 # Il dettaglio, fattore per fattore {#dipendenze}
 
-I grafici precedenti dicono *quanto* pesa ciascuna variabile. I tre qui sotto dicono **quali
-valori** di quella variabile spingono verso il rischio e quali lo allontanano. Si leggono così:
-ogni boxplot riassume la distribuzione dei progetti del test set per una determinata categoria; la
-posizione verticale indica il contributo che quella caratteristica dà alla previsione. Sopra lo zero il modello alza il rischio, sotto lo abbassa.
+I grafici precedenti dicono *quanto* pesa ciascuna variabile nell'insieme. I boxplot qui sotto scendono nel dettaglio e dicono **quali valori** di quella specifica variabile spingono verso il rischio e quali lo allontanano. Si leggono così: la "scatola" colorata riassume il 50% centrale della distribuzione dei progetti per una determinata categoria; la linea orizzontale rossa fissa lo zero.
+
+## Il territorio {#dip-territorio}
+
+{% include altair.html id="vis-territorio" file="/assets/charts/vis_territorio.json" %}
+
+Il territorio mostra **due distribuzioni nettamente separate**: la mediana dei progetti del Mezzogiorno (in color oro) si colloca abbondantemente a destra, indicando un maggiore rischio, mentre quella del Centro-Nord (in viola) si trova a sinistra.
 
 ## Il tipo di intervento {#dip-natura}
 
 {% include altair.html id="vis-natura" file="/assets/charts/vis_natura.json" %}
 
-È il grafico più netto dei tre. L'**acquisto di beni** è l'unica categoria in cui quasi l'intera distribuzione si trova sotto lo zero: comprare è l'operazione che il modello considera più sicura. All'estremo opposto i **contributi ad altri soggetti**, con la mediana nettamente spostata verso l'alto, seguiti da incentivi e lavori pubblici. I **servizi** stanno a cavallo dello zero, quindi vicini alla media.
-
-L'ordine è **identico a quello degli odds ratio della regressione** (contributi 2,34, lavori
-pubblici 1,81, incentivi 1,54, servizi 1,25, acquisto beni come riferimento). Due modelli che non
-si parlano, con matematiche diverse, mettono le cinque categorie nella stessa sequenza.
+È il grafico più netto tra le variabili categoriche. L'**acquisto di beni** è l'unica operazione la cui distribuzione si trova quasi interamente sotto lo zero: comprare è l'operazione che il modello considera più sicura. All'estremo opposto i **contributi ad altri soggetti**, seguiti da incentivi e lavori pubblici. I **servizi** stanno a cavallo dello zero, vicini alla media. 
+L'ordine è **identico a quello degli odds ratio della regressione**.
 
 ## Il tema {#dip-tema}
 
 {% include altair.html id="vis-tema" file="/assets/charts/vis_tema.json" %}
 
-Anche qui la corrispondenza regge. Spingono verso il rischio **competitività delle imprese**,
-**istruzione e formazione** e **occupazione e lavoro**, che sono i tre temi con gli odds ratio più
-alti nella regressione. Restano intorno allo zero o sotto **ambiente**, **energia**, **cultura** e
-**reti e servizi digitali**, cioè quelli che la regressione non distingue dal riferimento.
-
-L'estensione dei baffi di ciascun tema è però ampia e attraversa lo zero quasi ovunque: il tema da solo non decide quasi nulla, sposta la previsione di poco e in entrambe le direzioni a seconda del resto del progetto. È una sfumatura molto più facile da leggere qui rispetto alla fitta nuvola di punti singoli.
+Anche qui la corrispondenza regge. Spingono verso il rischio **competitività delle imprese**, **istruzione e formazione** e **occupazione e lavoro**. Restano intorno allo zero o sotto **ambiente**, **energia**, **cultura** e **reti e servizi digitali**. 
+L'estensione dei baffi di ciascun tema è però ampia e attraversa lo zero quasi ovunque: il tema da solo non decide quasi nulla, ma sposta la previsione di poco in entrambe le direzioni a seconda dell'interazione con il resto del progetto.
 
 ## La dimensione {#dip-dimensione}
 
 {% include altair.html id="vis-dimensione" file="/assets/charts/vis_dimensione.json" %}
 
-I progetti più piccoli (100k-500k) sono l'unico gruppo prevalentemente sotto lo zero: la taglia
-minima protegge. Salendo di taglia la mediana diventa positiva e raggiunge il massimo nelle
-fasce centrali, fra 1 e 10 milioni: le classi sull'asse orizzontale sono in ordine di grandezza, quindi questa
-**campana** si legge direttamente nella sequenza da sinistra a destra, ed è la stessa forma trovata
-dalla regressione. La fascia oltre i 50 milioni ha pochissimi elementi, in quanto composta da appena 623
-progetti in tutto l'archivio: i suoi baffi si estendono meno per via della scarsa numerosità campionaria.
+I progetti più piccoli (100k-500k) sono l'unico gruppo prevalentemente sotto lo zero: la taglia minima protegge. Salendo di dimensione la mediana diventa positiva e raggiunge il massimo nelle fasce centrali, fra 1 e 10 milioni, creando la stessa **campana** trovata dalla regressione. La fascia oltre i 50 milioni ha pochissimi elementi nell'archivio (appena 623), motivo per cui l'estensione statistica risulta più contratta.
 
 # Che cosa ci dice, in conclusione
 
-**Prevedere si può, e meglio di quanto pensassimo.** Con le sole caratteristiche note alla nascita
-di un progetto si arriva a un'accuratezza discreta, sufficiente a costruire una lista di
-sorveglianza: non a dire «questo progetto fallirà», ma a dire «questi meritano un controllo prima
-degli altri».
+**Prevedere si può, e meglio di quanto pensassimo.** Con le sole caratteristiche note alla nascita di un progetto si arriva a un'accuratezza discreta, sufficiente a costruire una lista di sorveglianza: non a dire «questo progetto fallirà», ma a dire «questi meritano un controllo prima degli altri».
 
-**Il verdetto sul territorio non cambia.** Due modelli con logiche opposte, uno che impone una
-forma e uno che la cerca da solo, mettono il Mezzogiorno in cima alla lista dei fattori. È la
-conferma incrociata più solida che potessimo avere.
+**Il verdetto sul territorio non cambia.** Due modelli con logiche opposte, uno che impone una forma e uno che la cerca da solo, mettono il Mezzogiorno in cima alla lista dei fattori. È la conferma incrociata più solida che potessimo avere.
 
-**Ma prevedere non è spiegare.** Il Random Forest vince sulla previsione e resta muto sul perché,
-mentre la regressione dice di quanto pesa ciascun fattore e sa dichiarare la propria incertezza.
-Per il racconto pubblico e per qualunque proposta di intervento, il numero da citare resta quello
-della [regressione]({{ site.baseurl }}/regressione.html); il Random Forest serve a stabilire fin
-dove ci si può spingere, e a ricordare che una parte di ciò che sembra previsione è, in realtà,
-riconoscere l'amministrazione che ha aperto il bando.
+**Ma prevedere non è spiegare.** Il Random Forest vince sulla previsione e resta muto sul perché, mentre la regressione dice di quanto pesa ciascun fattore e sa dichiarare la propria incertezza. Per il racconto pubblico e per qualunque proposta di intervento, il numero da citare resta quello della [regressione]({{ site.baseurl }}/regressione.html); il Random Forest serve a stabilire fin dove ci si può spingere, e a ricordare che una parte di ciò che sembra previsione è, in realtà, riconoscere l'amministrazione che ha aperto il bando.
