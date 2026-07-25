@@ -1,0 +1,10 @@
+<div id="{{ include.id }}" style="width: 100%; overflow-x: auto; margin: 1.5rem 0;"></div>
+
+<script type="text/javascript">
+  // Aspetta che la pagina e le librerie Vega siano caricate
+  document.addEventListener("DOMContentLoaded", function() {
+    var opt = { "actions": false }; // Nasconde i tre puntini di esportazione
+    vegaEmbed('#{{ include.id }}', '{{ site.baseurl }}{{ include.file }}', opt).catch(console.error);
+  });
+</script>
+

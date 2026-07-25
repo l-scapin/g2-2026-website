@@ -2,6 +2,7 @@
 layout: default
 title: "Random Forest"
 show_sidetoc: true
+vega: true
 header_type: hero #base, post, hero, image, splash
 header_img: assets/images/hero_random_forest.jpg
 header_img_position: center
@@ -95,8 +96,7 @@ Un modello che segnala progetti senza dire perché è inutilizzabile per chi dev
 questo il Random Forest è accompagnato da un'analisi **SHAP**, che scompone ogni singola previsione
 nei contributi dei diversi fattori.
 
-<!-- Inserisci qui l'embed del grafico a barre dell'importanza globale -->
-<div id="vis-importanza-globale"></div>
+![Importanza globale delle variabili secondo SHAP]({{ site.baseurl }}/assets/images/modello/rf_shap_importanza.png){: .img-fluid }
 
 In cima c'è il **territorio**, seguito dalla quota di fondi europei, dal tipo di intervento e dal
 tema. Il verdetto della regressione regge anche qui, con un modello che di quel verdetto non sa
@@ -108,8 +108,7 @@ misura tende a premiare le variabili con moltissimi valori distinti, esattamente
 descritto qui sopra, mentre SHAP ne risente molto meno. Le due classifiche a confronto sono un
 altro modo di vedere lo stesso fenomeno.
 
-<!-- Inserisci qui l'embed del boxplot del territorio -->
-<div id="vis-territorio-direzione"></div>
+{% include altair.html id="vis-territorio" file="/assets/charts/vis_territorio.json" %}
 
 I boxplot ci permettono di valutare anche la **direzione** e la distribuzione dell'impatto senza la sovrapposizione disordinata di migliaia di punti. A destra (valori maggiori di zero) troviamo i casi in cui la variabile spinge verso il rischio, a sinistra quelli in cui lo riduce. Il territorio mostra **due distribuzioni nettamente separate**: la mediana dei progetti del Mezzogiorno (in color oro) si colloca a destra, indicando un maggiore rischio, mentre quella del Centro-Nord (in viola) si trova a sinistra. È la stessa direzione trovata dalla regressione.
 
@@ -124,8 +123,7 @@ posizione verticale indica il contributo che quella caratteristica dà alla prev
 
 ## Il tipo di intervento {#dip-natura}
 
-<!-- Inserisci qui l'embed del boxplot NATURA -->
-<div id="vis-natura"></div>
+{% include altair.html id="vis-natura" file="/assets/charts/vis_natura.json" %}
 
 È il grafico più netto dei tre. L'**acquisto di beni** è l'unica categoria in cui quasi l'intera distribuzione si trova sotto lo zero: comprare è l'operazione che il modello considera più sicura. All'estremo opposto i **contributi ad altri soggetti**, con la mediana nettamente spostata verso l'alto, seguiti da incentivi e lavori pubblici. I **servizi** stanno a cavallo dello zero, quindi vicini alla media.
 
@@ -135,8 +133,7 @@ si parlano, con matematiche diverse, mettono le cinque categorie nella stessa se
 
 ## Il tema {#dip-tema}
 
-<!-- Inserisci qui l'embed del boxplot TEMA -->
-<div id="vis-tema"></div>
+{% include altair.html id="vis-tema" file="/assets/charts/vis_tema.json" %}
 
 Anche qui la corrispondenza regge. Spingono verso il rischio **competitività delle imprese**,
 **istruzione e formazione** e **occupazione e lavoro**, che sono i tre temi con gli odds ratio più
@@ -147,8 +144,7 @@ L'estensione dei baffi di ciascun tema è però ampia e attraversa lo zero quasi
 
 ## La dimensione {#dip-dimensione}
 
-<!-- Inserisci qui l'embed del boxplot DIMENSIONE -->
-<div id="vis-dimensione"></div>
+{% include altair.html id="vis-dimensione" file="/assets/charts/vis_dimensione.json" %}
 
 I progetti più piccoli (100k-500k) sono l'unico gruppo prevalentemente sotto lo zero: la taglia
 minima protegge. Salendo di taglia la mediana diventa positiva e raggiunge il massimo nelle
@@ -157,18 +153,20 @@ fasce centrali, fra 1 e 10 milioni: le classi sull'asse orizzontale sono in ordi
 dalla regressione. La fascia oltre i 50 milioni ha pochissimi elementi, in quanto composta da appena 623
 progetti in tutto l'archivio: i suoi baffi si estendono meno per via della scarsa numerosità campionaria.
 
-<!-- Carica le librerie necessarie per i grafici -->
-<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-<script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+# Che cosa ci dice, in conclusione
 
-<!-- Script per iniettare i json nei div -->
-<script type="text/javascript">
-  var opt = { "actions": false }; // Rimuove il menu con i tre puntini
+**Prevedere si può, e meglio di quanto pensassimo.** Con le sole caratteristiche note alla nascita
+di un progetto si arriva a un'accuratezza discreta, sufficiente a costruire una lista di
+sorveglianza: non a dire «questo progetto fallirà», ma a dire «questi meritano un controllo prima
+degli altri».
 
-  // Collega i div ai file json corretti dentro assets/charts/
-  vegaEmbed('#vis-territorio-direzione', '{{ site.baseurl }}/assets/charts/vis_territorio.json', opt).catch(console.error);
-  vegaEmbed('#vis-natura', '{{ site.baseurl }}/assets/charts/vis_natura.json', opt).catch(console.error);
-  vegaEmbed('#vis-tema', '{{ site.baseurl }}/assets/charts/vis_tema.json', opt).catch(console.error);
-  vegaEmbed('#vis-dimensione', '{{ site.baseurl }}/assets/charts/vis_dimensione.json', opt).catch(console.error);
-</script>
+**Il verdetto sul territorio non cambia.** Due modelli con logiche opposte, uno che impone una
+forma e uno che la cerca da solo, mettono il Mezzogiorno in cima alla lista dei fattori. È la
+conferma incrociata più solida che potessimo avere.
+
+**Ma prevedere non è spiegare.** Il Random Forest vince sulla previsione e resta muto sul perché,
+mentre la regressione dice di quanto pesa ciascun fattore e sa dichiarare la propria incertezza.
+Per il racconto pubblico e per qualunque proposta di intervento, il numero da citare resta quello
+della [regressione]({{ site.baseurl }}/regressione.html); il Random Forest serve a stabilire fin
+dove ci si può spingere, e a ricordare che una parte di ciò che sembra previsione è, in realtà,
+riconoscere l'amministrazione che ha aperto il bando.
