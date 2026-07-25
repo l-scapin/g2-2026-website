@@ -73,7 +73,7 @@ Il nostro lavoro nasce per rispondere a tre quesiti fondamentali: capire quali p
 
 Per farlo, abbiamo ristretto il campo ai progetti con un importo pari ad almeno 100.000 euro: una scelta che ci permette di analizzare ben 249 miliardi di euro, pari al **93% delle risorse totali**.
 
-Il grafico Sankey ricostruisce il percorso di questi 249 miliardi: dalla fonte (europea o nazionale), attraverso il territorio di destinazione, fino al tema dell'intervento. Emerge subito un primo marcato squilibrio finanziario: il **73% delle risorse** è destinato al Mezzogiorno, mentre solo il **27%** va al Centro-Nord.
+Il grafico Sankey ricostruisce il percorso di questi 249 miliardi: dalla fonte (europea o nazionale), attraverso il territorio di destinazione, fino al tema dell'intervento. Emerge subito un primo marcato squilibrio finanziario, coerente con lo scopo delle politiche di coesione: il **73% delle risorse** è destinato al Mezzogiorno, mentre solo il **27%** va al Centro-Nord.
 
 <figure class="fig-home">
   <iframe src="{{ site.baseurl }}/assets/charts/plotly/sankey_fondi.html"
