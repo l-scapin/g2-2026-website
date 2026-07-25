@@ -47,7 +47,7 @@ Per verificarlo, abbiamo tolto gli "occhiali da vista" all'algoritmo, arrotondan
 | Quote arrotondate al 10% | 0,778 |
 | Regressione logistica (per confronto) | 0,669 |
 
-La lettura è duplice. **Il vantaggio del Random Forest è reale**: anche "sfocando" le variabili finanziarie, l'affidabilità resta alta (0,778), a conferma che le combinazioni trovate dall'algoritmo sono solide. Ma per chi deve prendere decisioni politiche, questo è un avvertimento vitale: quando chiediamo a un'Intelligenza Artificiale di prevedere il rischio, rischiamo che impari a riconoscere *da quale scrivania* è partito il progetto, non *com'è fatto*.
+La lettura è duplice. **Il vantaggio del Random Forest è reale**: anche "sfocando" le variabili finanziarie, l'affidabilità resta alta (0,778), a conferma che le combinazioni trovate dall'algoritmo sono solide. Ma per chi deve prendere decisioni politiche, questo è un avvertimento vitale: quando chiediamo a un modello predittivo di stimare il rischio, rischiamo che impari a riconoscere **da quale scrivania** è partito il progetto, non **com'è fatto**.
 
 # Dentro la scatola nera: l'impatto dei fattori {#shap}
 

@@ -281,13 +281,15 @@ differenza sparisce.
 <!-- ✅ RANDOM FOREST · AUC 0,813 sul test contro 0,669 della logistica; SHAP conferma l'ordine. -->
 A questo punto la domanda diventa un'altra: se sappiamo *che cosa* rende fragile un progetto,
 riusciamo a **riconoscerlo in anticipo**? Abbiamo messo alla prova un secondo modello, un
-[Random Forest]({{ site.baseurl }}/random-forest.html), che invece di misurare il peso di ogni
-fattore cerca da solo le combinazioni che portano al blocco. Prevede nettamente meglio della
-regressione e, in combinazione con un metodo di **spiegabilità** come SHAP, permette di costruire
-una lista di caratteristiche del progetto da tenere d'occhio per anticipare il rischio. Il Random
-Forest conferma quanto visto nella regressione: mette in cima ai fattori di rischio il territorio e
-i contributi ad altri soggetti, e colloca l'acquisto di beni in fondo. Due modelli costruiti su
-logiche diverse arrivano così alle stesse conclusioni.
+[Random Forest]({{ site.baseurl }}/random-forest.html), che invece di misurare il peso isolato di
+ogni fattore cerca da solo le combinazioni che portano al blocco. Prevede nettamente meglio della
+regressione e, in combinazione con un metodo di spiegabilità come SHAP, permette di individuare le
+caratteristiche del progetto da tenere d'occhio per anticipare il rischio. Il Random Forest conferma
+quanto visto nella regressione: mette in cima ai fattori di rischio il territorio e l'erogazione di
+contributi, e colloca l'acquisto di beni in fondo, pur sfruttando molto la fonte di finanziamento
+per riconoscere l'origine dei progetti. Due modelli costruiti su logiche diverse arrivano così alle
+stesse conclusioni.
+
 
 # Cosa fare: il verdetto e una via d'uscita {#cosa-fare}
 
