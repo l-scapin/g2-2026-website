@@ -111,23 +111,24 @@ Centro-Nord il rischio tocca il **20,5%** dei progetti; nel Mezzogiorno il **42,
 Eppure il Sud gestisce **215 miliardi** contro i 79 del Centro-Nord: i soldi ci sono, è il percorso
 che si interrompe.
 
-<!-- BOX DEFINIZIONE · "a rischio" è la nostra variabile chiave e la definiamo noi. -->
 <div class="def-box">
-  <p class="def-box__label">La nostra variabile chiave</p>
-  <h4>Quando un progetto è «a rischio»?</h4>
-  <p>In mancanza di un'etichetta ufficiale, abbiamo deciso di calcolare il rischio partendo da due
-  segnali osservabili nei dati alla data di riferimento, il <strong>31 dicembre 2025</strong>, la data
-  a cui è aggiornato il dataset. Un progetto è «a rischio» se:</p>
-  <p><strong>1 · non è mai partito</strong>: risulta ancora «non avviato»
-  (16.261 progetti, il 7,9%), <em>oppure</em><br>
-  <strong>2 · è fuori tempo massimo</strong>: è «in corso» ma la sua data di fine prevista
-  è già passata (51.237 progetti, il 24,8%).</p>
-  <p>In totale abbiamo etichettato come a rischio <strong>67.498 progetti, il 32,6%</strong> del
-  totale. Ma «a rischio» non significa fallito: significa che il percorso si è inceppato e l'esito
-  è in dubbio.</p>
-  <p class="def-box__note">Nota di trasparenza: la definizione non riguarda i progetti <em>conclusi</em>
-  in ritardo, ma quelli ancora in corso oltre la data di scadenza. Ed è la fotografia di un istante:
-  un progetto oggi a rischio può ancora arrivare in fondo.</p>
+  <p class="def-box__label">La nostra variabile target</p>
+  <h4>Come definiamo un progetto «a rischio»?</h4>
+
+  <p>Nei dati ufficiali non esiste un'etichetta di "fallimento": un progetto resta aperto finché non viene formalmente chiuso o definanziato. Abbiamo quindi optato per una <strong>classificazione binaria operativa</strong> che fotografa la presenza di un'<strong>anomalia procedurale</strong> alla data di riferimento del <strong>31 dicembre 2025</strong>.</p>
+
+  <p>Un progetto è etichettato come <strong>«a rischio»</strong> se presenta una criticità attiva al giorno della fotografia:</p>
+
+  <p>
+    <strong>1 · Non è mai partito:</strong> risulta ancora «non avviato» (16.261 progetti, 7,9%), <em>oppure</em><br>
+    <strong>2 · È oltre la scadenza:</strong> risulta «in corso» ma ha già superato la data di fine prevista (51.237 progetti, 24,8%).
+  </p>
+
+  <p>In totale parliamo di <strong>67.498 progetti (32,6%)</strong>. Raggruppare sotto la stessa variabile sia i ritardi recenti sia i blocchi pluriennali è una <strong>scelta metodologica precisa</strong>: anziché introdurre una soglia arbitraria oltre la quale considerare un progetto "definitivamente morto" (soglia smentita nei fatti da opere che si sbloccano anche dopo anni), cataloghiamo come <em>a rischio</em> qualsiasi iter che ha deviato rispetto al cronoprogramma originario.</p>
+
+  <p class="def-box__note">
+    <strong>In sintesi:</strong> «A rischio» identifica un'anomalia di percorso ancora aperta, non un verdetto di fallimento. Non riguarda chi ha chiuso in ritardo, ma chi oggi non sta rispettando i tempi previsti.
+  </p>
 </div>
 
 Le cifre con cui abbiamo a che fare sono enormi: nei progetti a rischio sono impegnati
