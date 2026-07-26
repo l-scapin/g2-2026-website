@@ -29,11 +29,6 @@ Per esempio, il ritardo e la data di fine effettiva mancano sui progetti non anc
 semplicemente perché una fine non c'è ancora. Le descrizioni tematiche e il fondo europeo mancano
 invece sui progetti a finanziamento puramente nazionale (FSC, PAC): anche questo è atteso, non un buco.
 
-Prima di ogni analisi fine teniamo a mente due trappole nei dati: alcuni pagamenti sono
-**negativi** (rettifiche contabili, pochi ma da azzerare nelle somme), e circa l'1% dei progetti è
-**multi-regione**, con i nomi delle regioni concatenati da `:::`, e vanno esclusi prima di
-costruire mappe o classifiche regionali.
-
 ![Distribuzione dello stato dei progetti]({{ site.baseurl }}/assets/images/eda/01_stato_progetto.png){: .img-fluid }
 
 # La metrica: quando un progetto è a rischio {#metriche}
@@ -82,14 +77,11 @@ Va detto che il Mezzogiorno gestisce molti più fondi (**215 contro 79 mld €**
 missione redistributiva della politica di coesione, e per questo il confronto va sempre letto in
 percentuale, mai in valore assoluto.
 
-Un divario così grande potrebbe però essere solo un effetto di composizione: se il ciclo più recente
-(appena partito) pesasse di più al Sud, il gap sarebbe un artefatto. Lo verifichiamo **dentro ogni
-ciclo**, e il risultato regge: in *tutti* i cicli il Mezzogiorno è più a rischio, con uno scarto che
-va da **+12,3** punti (2021-2027) a **+30,0** (2014-2020). Il divario è **persistente**: non dipende
-dal calendario dei cicli. Il ciclo, però, è solo una delle composizioni possibili: resta da pesare
-quella per **dimensione** e tema, perché i progetti grandi si inceppano di più ovunque e se al Sud
-pesassero di più, parte del gap potrebbe spiegarsi così. Quanto conta il territorio *in sé* lo misura
-la [regressione multivariata]({{ site.baseurl }}/regressione.html).
+Il divario regge anche guardando **dentro ogni ciclo** di programmazione: in *tutti* i cicli il
+Mezzogiorno è più a rischio, con uno scarto che va da **+12,3** punti (2021-2027) a **+30,0**
+(2014-2020). È un divario **persistente**, che non dipende dal calendario dei cicli. Quanto conta
+il territorio *in sé*, a parità di dimensione, tema e tipo di intervento, lo misura la
+[regressione multivariata]({{ site.baseurl }}/regressione.html).
 
 <!-- TODO: incrocio macroarea × classe di importo. Se il divario regge dentro ogni classe,
      il claim si rafforza già in descrittiva. -->
@@ -196,7 +188,7 @@ il denaro non è un dettaglio settoriale.
 
 # La mappa regionale
 
-Portando il tasso a livello regionale, il gradiente Nord→Sud si conferma, ma con eccezioni in
+Portando il tasso a livello regionale, il gradiente da Nord a Sud si conferma, ma con eccezioni in
 **entrambe** le direzioni, ed è la ragione per cui vale la pena guardarla e non fermarsi alle due
 macroaree.
 
@@ -223,19 +215,9 @@ il punto: due regioni con lo stesso rischio complessivo possono avere problemi o
           loading="lazy"></iframe>
 </div>
 
-# Due approfondimenti
+# Governance e ritardi
 
-**Tempi di esecuzione.** Ogni progetto ha una fase di "esecuzione", non solo le opere: per un
-lavoro pubblico è il cantiere, per un incentivo è la realizzazione dell'investimento da parte
-dell'impresa, con rendicontazione ed erogazione a tranche. La sorpresa è che la fase più lunga non
-è quella dei cantieri (~610 giorni) ma quella degli **incentivi alle imprese** (~840); l'acquisto
-di beni è il più rapido (~410). Attenzione però a non leggere le durate come ritardi: i piani di
-investimento sono spesso pluriennali per costruzione. Resta il fatto che i tempi lunghi non
-abitano solo nei cantieri.
-
-![Durata della fase di esecuzione per natura del progetto]({{ site.baseurl }}/assets/images/eda/11_fase_esecuzione.png){: .img-fluid }
-
-**Governance e ritardi.** Un'ipotesi diffusa è che più enti coinvolti significhino più ritardi.
+Un'ipotesi diffusa è che più enti coinvolti significhino più ritardi.
 Sui nostri dati la correlazione è praticamente nulla (≈ −0,04): questa vista descrittiva **non** la
 sostiene. Va letta con prudenza (il ritardo è misurato quasi solo sui progetti conclusi): il test
 pulito è quello della [regressione multivariata]({{ site.baseurl }}/regressione.html#odds-ratio), dove il
@@ -263,10 +245,11 @@ legge nei tassi per gruppo di questa pagina e nella regressione.
 Tenendo una variabile per gruppo, e scartando tutto ciò che si osserva solo **dopo** l'avvio del
 progetto (pagamenti, assorbimento, ritardi: sono misure di esito, non condizioni di partenza), resta
 un nucleo di quattro variabili note fin dal **giorno zero**: importo, quota di fondi europei, numero
-di enti e quota di capitale privato. Da qui partono le analisi successive, che usano tutte e quattro
-lo stesso insieme: il clustering le prende così come sono, la
-[regressione]({{ site.baseurl }}/regressione.html#matrice) e il Random Forest usano l'importo in
-fasce e le altre tre invariate.
+di enti e capitale privato. Da qui partono le analisi successive, che lavorano tutte sullo stesso
+insieme con qualche adattamento al metodo: il [clustering]({{ site.baseurl }}/clustering.html#feature)
+prende importo e capitale privato in logaritmo (e il privato in valore assoluto, non in quota),
+mentre la [regressione]({{ site.baseurl }}/regressione.html#matrice) e il Random Forest usano
+l'importo in fasce, la quota di capitale privato e le altre due invariate.
 
 ![Matrice di correlazione delle sole variabili note alla partenza]({{ site.baseurl }}/assets/images/eda/10c_correlazione_ripulita.png){: .img-fluid }
 
