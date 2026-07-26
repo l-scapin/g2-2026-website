@@ -177,9 +177,9 @@ quello appena partito ma il **2014-2020, a rischio al 38,5%**, sopra il 2021-202
 36,8% pur avendo davanti ancora tutta la corsa.
 
 **Tema.** Alcuni temi risultano più a rischio di altri: la **competitività delle imprese** (39,6%),
-i **trasporti** (37,2%) e l'**ambiente** (34,9%). E soprattutto il rischio cresce **a Sud**, dentro
-ogni ciclo di programmazione: il divario Centro-Nord/Mezzogiorno nel rischio è **persistente**, non
-l'effetto di una stagione sfortunata.
+i **trasporti** (37,2%) e l'**ambiente** (34,9%). E soprattutto il rischio cresce **a Sud** dentro
+ogni ciclo di programmazione, con uno scarto che va da **+12,3** punti a **+30,0**: il divario
+Centro-Nord/Mezzogiorno è **persistente**.
 
 <!-- GRAFICI · dimensione (campana) e persistenza del divario per ciclo. -->
 
@@ -197,11 +197,6 @@ l'effetto di una stagione sfortunata.
 <figure class="fig-home">
   <img src="{{ site.baseurl }}/assets/images/eda/07_divario_per_ciclo.png"
        alt="Barre appaiate Centro-Nord e Mezzogiorno: in ogni ciclo di programmazione il Mezzogiorno ha una quota maggiore di progetti a rischio">
-  <figcaption>
-    Il divario non è l'incidente di una stagione: <strong>dentro ogni ciclo</strong> il Mezzogiorno
-    ha più progetti a rischio del Centro-Nord (+28,4, +21,1, +30,0 e +12,3 punti, dal 2000-06 al
-    2021-27 appena partito).
-  </figcaption>
 </figure>
 
 Verrebbe da pensare che i progetti con più soggetti coinvolti
