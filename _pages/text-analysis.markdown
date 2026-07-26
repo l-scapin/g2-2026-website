@@ -1,110 +1,98 @@
 ---
 layout: default
 title: "Text Analysis"
-vega: true
 show_sidetoc: true
 header_type: hero
 header_img: assets/images/hero_text_analysis.jpg
 header_img_position: center
-header_title: "Text Analysis"
-subtitle: "Le parole di un progetto dicono qualcosa sul suo destino?"
+header_title: "Il peso delle parole"
+subtitle: "Cosa si nasconde nelle descrizioni dei progetti"
 ---
 
-<!-- PAGINA IN PREPARAZIONE: l'analisi testuale sopra il Random Forest non è ancora stata
-     eseguita. Qui ci sono la domanda, il metodo e il criterio di lettura, scritti PRIMA di
-     vedere i risultati: è una garanzia contro il racconto costruito a posteriori. La sezione
-     "I risultati" va riempita quando il notebook è pronto ed è formulata per reggere
-     qualunque esito.
-     ⚠️ La versione precedente di questa pagina era costruita sul PNRR, fuori dallo scope
-     deciso il 18/07/2026, e conteneva nome e indirizzo di un'impresa privata associati a una
-     previsione di fallimento al 100%: è stata sostituita. Copia conservata fuori dal repo.
-     Regole editoriali: mai "causale", "persistente" e NON "strutturale", niente virgolettati
-     inventati, nessun risultato pre-affermato. -->
+Il [Random Forest]({{ site.baseurl }}/random-forest.html) ha raggiunto un'affidabilità predittiva eccellente utilizzando esclusivamente dati strutturati: importi, localizzazione, tipologia ed enti coinvolti. Ma nei database di OpenCoesione esiste un'altra colonna, l'unica in cui l'amministrazione proponente racconta con parole sue che cosa intende fare: la **sintesi del progetto**. 
 
-<div class="full-width-wrapper">
-    <img src="{{ site.baseurl }}/assets/images/header.svg" alt="sbd-pattern" class="full-width-image">
-</div>
-
-Finora abbiamo trattato ogni progetto come una riga di tabella: un territorio, un importo, un
-tema, una natura. Ma ogni progetto porta con sé anche **una descrizione scritta da chi lo ha
-proposto**. È l'unico punto in cui l'amministrazione racconta, con parole sue, che cosa intende
-fare. La domanda di questa pagina è se in quelle parole ci sia informazione che le colonne non
-contengono.
+La domanda a cui risponde questa sezione è: c'è un'informazione utile in quelle parole che le tabelle non riescono a catturare? E soprattutto, aggiungere l'analisi del linguaggio permette di prevedere il rischio con ancora più precisione?
 {: .lead }
 
-<div class="def-box" markdown="1">
-**Analisi in corso.** Questa pagina descrive la domanda, il metodo e il criterio con cui
-leggeremo i risultati. I numeri arriveranno alla chiusura dell'analisi.
+<div class="def-box" style="margin: 25px 0;">
+  <p class="def-box__label">Il verdetto in sintesi</p>
+  <h4>Il testo aggiunge poco, ma quel poco è reale</h4>
+  <p>L'integrazione dell'analisi testuale migliora le capacità del modello predittivo, portando un guadagno netto e solido di <strong>+1,2 punti percentuali di affidabilità</strong>. È un incremento modesto, ma che sopravvive a test di controllo severissimi. Gran parte del "linguaggio" usato nei progetti è in realtà costituito da formule burocratiche o da "bandi fotocopia": riconoscerli significa scoprire da quale scrivania arriva il progetto, non valutarne le caratteristiche. Ma una volta ripulito da questi effetti, il linguaggio rivela davvero quali tematiche tendono a incepparsi più di frequente.</p>
 </div>
 
-# La domanda {#domanda}
+# Il primo ostacolo: il corpus non è il dataset
 
-Il [Random Forest]({{ site.baseurl }}/random-forest.html) si ferma a **AUC 0,813** usando sette
-caratteristiche strutturali. Sappiamo anche che una parte di quel risultato dipende dal
-riconoscere il piano di finanziamento più che il progetto in sé. La domanda naturale è se il
-**testo della descrizione** aggiunga qualcosa di diverso: non «quanto vale e dove nasce» ma
-«che cosa dice di voler fare, e come lo dice».
+Prima di analizzare le parole, conviene contarle. A differenza dei dati finanziari, la descrizione del progetto è un campo facoltativo. Su oltre 200.000 progetti analizzati, **solo il 52,2% possiede un testo** (107.988 progetti). 
 
-L'ipotesi è ragionevole. Un progetto descritto in modo preciso e circoscritto racconta un'idea
-già messa a fuoco; una descrizione generica e formulare può segnalare un intervento ancora da
-definire. Ma è appunto un'ipotesi, e va misurata.
+E questa copertura non è distribuita a caso. I cicli di programmazione 2000-2006 e 2014-2020 hanno descrizioni per quasi tutti i progetti, mentre i cicli 2007-2013 e 2021-2027 sono quasi vuoti (rispettivamente 14,4% e 5,5% di copertura). Di fatto, analizzare il testo significa studiare in gran parte il ciclo 2014-2020.
 
-# Il metodo {#metodo}
+<figure class="fig-home">
+  <img src="{{ site.baseurl }}/assets/images/ta_copertura_testo.png"
+       alt="Grafico a barre sulla copertura del corpus testuale">
+  <figcaption>
+    La copertura non è uniforme tra i cicli di programmazione. Due cicli sono quasi completi, due quasi vuoti.
+  </figcaption>
+</figure>
 
-**Il corpus è `OC_SINTESI_PROGETTO`**, la sintesi testuale dei progetti OpenCoesione. Solo
-OpenCoesione: il PNRR resta fuori dal perimetro del progetto.
+Inoltre, applicando gli algoritmi di lemmatizzazione (la tecnica che riduce le parole alla loro radice, trasformando "realizzazione" e "realizzato" nel verbo "realizzare"), è emersa un'ulteriore anomalia: **5.605 descrizioni non contenevano nemmeno una parola reale**. 
+La stringa di gran lunga più utilizzata era `....` (inserita in quasi 4.500 progetti), seguita da refusi o segni di punteggiatura come `ND` o `---`. Non si trattava di descrizioni brevi, ma di "segnaposti": testo mancante travestito da testo presente, inserito solo per aggirare i controlli dei form informatici. 
 
-Il testo viene ripulito e trasformato in numeri con una vettorizzazione classica, poi le feature
-testuali vengono affiancate a quelle strutturali già usate dagli altri modelli. Il confronto è
-fra due Random Forest identici in tutto tranne che nell'input:
+Eliminando questi casi, il nostro *corpus* testuale si restringe a circa **102.000 descrizioni reali**. L'affidabilità del Random Forest sulle variabili strutturali valutata *solo su questo sottoinsieme* è pari a **0,799** (AUC). **Questo è il numero da battere**.
 
-- il modello **con le sole variabili strutturali**, che è il nostro riferimento a 0,813;
-- il modello **con testo e variabili strutturali insieme**.
+# Pulire il burocratese per trovare il segnale
 
-La differenza fra i due, misurata **sugli stessi progetti tenuti fuori dall'addestramento**, è
-il guadagno attribuibile al testo. È l'unica misura che conta: valutare il testo sui dati con cui
-il modello è stato addestrato produce numeri lusinghieri e privi di significato.
+Un algoritmo non "legge" le frasi, ma analizza le frequenze delle parole. Per evitare che il modello impari semplicemente il "burocratese" o i nomi delle amministrazioni locali, abbiamo filtrato tre grandi famiglie di termini, rimuovendo circa il 10,5% delle parole totali:
 
-# Le tre trappole che dobbiamo evitare {#cautele}
+1. **Il burocratese onnipresente:** Parole come `progetto`, `intervento`, `attività`, o `prevedere`. Sono termini presenti in ogni descrizione, non discriminano il rischio ma inquinano le frequenze.
+2. **Il lessico del finanziamento:** Termini come `euro`, `bando`, `FESR`, `regione` o `ministero`. Se il modello impara questi nomi, sta semplicemente riconoscendo l'amministrazione di origine, un dato che già possediamo in formato tabellare.
+3. **Il rumore:** Forme giuridiche (`srl`, `spa`), toponomastica (`via`, `piazza`) o l'inglese dei progetti Interreg (`the`, `and`).
 
-Sono dichiarate qui, prima di avere i risultati, perché sono esattamente i punti in cui
-un'analisi testuale può auto-ingannarsi.
+Una parola chiave che abbiamo invece **deciso di mantenere è `comune`**. Non è un riempitivo burocratico: ci dice *chi* sta attuando il progetto (un piccolo ente locale invece di una grande azienda o regione) ed è una delle informazioni più concrete che si possano estrarre.
 
-**Il testo che riscopre quello che già sappiamo.** Le descrizioni contengono spesso nomi di
-programmi, di luoghi e di strumenti di finanziamento. Un modello che impara a riconoscere
-«POR FESR Sicilia» dentro una sintesi non ha scoperto niente sul linguaggio: ha ritrovato per
-un'altra strada il territorio e il ciclo, che sono già in tabella. Il guadagno del testo si
-misura **in aggiunta** alle variabili strutturali, mai da solo.
+# Unire numeri e parole: l'identikit dei bandi fotocopia
 
-**Le etichette travestite da testo.** Il tema sintetico e la natura dell'intervento sono
-classificazioni, non prosa. Usarle come se fossero testo significa prevedere una colonna con se
-stessa, e produce accuratezze altissime e prive di valore. Nel corpus entra solo la descrizione
-libera.
+Per combinare il linguaggio con i dati strutturati, abbiamo calcolato un **"punteggio testuale"** per ogni progetto e lo abbiamo fornito in pasto al Random Forest come una nuova colonna aggiuntiva.
 
-**Il vocabolario che è solo un calendario.** Il linguaggio amministrativo cambia nel tempo: certi
-termini appartengono a una stagione di programmazione, e i cicli hanno tassi di rischio molto
-diversi fra loro. Un modello può quindi imparare a datare il progetto invece di capirlo. Va
-verificato se il segnale testuale sopravvive **dentro un singolo ciclo**.
+Il risultato iniziale è parso straordinario: **il modello è balzato da 0,799 a 0,832 di accuratezza (+3,2 punti)**. Ma da dove arriva un miglioramento così marcato? È il linguaggio o c'è un trucco?
 
-# I risultati {#risultati}
+Proprio come avevamo scoperto esplorando le anomalie della `QUOTA_UE` nella regressione, il modello è bravissimo a riconoscere i "cloni". Contando i testi, abbiamo scoperto che **il 23% dei progetti nel gruppo di test possedeva una descrizione identica parola per parola a un progetto del gruppo di addestramento**. 
+La descrizione più diffusa (*"2-b - reinserimento di giovani 15-18enni in percorsi formativi"*) compariva perfettamente identica in ben 656 progetti. 
 
-<div class="def-box" markdown="1">
-**[SEZIONE DA COMPLETARE]**: qui andranno il guadagno del testo sul modello strutturale, i termini
-più associati al rischio e alla conclusione, e l'esito dei tre controlli descritti sopra.
-</div>
+Il modello non stava "comprendendo" un rischio introco nelle parole: stava semplicemente riconoscendo la descrizione di uno specifico bando amministrativo duplicata centinaia di volte.
 
-Le due letture possibili sono entrambe informative, e le dichiariamo adesso.
+Per stimare il valore reale del linguaggio, abbiamo sottoposto l'algoritmo a due controlli incrociati severissimi:
+1. **Lo split per testo unico:** Abbiamo vietato all'algoritmo di valutare descrizioni che aveva già visto.
+2. **L'isolamento di un singolo ciclo:** Abbiamo limitato l'analisi al solo ciclo 2014-2020, per evitare che l'algoritmo si orientasse semplicemente cercando di "datare" il progetto usando parole vecchie o nuove.
 
-**Se il testo aggiunge poco**, la conclusione è che le descrizioni sono in larga parte
-**linguaggio formulare**: dicono come si compila una domanda di finanziamento, non come andrà il
-progetto. Sarebbe un risultato utile, perché ridimensiona un'idea molto diffusa.
+Superati entrambi gli ostacoli, il testo continua a fornire un vantaggio predittivo netto: **+1,2 punti percentuali (da 0,829 a 0,841)**. Il testo aggiunge poco, ma quel poco è informazione reale che le otto variabili di tabella non riescono a cogliere.
 
-**Se il testo aggiunge molto**, la domanda successiva diventa *quali* parole pesano, e lì serve
-la massima prudenza: un termine associato al rischio non è una causa e non è una colpa. È il
-segno che un certo tipo di intervento, descritto in un certo modo, storicamente si è inceppato
-più spesso.
+# Le parole del rischio
 
-In nessuno dei due casi pubblicheremo previsioni riferite a progetti singoli riconoscibili. Un
-modello che assegna una probabilità di fallimento a un intervento identificabile, con il nome
-dell'ente o dell'impresa che lo realizza, non è un risultato di ricerca: è un giudizio su
-soggetti reali basato su una correlazione. Le analisi di questa pagina restano aggregate.
+Una volta dimostrato che il linguaggio ha un peso, abbiamo cercato le parole maggiormente associate al rischio di ritardo o blocco. Anche in questo caso, le classifiche grezze raccontano molto della struttura della Pubblica Amministrazione.
+
+Senza applicare alcun filtro, in cima alle parole più "pericolose" troviamo `xylella`, `fastidiosa`, `olivicole` e `infetta` (tutte con un rischio del 98-100%). Sono termini presenti in quasi 300 progetti. Sembra un segnale forte, ma esplorando i dati si scopre che **provengono da una sola descrizione distinta fotocopiata 276 volte**. Non è una parola pericolosa: è un singolo bando regionale. 
+Tra le parole più "sicure" (rischio vicino allo 0%) svettano stringhe prive di senso come `aaa`, `soco`, o `lainiziativa`. Si tratta di refusi di chi ha caricato i dati. E il fatto che un banale refuso identifichi la probabilità di completare un progetto è la prova definitiva che **il modello impara a profilare la scrivania di provenienza, non la qualità dell'opera**.
+
+<figure class="fig-home">
+  <img src="{{ site.baseurl }}/assets/images/ta_termini_bandi.png"
+       alt="Grafico sui termini fotocopia associati ai bandi">
+  <figcaption>
+    In cima alle classifiche grezze non ci sono parole, ma bandi fotocopia e refusi d'ufficio.
+  </figcaption>
+</figure>
+
+Per capire quali siano le reali tematiche problematiche, abbiamo imposto una soglia rigorosa: mostrare solo i termini che compaiono in **almeno 100 descrizioni distinte**, scartando manualmente acronimi e toponimi.
+
+<figure class="fig-home">
+  <img src="{{ site.baseurl }}/assets/images/figure/ta_termini_rischio.png"
+       alt="Le parole agli estremi del rischio ripulite dai bandi fotocopia">
+  <figcaption>
+    L'identikit semantico del rischio dopo aver rimosso i bandi clonati.
+  </figcaption>
+</figure>
+
+La classifica finale depurata conferma alcune delle tendenze che avevamo individuato fin dai primi clustering:
+* Le parole che più trascinano la previsione verso il **rischio** (dai 27 ai 52 punti sopra la media) sono legate all'imprenditoria e alla ricerca pubblica: `dipartimento`, `attivi`, `investimenti`, `medie` e `piccole` (aziende), `videosorveglianza`, `scienze`. 
+* I termini più associati alla **sicurezza** e alla puntualità (circa 30 punti sotto la media) riguardano la scuola, la formazione e i passaggi burocratici formali: `rendicontazione`, `diploma`, `classe`, `triennale`, `direttiva`, `avvio`.
+
+*(Nota di metodo: Un termine associato al rischio non è una "causa" del ritardo. È il segnale statistico che un certo tipo di intervento, descritto in quel determinato modo, storicamente ha incontrato più ostacoli degli altri).*

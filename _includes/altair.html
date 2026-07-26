@@ -1,0 +1,15 @@
+<!-- Contenitore del grafico -->
+<div id="{{ include.id }}" style="width: 100%; overflow-x: auto; margin: 1.5rem 0;"></div>
+
+<!-- Salvagente: forziamo il caricamento delle librerie se il tema non l'ha fatto -->
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+<!-- Disegniamo il grafico -->
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function() {
+    var opt = { "actions": false };
+    vegaEmbed('#{{ include.id }}', '{{ site.baseurl }}{{ include.file }}', opt).catch(console.error);
+  });
+</script>
