@@ -64,7 +64,7 @@ navbar:
       url: /#il-problema 
     - title: Le cause
       url: /#perche-succede
-    - title: Cosa fare
+    - title: Conclusioni
       url: /#cosa-fare
     - title: Le analisi
       child:

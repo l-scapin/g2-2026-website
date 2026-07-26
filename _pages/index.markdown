@@ -40,17 +40,9 @@ subtitle: "315 miliardi per riequilibrare l'Italia. Ma i progetti si fermano pro
     <p class="num">206.777</p>
     <p class="lbl">progetti analizzati</p>
   </div>
-  <div class="stat">
-    <p class="num">49%</p>
-    <p class="lbl">conclusi a oggi</p>
-  </div>
   <div class="stat stat-sud">
     <p class="num">32,6%</p>
     <p class="lbl">a rischio: mai partiti o oltre scadenza</p>
-  </div>
-  <div class="stat">
-    <p class="num">+17&nbsp;pt</p>
-    <p class="lbl">divario Nord–Sud nei conclusi</p>
   </div>
 </div>
 
@@ -186,6 +178,21 @@ Verrebbe da pensare che i progetti con più soggetti coinvolti
 tra numero di enti e rischio è praticamente nulla, e i progetti con più di 5 enti sono anzi i
 *meno* a rischio.
 
+## Il clustering
+
+Prima di bla bla [clustering]({{ site.baseurl }}/clustering.html)
+
+
+| | **0** · Servizi con fondi UE | **1** · Opere con fondi nazionali | **2** · Incentivi con capitale privato |
+|---|---|---|---|
+| progetti | 94.496 (45,7%) | 79.013 (38,2%) | 33.268 (16,1%) |
+| finanziamento pubblico medio | 255.365 € | **570.421 €** | 326.372 € |
+| quota di fondi UE | **62,1%** | 8,3% | 45,4% |
+| capitale privato medio | 0 € | 0 € | **232.529 €** |
+| enti coinvolti | 2,31 | 2,03 | 2,12 |
+| fondi pubblici gestiti | 45,5 mld (14,4%) | **243,0 mld (77,1%)** | 26,8 mld (8,5%) |
+| **progetti a rischio** | **29,0%** | **37,3%** | **31,9%** |
+
 
 
 ## La regressione logistica
@@ -241,34 +248,62 @@ Sembra dunque evidente che il problema delle politiche di coesione non riguarda 
 ## Il modello predittivo
 
 A questo punto la domanda diventa un'altra: se sappiamo *che cosa* rende fragile un progetto,
-riusciamo a **riconoscerlo in anticipo**? Abbiamo messo alla prova un secondo modello, un
+riusciamo a **riconoscerlo in anticipo**? Abbiamo addestrato e testato un secondo modello, un
 [Random Forest]({{ site.baseurl }}/random-forest.html), che invece di misurare il peso isolato di
-ogni fattore cerca da solo le combinazioni che portano al blocco. Prevede nettamente meglio della
-regressione e, in combinazione con un metodo di spiegabilità come SHAP, permette di individuare le
-caratteristiche del progetto da tenere d'occhio per anticipare il rischio. Il Random Forest conferma
-quanto visto nella regressione: mette in cima ai fattori di rischio il territorio e l'erogazione di
-contributi, e colloca l'acquisto di beni in fondo, pur sfruttando molto la fonte di finanziamento
-per riconoscere l'origine dei progetti. 
+ogni fattore cerca da solo le combinazioni che portano al blocco. 
+In combinazione ad un metodo di **spiegabilità** come Shap, permette di individuare le
+caratteristiche del progetto da tenere d'occhio per anticipare il rischio. 
 
 
-# Cosa fare: il verdetto e una via d'uscita {#cosa-fare}
+Il risultato conferma quanto visto nella regressione: vengono riconosciuti come maggiormente "a rischio" progetti del Mezzogiorno e che prevedono l'erogazione di contributi, a differenza, ad esempio dei progetti la cui natura consiste nell'acquisto di bene. 
+
+| Modello | Affidabilità della previsione (AUC) |
+|---|---|
+| Random Forest| **0,778** |
+| Regressione logistica | 0,669 |
+
+Dal punto di vista del **potere predittivo**, Random Forest performa decisamente meglio rispetto alla regressione logistica. 
+Per i dettagli dell'analisi predittiva si rimanda alla sezione [Random Forest]({{ site.baseurl }}/random-forest.html).
+
+
+# Conclusioni {#cosa-fare}
 
 <figure style="margin: 1.5rem 0;">
   <img src="{{ site.baseurl }}/assets/images/hero_conclusions.jpg" alt="Svincolo autostradale visto dall'alto"
        style="width: 100%; border-radius: 4px;">
   <figcaption style="font-size: 0.8rem; color: #888; margin-top: 0.4rem;">
-    I fondi arrivano a destinazione solo se il percorso non si interrompe.
   </figcaption>
 </figure>
 
-Misurata sul suo obiettivo dichiarato, l'equità territoriale, la politica di coesione **manca il
-bersaglio proprio dove punta**: gli esiti sono sistematicamente peggiori nel Mezzogiorno, che dei
-fondi è il primo destinatario.
+## Cosa possiamo concludere quindi sui progetti finanziati dalle politiche di coesione? 
 
-Ma guardiamo al bicchiere mezzo pieno. Con più tempo a disposizione rispetto alla data di fine
-prevista, molti progetti vengono comunque conclusi. Ci sono regioni che funzionano (la Liguria ha
-solo il **9,2%** a rischio) e temi che viaggiano bene, come **energia** e **reti digitali** (rischio
-sotto il 25%).
+Dopo aver definito una variabile **"a rischio"** per caratterizzare i progetti in **ritardo** o **non ancora avviati**, dalle analisi è emerso che questi tendono a concentrarsi in una fascia di **finanziamento medio-alta**, in specifici **ambiti di intervento** e, soprattutto, nelle **regioni del Mezzogiorno**. 
+
+Questi risultati, però, non sono sufficienti da soli a spiegare il fenomeno. Come evidenziato dall'intervista col Dott. Magnifico, 
+c'è una **criticità di natura strutturale**, legata non solo ai finanziamenti ma anche alla **capacità amministrativa**.
+Molti progetti sembrano risentire della **mancanza di un adeguato supporto** lungo tutto il loro ciclo di vita: dalla progettazione iniziale alla gestione operativa, fino alla rendicontazione e alla chiusura.
+
+L'analisi dei dati, unita ad un modello predittivo, può rappresentare uno strumento concreto di supporto alle decisioni pubbliche: identificando in anticipo i principali fattori di rischio, è possibile intervenire tempestivamente e orientare in modo più efficace le risorse disponibili.
+
+Nel complesso, i risultati suggeriscono che le politiche di coesione **non sono ancora riuscite** a ridurre in modo significativo il divario territoriale tra le diverse aree del Paese.
+Accanto a queste criticità, ci sono tuttavia anche **segnali positivi**.
+
+<!-- 🎙️ INTERVISTA (Bologna, CTA) · citazione VERBATIM (sez. D di virgolettati_intervista.md). -->
+<div class="quote-int">
+  <p class="quote-int__label">Dall'intervista</p>
+  <blockquote>
+    «Con i fondi del PNRR, la Spagna ha formato moltissime persone nel gestire e scrivere progetti europei, e questo ha aiutato moltissimo. Un altro esempio, più italiano. L'Università di Bologna, qualche anno fa ha ampliato in maniera sostanziale il proprio personale amministrativo per dare supporto ai gruppi di ricerca nel partecipare ai progetti europei.»
+  </blockquote>
+  <p class="quote-int__source"><strong>Giuseppe Magnifico</strong>, CNR · luglio 2026</p>
+</div>
+
+
+Naturalmente, il nostro lavoro presenta alcuni **limiti**. In futuro potrebbe essere arricchito integrando ulteriori fonti informative, ad esempio dati relativi alla dotazione di personale e alla capacità delle pubbliche amministrazioni, così da approfondire il ruolo che questi fattori svolgono nell'esito dei progetti.
+
+In conclusione, le risorse economiche per ridurre i divari territoriali esistono. La vera **sfida** è trasformarle in interventi efficaci, attraverso una **governance più solida**, una **maggiore capacità amministrativa** e una **visione di lungo periodo** che garantisca a tutti i cittadini **pari opportunità** di accesso ai servizi e ai **diritti**, indipendentemente dal territorio in cui vivono.
+
+
+
 
 <!-- 🎙️ INTERVISTA (bicchiere, Atto III) · citazione VERBATIM (sez. C di virgolettati_intervista.md). -->
 <!-- Stile unico dei virgolettati (25/07): era la variante pull quote con la virgoletta in
@@ -276,54 +311,11 @@ sotto il 25%).
 <div class="quote-int">
   <p class="quote-int__label">Dall'intervista</p>
   <blockquote>
-    «Io personalmente vedo il bicchiere sempre pieno […]: ci sono moltissime eccellenze, ma il
-    sistema non è solido come Paese, e quindi necessariamente ci sono gruppi più forti che vanno
-    più avanti, e tendenzialmente sono nella parte del Centro-Nord su molte partite.»
+    «Io personalmente vedo il bicchiere sempre pieno: ci sono moltissime eccellenze, anche se il Paese come sistema potrebbe essere più solido. Una semplificazione delle procedure burocratiche e un utilizzo di strumenti di intelligenza artificiale potrebbero costituire un valido supporto alle amministrazioni, che avrebbero così più risorse da dedicare alla progettazione.»
   </blockquote>
   <p class="quote-int__source"><strong>Giuseppe Magnifico</strong>, CNR · luglio 2026</p>
-  <p class="quote-int__note">Citazione in attesa di revisione finale dell'intervistato.</p>
 </div>
 
-<!-- ✅ Migrato al rischio il 25/07 (figura rigenerata dal nb 01 §7: prima era sui conclusi).
-     ⚠️ Cambiando metrica cambiano anche le eccezioni al gradiente: non è più il solo Lazio. -->
-<figure class="fig-home fig-home--narrow">
-  <img src="{{ site.baseurl }}/assets/images/eda/08_regioni.png"
-       alt="Classifica delle regioni per percentuale di progetti a rischio: Sicilia ultima con il 53,8%, Liguria prima con il 9,2%">
-  <figcaption>
-    Il bicchiere, regione per regione: in testa la Liguria (<strong>9,2%</strong> a rischio), in coda
-    la Sicilia (<strong>53,8%</strong>). Il gradiente Nord–Sud ha però eccezioni in tutte e due le
-    direzioni: le <strong>Marche</strong> (31,4%) e il <strong>Lazio</strong> (27,6%) stanno peggio
-    di quattro regioni del Sud, e il <strong>Molise</strong> (16,5%) sta davanti a Lombardia,
-    Piemonte e Veneto. La geografia non spiega tutto da sola.
-  </figcaption>
-</figure>
-
-## E adesso? Due leve (e una parte che spetta a te)
-
-La prima leva è la **formazione e il rafforzamento dei funzionari pubblici**, soprattutto nei
-piccoli comuni del Mezzogiorno: concorsi, competenze tecniche, assistenza alla progettazione. Di
-questo ci sono esempi virtuosi, come racconta Magnifico:
-
-<!-- 🎙️ INTERVISTA (Bologna, CTA) · citazione VERBATIM (sez. D di virgolettati_intervista.md). -->
-<div class="quote-int">
-  <p class="quote-int__label">Dall'intervista</p>
-  <blockquote>
-    «L'Università di Bologna, qualche anno fa, ha cambiato il direttore generale; è arrivato un
-    direttore proveniente dall'impresa, che ha chiamato a raccolta cinquanta persone capaci e ha
-    creato un grosso gruppo che doveva dare supporto ai ricercatori e al personale […] per
-    partecipare ai progetti europei.»
-  </blockquote>
-  <p class="quote-int__source"><strong>Giuseppe Magnifico</strong>, CNR · luglio 2026</p>
-  <p class="quote-int__note">Citazione in attesa di revisione finale dell'intervistato.</p>
-</div>
-
-I risultati sono stati eccezionali, tanto che l'allora ministra dell'Istruzione, dell'Università e
-della Ricerca Maria Chiara Carrozza ha intravisto in questo approccio un metodo da estendere anche
-ad altri enti di ricerca.
-
-La seconda leva è la **pressione sulle politiche locali**: i dati di OpenCoesione sono pubblici
-proprio perché i cittadini possano chiedere conto dei progetti dei propri territori. **I soldi per
-l'equità ci sono già: quello che manca si può costruire.**
 
 <hr>
 

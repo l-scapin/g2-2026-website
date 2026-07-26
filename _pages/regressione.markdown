@@ -92,8 +92,11 @@ più rischioso che comprare**. Una parte del rischio non sta in chi realizza il 
 che cosa il progetto è.
 
 **Tema.** In testa la **competitività delle imprese** (OR 2,14), poi istruzione e formazione
-(1,66) e occupazione (1,56). Energia e reti digitali non si distinguono dall'ambiente: sono i
-temi che viaggiano meglio, come già mostrava l'esplorazione.
+(1,66) e occupazione (1,56).
+Dalla nostra analisi risulta che la maggior parte dei temi presentano un Odds Ratio più alto rispetto al tema ambientale, utilizzato come riferimento. 
+
+Nell'esplorazione invece l'ambiente costituiva il terzo tema per numero di progetti classificati come "a rischio". Questo apparente paradosso nasce dal fatto che i progetti ambientali sono quasi tutti grandi opere pubbliche al Sud, mentre la regressione logistica gli effetti delle variabili vengono disaccoppiate. 
+
 
 **Fondi europei: OR 0,78.** Un progetto interamente finanziato dall'Unione ha odds di rischio
 inferiori di circa un quinto rispetto a uno interamente nazionale e, specularmente, è più
