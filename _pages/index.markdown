@@ -142,42 +142,7 @@ Si tratta della conseguenza di un numero maggiore di fondi stanziati per il Sud?
           loading="lazy"></iframe>
 </div>
 
-Un paese più disunito è un paese più fragile e meno competitivo, in cui i diritti 
-
-Perché dovrebbe importarti? Perché quei miliardi sono **i tuoi**: tasse italiane ed europee. E
-perché dietro ogni progetto fermo c'è un pezzo di diritti di qualcuno: l'asilo non aperto, la
-ferrovia non ammodernata, il depuratore non finito. Quando un progetto si ferma al Sud, l'obiettivo
-dell'equità territoriale (la ragione per cui quei fondi esistono) si allontana sempre di più.
-
-# Perché succede: l'identikit del rischio {#perche-succede}
-
-Se il problema fosse casuale, colpirebbe a caso. Invece ha un identikit preciso.
-
-**Dimensione.** Il rischio cresce con la quantità di fondi stanziati per ciascun progetto: il punto
-critico sono i progetti **medio-grandi**, quelli fra 5 e 10 milioni, a rischio nel **43,9%** dei
-casi contro il 29,4% dei più piccoli. Sopra i 50 milioni scende al 38,5%, e restano comunque 623
-progetti che da soli valgono 120,5 miliardi: pochi e pesantissimi.
-
-**Ciclo.** Il ciclo di finanziamenti riserva la sorpresa più grande. Il più impantanato non è
-quello appena partito ma il **2014-2020, a rischio al 38,5%**, sopra il 2021-2027 che si ferma al
-36,8% pur avendo davanti ancora tutta la corsa.
-
-**Tema.** Alcuni temi risultano più a rischio di altri: la **competitività delle imprese** (39,6%),
-i **trasporti** (37,2%) e l'**ambiente** (34,9%). E soprattutto il rischio cresce **a Sud** dentro
-ogni ciclo di programmazione, con uno scarto che va da **+12,3** punti a **+30,0**: il divario
-Centro-Nord/Mezzogiorno è **persistente**.
-
-<!-- GRAFICI · dimensione (campana) e persistenza del divario per ciclo. -->
-
-<figure class="fig-home">
-  <img src="{{ site.baseurl }}/assets/images/eda/05_dimensione_rischio.png"
-       alt="Grafico a barre: la percentuale di progetti a rischio sale fino al 43,9% nella fascia 5-10 milioni e poi ridiscende">
-  <figcaption>
-    Il rischio non cresce all'infinito con la taglia: disegna una campana. Dal 29,4% dei progetti
-    piccoli (100–500k €) sale al <strong>43,9% della fascia 5-10 milioni</strong>, poi ridiscende
-    al 38,5% sopra i 50 milioni. Il punto debole sono i progetti medio-grandi.
-  </figcaption>
-</figure>
+Inoltre, questo divario persiste in ognuno dei cicli di programmazione analizzati. 
 
 <!-- ✅ Migrato al rischio il 25/07 (figura rigenerata dal nb 01 §3.1: prima era sui conclusi). -->
 <figure class="fig-home">
@@ -185,64 +150,58 @@ Centro-Nord/Mezzogiorno è **persistente**.
        alt="Barre appaiate Centro-Nord e Mezzogiorno: in ogni ciclo di programmazione il Mezzogiorno ha una quota maggiore di progetti a rischio">
 </figure>
 
+Un paese **disunito** è un paese **fragile** e **meno competitivo**, più esposto alle dinamiche di potere sovranazionali. In gioco ci sono due cose molto importanti: **i nostri soldi**, e come li stiamo impiegando, e un godimento dei **diritti** che sia equo e giusto per tutti sull'intero territorio nazionale. 
+
+
+# Le cause {#perche-succede}
+
+## L'identikit del rischio
+Cosa caratterizza un progetto a rischio, al di là della regione in cui si trova? 
+Proviamo quindi a costruire un identikit dei progetti a rischio concentrandoci su 2 caratteristiche: dimensione e tema. 
+
+
+**Dimensione.** Il rischio cresce con la quantità di fondi stanziati per ciascun progetto, fino a raggiungere un picco nei progetti **medio-grandi**, quelli fra 5 e 10 milioni, a rischio nel **43,9%** dei
+casi. I progetti ancora più grandi, mostrano un'inversine del trend, risultando a rischio nel 38,5% dei casi. Possiamo ipotizzare che alle opere più grandi venga riservata un'attenzione particolare. 
+
+<!-- GRAFICI · dimensione (campana) e persistenza del divario per dimensione. -->
+
+<figure class="fig-home">
+  <img src="{{ site.baseurl }}/assets/images/eda/05_dimensione_rischio.png"
+       alt="Grafico a barre: la percentuale di progetti a rischio sale fino al 43,9% nella fascia 5-10 milioni e poi ridiscende">
+  <figcaption>
+    Il rischio non cresce all'infinito con la taglia: disegna una campana. Dal 29,4% dei progetti
+    piccoli (100–500k €) sale al <strong>43,9% della fascia 5-10 milioni</strong>, poi ridiscende
+    al 38,5% sopra i 50 milioni. Il punto più debole sono i progetti medio-grandi.
+  </figcaption>
+</figure>
+
+
+**Tema.** Alcuni temi risultano più a rischio di altri: la **competitività delle imprese** (39,6%),
+i **trasporti** (37,2%) e l'**ambiente** (34,9%). 
+
+![Rischio per tema]({{ site.baseurl }}/assets/images/eda/09_tema.png){: .img-fluid }
+
 Verrebbe da pensare che i progetti con più soggetti coinvolti
 (più enti, più tavoli, più firme) siano i più fragili. I dati dicono di no: la correlazione
 tra numero di enti e rischio è praticamente nulla, e i progetti con più di 5 enti sono anzi i
-*meno* a rischio. L'apparente eccezione (un picco di rischio nei progetti con 3 enti) svanisce
-guardando da vicino: è quasi tutta concentrata in pochi programmi del ciclo 2007-2013, in
-Sicilia e Calabria.
+*meno* a rischio.
 
-I dati OpenCoesione dicono *dove* e *quanto* i progetti si fermano, non *chi* o *che cosa* li
-ferma. Giuseppe Magnifico, dirigente dell'Ufficio Grant e Infrastrutture di Ricerca del CNR,
-conosce da vicino i meccanismi del finanziamento pubblico: nella sua esperienza, organici ridotti,
-competenze progettuali scarse e uffici tecnici che devono gestire pratiche complesse senza le
-persone per farlo sono il limite principale alla realizzazione puntuale dei progetti.
 
-<!-- 🎙️ INTERVISTA (capacità amministrativa, Atto II) · citazione VERBATIM (sez. B di
-     virgolettati_intervista.md). ⚠️ DA AUTORIZZARE e da verificare il nome. -->
-<div class="quote-int">
-  <p class="quote-int__label">Dall'intervista</p>
-  <blockquote>
-    «Qualsiasi attività di ricerca non è soltanto ideazione e articolo pubblicato: c'è tutta una
-    serie di procedure contabili che devono essere gestite dal personale amministrativo, e di questo
-    noi abbiamo una grande carenza, come CNR ma in generale come Paese. Siamo molto più in basso
-    rispetto alla Spagna o alla Francia.»
-  </blockquote>
-  <p class="quote-int__source"><strong>Giuseppe Magnifico</strong>, CNR · luglio 2026</p>
-  <p class="quote-int__note">Citazione in attesa di revisione finale dell'intervistato.</p>
-</div>
 
-Se è così, chi più avrebbe bisogno dei fondi, meno ha gli strumenti per spenderli. I fondi possono
-comprare cemento e servizi, ma non possono comprare da soli la macchina amministrativa che serve a
-spenderli.
+## La regressione logistica
 
-<!-- ✅ MODELLO: regressione estesa del Notebook 02, OR Mezzogiorno 2,80 [2,74–2,86]; contributi ad
-     altri 2,34 · lavori pubblici 1,81 · quota UE 0,78 · capitale privato 0,68 · NUM_ENTI 0,96. -->
-Per capire il ruolo del territorio in questa dinamica ci vengono incontro i risultati del
-**modello multivariato** (pagina [regressione]({{ site.baseurl }}/regressione.html)), che mette
-tutti i fattori sullo stesso piano, confrontando progetti **a parità di** tipo di intervento, tema,
-dimensione e fonte di finanziamento. Stando al modello, a parità di tutto il resto, per un progetto
+Per approfondire il ruolo specifico delle diverse variabili in questa dinamica, ci vengono incontro i risultati del
+**modello multivariato** (pagina [regressione]({{ site.baseurl }}/regressione.html)), che confronta i progetti a parità di **tipo di intervento** (lavori pubblici, incentivi a imprese, contributi ad altri soggetti, acquisto di beni...), **tema**,
+**dimensione** e **fonte di finanziamento**, rispetto alla variabile target "a rischio" che abbiamo definito prima. 
+
+Stando al modello per un progetto
 del Mezzogiorno il rapporto tra la probabilità di incepparsi e quella di non incepparsi è **quasi il
-triplo** che al Centro-Nord (odds ratio **2,80**, IC 95% 2,74–2,86) e, specularmente, concludere è
-molto meno probabile. Rifacendo il conto **dentro ogni ciclo di programmazione**, uno alla volta, il
-divario non sparisce mai: enorme nei cicli ormai chiusi, più contenuto nel 2021-2027 partito da
-poco, ma sempre lì. Nei due cicli centrali, quelli con più progetti, vale addirittura **quasi
-quattro volte**.
+triplo** che al Centro-Nord. 
 
-Il modello mette anche in evidenza il peso del progetto. Rispetto a un intervento
-che si limita ad acquistare beni, erogare contributi ad altri soggetti moltiplica per **2,3** le
-odds di finire a rischio, e realizzare lavori pubblici per **1,8**. Costruire un'opera, o passare i
-soldi a qualcun altro perché li spenda, è un fattore di rischio più grande rispetto ai progetti che
-prevedono acquisti, ed è una leva su cui, a differenza della geografia, si può agire scrivendo
-diversamente i bandi. Inoltre i progetti
-finanziati con **fondi europei**, a prescindere dalla quantità del finanziamento, sono meno a
-rischio e concludono di più, a parità di tutto il resto: arrivano con scadenze vincolanti e regole
-di disimpegno. E il confine è netto più che graduale, quello che conta è **avere** fondi europei,
-non quanti: che la quota europea sia un quinto o quasi tutto il finanziamento cambia poco, a fare la
-differenza sono le regole del canale, non la percentuale. Vale qualcosa di simile per il **capitale
-privato**, ma solo dove il privato cofinanzia il proprio investimento: negli incentivi alle imprese
-chi mette dei soldi propri è a rischio nel 31,8% dei casi contro il 36,6%, mentre altrove la
-differenza sparisce.
+Per quanto riguarda il **tipo** di intervento, il fattore di rischio aumenta in progetti che prevedono l'erogazione di contributi ad altri soggetti o la realizzazione di lavori pubblici, rispetto a progetti finalizzati all'acquisto di beni. 
+
+Inoltre i progetti finanziati con **fondi europei**, a prescindere dalla quantità del finanziamento, sono meno a rischio, a parità di tutto il resto. Questo potrebbe essere dovuto al fatto che arrivano con scadenze vincolanti e regole di rendicontazione più restrittive. 
+
 
 <!-- GRAFICO · forest plot divulgativo (make_mod_landing_or.py). -->
 
@@ -251,15 +210,36 @@ differenza sparisce.
        alt="Grafico a pallini con intervalli di confidenza: il Mezzogiorno è il fattore più forte a 2,80, seguito da contributi ad altri soggetti a 2,34 e competitività delle imprese a 2,14; il numero di enti resta a 0,96, cioè praticamente neutro">
   <figcaption>
     Gli otto fattori messi a confronto <strong>a parità di tutto il resto</strong>. Ogni pallino
-    è un <em>odds ratio</em>: quante volte cambia il rapporto fra la probabilità di incepparsi e
-    quella di non incepparsi, rispetto a un progetto di riferimento. I trattini attorno sono il
+    è un <em>odds ratio</em>: quante volte cambia il rapporto fra la probabilità di essere etichettato come "a rischio" e
+    quella di non esserlo, rispetto a un progetto di riferimento: Centro-Nord, tema ambiente, intervento di acquisto beni, importo fra 100 e 500 mila euro. I trattini attorno sono il
     margine di incertezza. Il grafico completo, con
     tutti i fattori e le verifiche, è <a href="{{ site.baseurl }}/regressione.html#odds-ratio">nella
     pagina della regressione</a>.
   </figcaption>
 </figure>
 
-<!-- ✅ RANDOM FOREST · AUC 0,813 sul test contro 0,669 della logistica; SHAP conferma l'ordine. -->
+
+## Il parere dell'esperto
+
+Dai dati di OpenCoesione è possibile estrarre le variabli che caratterizzano i progetti "a rischio", ma non i meccanismi che regolano le fasi di progettazione e sviluppo. 
+**Giuseppe Magnifico**, dirigente dell'Ufficio Grant e Infrastrutture di Ricerca del CNR,
+conosce da vicino i **meccanismi** del finanziamento pubblico: nella sua esperienza, **organici ridotti**, **competenze progettuali scarse** e uffici tecnici che devono gestire **pratiche complesse** sono il limite principale alla realizzazione puntuale dei progetti.
+
+<!-- 🎙️ INTERVISTA (capacità amministrativa, Atto II) · citazione VERBATIM (sez. B di
+     virgolettati_intervista.md). ⚠️ DA AUTORIZZARE e da verificare il nome. -->
+<div class="quote-int">
+  <p class="quote-int__label">Dall'intervista</p>
+  <blockquote>
+    «Qualsiasi attività di progettazione e ricerca non è soltanto una questione di ideazione: bisogna tenere in considerazione una
+    serie di procedure contabili che devono essere gestite dal personale amministrativo, di cui abbiamo una grande carenza, non solo come CNR ma in generale come Paese.»
+  </blockquote>
+  <p class="quote-int__source"><strong>Giuseppe Magnifico</strong>, CNR · luglio 2026</p>
+</div>
+
+Sembra dunque evidente che il problema delle politiche di coesione non riguarda solo il tipo di progetto o la quantità di fondi erogati, ma anche l'intero corpo amministrativo che si ritrova a gestirli.  
+
+## Il modello predittivo
+
 A questo punto la domanda diventa un'altra: se sappiamo *che cosa* rende fragile un progetto,
 riusciamo a **riconoscerlo in anticipo**? Abbiamo messo alla prova un secondo modello, un
 [Random Forest]({{ site.baseurl }}/random-forest.html), che invece di misurare il peso isolato di
@@ -268,8 +248,7 @@ regressione e, in combinazione con un metodo di spiegabilità come SHAP, permett
 caratteristiche del progetto da tenere d'occhio per anticipare il rischio. Il Random Forest conferma
 quanto visto nella regressione: mette in cima ai fattori di rischio il territorio e l'erogazione di
 contributi, e colloca l'acquisto di beni in fondo, pur sfruttando molto la fonte di finanziamento
-per riconoscere l'origine dei progetti. Due modelli costruiti su logiche diverse arrivano così alle
-stesse conclusioni.
+per riconoscere l'origine dei progetti. 
 
 
 # Cosa fare: il verdetto e una via d'uscita {#cosa-fare}
