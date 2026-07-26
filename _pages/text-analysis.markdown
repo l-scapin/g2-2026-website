@@ -84,7 +84,7 @@ Tra le parole più "sicure" (rischio vicino allo 0%) svettano stringhe prive di 
 Per capire quali siano le reali tematiche problematiche, abbiamo imposto una soglia rigorosa: mostrare solo i termini che compaiono in **almeno 100 descrizioni distinte**, scartando manualmente acronimi e toponimi.
 
 <figure class="fig-home">
-  <img src="{{ site.baseurl }}/assets/images/figure/ta_termini_rischio.png"
+  <img src="{{ site.baseurl }}/assets/images/ta_termini_rischio.png"
        alt="Le parole agli estremi del rischio ripulite dai bandi fotocopia">
   <figcaption>
     L'identikit semantico del rischio dopo aver rimosso i bandi clonati.

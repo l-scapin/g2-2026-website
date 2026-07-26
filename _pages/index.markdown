@@ -106,10 +106,7 @@ Per esplorare ed elaborare questa massa di dati abbiamo applicato una serie di m
 
 # Il problema: i progetti si fermano dove servono di più {#il-problema}
 
-Dei 206.777 progetti, il **48,9%** si è concluso, mentre il **32,6%** è **a rischio**. Al
-Centro-Nord il rischio tocca il **20,5%** dei progetti; nel Mezzogiorno il **42,0%**: **il doppio**.
-Eppure il Sud gestisce **215 miliardi** contro i 79 del Centro-Nord: i soldi ci sono, è il percorso
-che si interrompe.
+Cosa succede ai progetti analizzati? Per cercare di capirlo abbiamo definito una variabile che ci aiutasse a identificare quelli potenzialmente più problematici. 
 
 <div class="def-box">
   <p class="def-box__label">La nostra variabile target</p>
@@ -117,8 +114,7 @@ che si interrompe.
 
   <p>Nei dati ufficiali non esiste un'etichetta di "fallimento": un progetto resta aperto finché non viene formalmente chiuso o definanziato. Abbiamo quindi optato per una <strong>classificazione binaria operativa</strong> che fotografa la presenza di un'<strong>anomalia procedurale</strong> alla data di riferimento del <strong>31 dicembre 2025</strong>.</p>
 
-  <p>Un progetto è etichettato come <strong>«a rischio»</strong> se presenta una criticità attiva al giorno della fotografia:</p>
-
+  <p>Un progetto è quindi etichettato come <strong>«a rischio»</strong> se:</p>
   <p>
     <strong>1 · Non è mai partito:</strong> risulta ancora «non avviato» (16.261 progetti, 7,9%), <em>oppure</em><br>
     <strong>2 · È oltre la scadenza:</strong> risulta «in corso» ma ha già superato la data di fine prevista (51.237 progetti, 24,8%).
@@ -137,18 +133,16 @@ di cui risultano pagati finora solo 45,5. Ci sono **26,3 miliardi** fermi in 16.
 **mai avviati**, con zero pagamenti. E la geografia del denaro fermo ricalca quella del bisogno:
 **99,4 miliardi a rischio nel Mezzogiorno**, 18,5 nel Centro-Nord.
 
-<!-- GRAFICO · Mappa del rischio (statica, dall'EDA). -->
+Si tratta della conseguenza di un numero maggiore di fondi stanziati per il Sud? Solo parzialmente. In realtà, anche in termini **relativi** (percentuale di progetti "a rischio" rispetto al numero totale di progetti della regione regione), **il divario rimane significativo**: si passa dal **9,2%** della Liguria al **53,8%** della Sicilia. 
 
-<figure class="fig-home fig-home--narrow">
-  <img src="{{ site.baseurl }}/assets/images/eda/mappa_rischio.png"
-       alt="Mappa dell'Italia: percentuale di progetti a rischio per regione, con gradiente che cresce da Nord a Sud">
-  <figcaption>
-    La geografia del rischio: quota di progetti a rischio per regione. Il colore si scurisce
-    scendendo lungo la penisola, fino alla Sicilia che supera il 50%. La versione interattiva,
-    con classifica regionale e la scelta fra rischio totale, progetti mai avviati e progetti fuori
-    tempo massimo, è <a href="{{ site.baseurl }}/eda.html#la-mappa-regionale">nell'EDA</a>.
-  </figcaption>
-</figure>
+<div style="width: 100vw; margin-left: calc(50% - 50vw); display: flex; justify-content: center; margin-top: 2.5rem; margin-bottom: 1.5rem;">
+  <iframe src="{{ site.baseurl }}/assets/charts/interactive/dashboard_regioni.html"
+          title="Dashboard interattiva delle regioni"
+          style="width: min(960px, 96vw); height: 720px; border: none; transform: translateX(30px);"
+          loading="lazy"></iframe>
+</div>
+
+Un paese più disunito è un paese più fragile e meno competitivo, in cui i diritti 
 
 Perché dovrebbe importarti? Perché quei miliardi sono **i tuoi**: tasse italiane ed europee. E
 perché dietro ogni progetto fermo c'è un pezzo di diritti di qualcuno: l'asilo non aperto, la
