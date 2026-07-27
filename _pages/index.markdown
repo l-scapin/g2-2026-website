@@ -53,8 +53,9 @@ Il grafico Sankey ricostruisce il percorso di questi 249 miliardi: dalla fonte (
 <figure class="fig-home">
   <iframe src="{{ site.baseurl }}/assets/charts/plotly/sankey_fondi.html"
           title="Diagramma di Sankey: il percorso dei fondi dalla fonte al territorio al tema"
-          style="width: 100%; height: 520px; border: none;"
-          loading="lazy"></iframe>
+          style="width: 100%; height: 750px; border: none;"
+          loading="lazy"
+          scrolling="no"></iframe>
   <figcaption>
     Il percorso dei fondi: da ogni <strong>fonte</strong>, europea o nazionale (FSC, PAC,
     rotazione), al <strong>territorio</strong>, fino al <strong>tema</strong>. Lo spessore dei flussi
