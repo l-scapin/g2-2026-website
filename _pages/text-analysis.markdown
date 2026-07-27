@@ -2,7 +2,7 @@
 layout: default
 title: "Text Analysis"
 show_sidetoc: true
-header_type: hero #base, post, hero, image, splash
+header_type: hero
 header_img: assets/images/hero_text_analysis.jpg
 header_img_position: center
 header_title: "Il peso delle parole"
@@ -16,8 +16,8 @@ La domanda a cui questa sezione cerca di rispondere è: c'è un'informazione uti
 
 <div class="def-box" style="margin: 25px 0;">
   <p class="def-box__label">Il verdetto in sintesi</p>
-  <h4>Il testo aggiunge valore, e il segnale è reale</h4>
-  <p>L'integrazione dell'analisi testuale migliora le capacità del modello predittivo, portando un guadagno concreto di affidabilità. Sebbene una parte del "linguaggio" usato nei progetti sia costituita da formule burocratiche o da descrizioni clonate per gli stessi bandi, ripulendo il dato da questi effetti di <em>data leakage</em> il testo continua a fornire un contributo significativo. Rivela infatti differenze tematiche e operative che i soli numeri non riescono a inquadrare.</p>
+  <h4>Il testo smaschera la burocrazia (e porta un segnale reale)</h4>
+  <p>L'integrazione dell'analisi testuale porta un guadagno predittivo modesto (circa +1% di affidabilità), ma estremamente solido. Il vero valore di questa analisi, tuttavia, è diagnostico: ci ha permesso di scoprire che gran parte del "linguaggio" usato nei progetti è in realtà costituito da bandi clonati in serie. Una volta ripulito il dato da questo "burocratese", le parole ci confermano la tendenza già vista nei dati strutturati: gli interventi legati alla ricerca e all'imprenditoria affrontano percorsi molto più accidentati rispetto alla formazione scolastica e alle procedure formali.</p>
 </div>
 
 # Il corpus disponibile
@@ -49,15 +49,15 @@ Prima di combinare il linguaggio con le variabili strutturali, abbiamo valutato 
 
 Per rappresentare le descrizioni abbiamo trasformato il testo in numeri attraverso una matrice **TF-IDF** (*Term Frequency - Inverse Document Frequency*), calcolando non solo le singole parole (unigrammi) ma anche le associazioni di due parole (bigrammi). Questa matrice è stata utilizzata come input per una **Regressione Logistica**. 
 
-Il modello puramente testuale ha raggiunto un'affidabilità (AUC) pari a **0,77**, un risultato sorprendentemente vicino allo 0,80 ottenuto dal Random Forest addestrato, su questo stesso sottoinsieme, con le sole variabili strutturali. La sola descrizione del progetto contiene quindi una quantità significativa di informazioni sul rischio futuro.
+Il modello puramente testuale ha raggiunto un'affidabilità (AUC) pari a **0,77**, un risultato sorprendentemente vicino allo **0,80** ottenuto dal Random Forest addestrato, su questo stesso sottoinsieme, con le sole variabili strutturali. La sola descrizione del progetto contiene quindi una quantità significativa di informazioni sul rischio futuro.
 
-# Integrare testo e variabili strutturali
+# Integrare testo e numeri: un miglioramento da pesare con cura
 
 Per migliorare il modello predittivo principale, occorreva unire le due fonti. Inserire direttamente decine di migliaia di *feature* TF-IDF all'interno del Random Forest ne avrebbe compromesso l'efficienza. 
 
 Abbiamo quindi adottato un approccio più compatto tramite *stacking*: il modello testuale (la regressione logistica) produce un **punteggio di rischio ("text score")**, calcolato con tecnica *out-of-fold* per evitare sovradattamenti. Questo singolo punteggio viene poi aggiunto come nona colonna alle feature strutturali.
 
-L'integrazione di questa sintesi numerica del linguaggio porta l'AUC del Random Forest da 0,80 a **0,83**, con un miglioramento netto di **+3 punti percentuali**.
+L'integrazione di questa sintesi numerica del linguaggio porta l'AUC del Random Forest da 0,80 a **0,83**, con un miglioramento apparente di **+3 punti percentuali**.
 
 # Le verifiche contro il data leakage
 
@@ -67,7 +67,7 @@ Per scongiurare l'effetto di *data leakage*, sono stati effettuati due controlli
 1.  **Split per testo unico:** Lo split dei dati tra fase di addestramento e di test è stato vincolato affinché descrizioni identiche non potessero mai comparire in entrambi i gruppi.
 2.  **Isolamento del calendario:** L'analisi è stata ristretta al solo ciclo di programmazione 2014-2020, disinnescando le differenze linguistiche temporali.
 
-In entrambi i casi, l'impatto del testo si riduce fisiologicamente: il "guadagno" predittivo passa dall'iniziale +3 a un solido +1% (portando l'AUC del ciclo '14-'20 da 0,83 del modello base allo 0,84 del modello integrato). Il contributo del testo si assottiglia, dunque, ma rimane reale e significativo. Questo conferma che le descrizioni contengono informazioni intrinseche utili, e non soltanto anomalie algoritmiche dovute alla ripetizione seriale dei bandi.
+In entrambi i casi, l'impatto del testo si riduce fisiologicamente: il "guadagno" predittivo passa dall'iniziale +3 a un modesto ma solido **+1%** (portando l'AUC del ciclo '14-'20 da **0,83** del modello base allo **0,84** del modello integrato). Il contributo del testo si assottiglia, dunque, ma rimane reale e significativo. Questo conferma che le descrizioni contengono informazioni intrinseche utili, e non soltanto anomalie algoritmiche dovute alla ripetizione seriale dei bandi.
 
 # Quali parole caratterizzano i progetti?
 
@@ -83,14 +83,16 @@ Per restituire un vocabolario rappresentativo, abbiamo imposto un filtro di sbar
   </figcaption>
 </figure>
 
-Per esplorare visivamente queste differenze tematiche, il grafico qui sopra evidenzia come le parole legate all'istruzione e ai passaggi di rendicontazione (in verde) tendano ad associarsi a percorsi più sicuri e fluidi rispetto a termini che richiamano la complessità del mondo aziendale, dei dipartimenti e della ricerca (in rosso).
+Per esplorare visivamente queste differenze tematiche, il grafico evidenzia come le parole legate all'istruzione e ai passaggi di rendicontazione (in verde) tendano ad associarsi a percorsi più sicuri e fluidi rispetto a termini che richiamano la complessità del mondo aziendale, dei dipartimenti e della ricerca (in rosso).
 
 ### La lunghezza della descrizione conta?
 
 Un'ulteriore analisi esplorativa ha valutato la relazione tra la lunghezza della descrizione e la probabilità di rischio. I risultati mostrano che descrizioni molto brevi non sono necessariamente associate a performance peggiori. Tuttavia, le descrizioni più corpose (oltre le 60 parole) risultano mediamente associate a una minore percentuale di progetti a rischio. L'effetto è presente, ma relativamente contenuto, e da solo non costituisce un indicatore primario.
 
-# Conclusioni
+# Conclusioni: oltre le formule burocratiche
 
-L'analisi dimostra che il testo costituisce una fonte informativa robusta e complementare rispetto all'architettura tabellare del dataset. 
+L'immersione nel testo libero dei progetti ci consegna una lezione preziosa, che unisce la statistica alla realtà amministrativa. Inizialmente, abbiamo scoperto che quando un modello predittivo legge le descrizioni della Pubblica Amministrazione, il suo primo istinto non è comprendere il "senso" del progetto, ma sfruttare i testi ripetuti per riconoscere il bando o la scrivania di origine. 
 
-Le descrizioni progettuali, se opportunamente preprocessate per evitare illusioni statistiche legate alle prassi burocratiche e alla clonazione dei bandi, migliorano in modo misurabile la capacità predittiva dei modelli. Il testo riesce a mappare sfumature tematiche, livelli di complessità e priorità d'intervento che non emergono dai soli parametri economici o geografici. Integrare l'elaborazione del linguaggio naturale (NLP) nei sistemi di valutazione offre dunque un livello di profondità aggiuntivo, rendendo l'individuazione preventiva del rischio più accurata e completa.
+Tuttavia, una volta disinnescata questa illusione statistica, il verdetto è chiaro: **il linguaggio contiene un segnale predittivo reale e misurabile**. Il modesto ma solido guadagno di affidabilità (+1% di AUC) ci dice che il modo in cui un progetto viene raccontato nasconde indizi sul suo destino. E, cosa ancora più importante, le "parole del rischio" confermano in pieno l'identikit tracciato dai modelli strutturali: fare ricerca, coinvolgere dipartimenti o erogare incentivi alle aziende porta con sé una complessità che sfocia più facilmente nel ritardo, rispetto alla regolarità della formazione scolastica o al collaudo formale di procedure già codificate.
+
+Per un decisore pubblico, questo significa due cose. Primo: le variabili strutturali (dove si fa il progetto, quanti soldi muove, di che natura è) restano la bussola più potente per inquadrare il rischio al "giorno zero". Secondo: imporre e curare descrizioni testuali che siano davvero *uniche* e di qualità, abbandonando la prassi dei "bandi fotocopia" e del burocratese di riempimento, potrebbe in futuro fornire ai sistemi di monitoraggio preventivo un'arma ancora più affilata per intercettare le criticità di percorso prima che diventino croniche.
