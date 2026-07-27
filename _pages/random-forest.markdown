@@ -39,9 +39,9 @@ Per verificare e correggere questo effetto, abbiamo "sfocato" i dati arrotondand
 
 | Dati a disposizione del modello | Affidabilità della previsione (AUC) |
 |---|---|
-| Quote esatte (effetto "codice a barre") | 0,813 |
-| **Quote arrotondate (il modello reale)** | **0,778** |
-| Regressione logistica (per confronto) | 0,668 |
+| Quote esatte | 0,813 |
+| **Quote arrotondate** | **0,778** |
+| Regressione logistica| 0,668 |
 
 L'affidabilità è fisiologicamente diminuita — confermando che l'effetto "bando" esisteva ed inquinava il dato — ma resta comunque un risultato estremamente buono e nettamente superiore a quello della regressione (0,668). **Questo 0,778 è il valore reale, onesto e robusto della nostra capacità predittiva.** 
 
