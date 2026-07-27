@@ -13,23 +13,6 @@ subtitle: "315 miliardi per riequilibrare l'Italia. Ma i progetti si fermano pro
 
 ---
 
-<!-- ═══════════════════════════════════════════════════════════════════
-     Articolo in 3 atti. RISCRITTO il 24/07/2026 sulla revisione del gruppo
-     (Data Journalism e struttura/Articolo_corretto.md). Rispetto alla bozza precedente:
-     · Atto I: tolto il paragrafo narrativo "protagonista/oggetto del desiderio".
-     · Atto II: identikit ristrutturato in Dimensione/Ciclo/Tema; antagonista attribuito
-       all'intervistato (Giuseppe Magnifico, CNR) per nome; tolto il box "network".
-     · Atto III: bicchiere alleggerito (via i tassi di conclusione); TOLTE la sezione
-       "Cosa ci portiamo a casa", la frase-verdetto, la sezione "Limiti" e il box "effetto domino".
-     · Intervista: ridotta a TRE citazioni (capacità in Atto II, bicchiere e Bologna in Atto III).
-     🎙️ INTERVISTA = citazioni VERBATIM, MAI virgolettati inventati. ⚠️ Il gruppo ha scelto di
-        NOMINARE l'intervistato: DA AUTORIZZARE prima della consegna, e da verificare che il nome
-        sia corretto (nella trascrizione "Giuseppe Magnifico" compare anche come nome di esempio).
-        Caveat PNRR/fondi nazionali ora solo implicito ("meccanismi del finanziamento pubblico").
-     ⚠️ La fascia big-numbers e i grafici 07_divario_per_ciclo / 08_regioni usano ancora la metrica
-        "conclusi": vanno adeguati quando si completa il passaggio a "rischio" (task in sospeso).
-     Numeri con data di riferimento 31/12/2025 (snapshot del dataset). Non arrotondare 32,6 → 32.
-     ═══════════════════════════════════════════════════════════════════ -->
 
 <div class="big-numbers big-numbers--straddle big-numbers--bleed">
   <div class="stat stat-money">

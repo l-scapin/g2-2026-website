@@ -206,11 +206,12 @@ iframe {
   margin: 0;
 }
 // Variante "fuori margine": la fascia sfonda la colonna del testo e occupa
-// (quasi) tutta la finestra: 5 caselle respirano meglio che strette nei margini.
-// Trucco: larghezza 100vw riagganciata al centro (come .full-width-wrapper);
-// il padding-inline con max() centra il contenuto e lo blocca a 1300px sugli schermi larghi.
+// (quasi) tutta la finestra. Modificata per 3 caselle centrate.
 .big-numbers--bleed {
-  grid-template-columns: repeat(5, 1fr);
+  // Impostiamo 3 colonne. minmax(0, 280px) blocca la larghezza dei box 
+  // impedendo che diventino rettangoli sgraziati e preservando le proporzioni originali.
+  grid-template-columns: repeat(3, minmax(0, 280px));
+  justify-content: center; // Centra il blocco di 3 colonne nello schermo
   width: 100vw;
   position: relative;
   left: 50%;
