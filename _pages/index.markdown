@@ -228,7 +228,7 @@ Inoltre i progetti finanziati con **fondi europei**, a prescindere dalla quantit
 
 ## Il parere dell'esperto
 
-Dai dati di OpenCoesione è possibile estrarre le variabli che caratterizzano i progetti "a rischio", ma non i meccanismi che regolano le fasi di progettazione e sviluppo. 
+Dai dati di OpenCoesione è possibile estrarre le variabili che caratterizzano i progetti "a rischio", ma non i meccanismi che regolano le fasi di progettazione e sviluppo. 
 **Giuseppe Magnifico**, dirigente dell'Ufficio Grant e Infrastrutture di Ricerca del CNR,
 conosce da vicino i **meccanismi** del finanziamento pubblico: nella sua esperienza, **organici ridotti**, **competenze progettuali scarse** e uffici tecnici che devono gestire **pratiche complesse** sono il limite principale alla realizzazione puntuale dei progetti.
 
