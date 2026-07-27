@@ -105,7 +105,7 @@ vincolanti e regole di disimpegno; il dato però dice che i due fenomeni vanno i
 l'uno produca l'altro. Quel che conta è soprattutto **avere** fondi europei più che la quota
 esatta: a parità di averli, una percentuale più alta non protegge di più.
 
-**Capitale privato: OR 0,68, ma solo dove il privato mette i soldi suoi.** Passare da un progetto
+**Capitale privato: OR 0,67, ma solo dove il privato mette i soldi suoi.** Passare da un progetto
 interamente pubblico a uno interamente cofinanziato da privati riduce le odds di rischio di circa
 un terzo. L'effetto però non è distribuito in modo uniforme, e conviene dirlo subito: si concentra
 sugli **incentivi alle imprese**, l'unica categoria in cui il cofinanziamento privato è diffuso
@@ -131,13 +131,13 @@ tutti i p-value sono prossimi a zero. Le verifiche che contano davvero, però, s
 
 L'obiezione ricorrente è che l'effetto dell'area sia scontato, e che tanto valga toglierla dal
 modello. L'abbiamo testato stimando lo stesso modello **senza** il territorio. Il risultato è che
-il modello distingue molto peggio i progetti a rischio (AUC da **0,668** a **0,610**) e il test
+il modello distingue molto peggio i progetti a rischio (AUC da **0,67** a **0,610**) e il test
 del rapporto di verosimiglianza è enorme: il territorio porta informazione che nessun altro
 fattore contiene.
 
 Ma il danno peggiore è un altro, ed è **la distorsione degli altri coefficienti**. Senza il
 controllo territoriale l'effetto dei fondi europei quasi sparisce (da 0,78 a 0,96), quello del
-capitale privato si attenua (da 0,68 a 0,74) e i progetti sopra i 50 milioni sembrano più fragili
+capitale privato si attenua (da 0,67 a 0,74) e i progetti sopra i 50 milioni sembrano più fragili
 di quanto siano (da 1,24 a 1,48). Progetti giganti, fondi europei e cofinanziamento privato non
 sono distribuiti allo stesso modo tra Nord e Sud: senza il territorio in modello sono loro ad
 assorbirne l'effetto, e a raccontare una storia gonfiata. Togliere l'area non semplifica il modello: **lo
@@ -175,9 +175,7 @@ misura con l'**AUC** della curva ROC.
 
 ![Curva ROC del modello sul rischio]({{ site.baseurl }}/assets/images/modello/mod_roc.png){: .img-fluid }
 
-L'AUC è **0,668**: discreta, non altissima. Il valore regge su dati che il modello non ha mai
-visto (**0,665** su un test set tenuto da parte, cross-validation fra 0,665 e 0,672), quindi non
-è il frutto di un adattamento eccessivo. La lettura onesta è che con sole caratteristiche
+L'AUC è **0,67**: discreta, non altissima. La lettura onesta è che con sole caratteristiche
 **strutturali** (dove nasce il progetto, che cosa fa, quanto vale, chi lo finanzia) il segnale
 c'è ma **non basta per un allarme operativo affidabile**. Servirebbero variabili di processo:
 l'avanzamento dei pagamenti nel tempo, i passaggi amministrativi, i tempi delle gare.
@@ -203,5 +201,5 @@ OpenCoesione non permettono di separare. Che cosa farne, lo discutiamo nelle
 
 Resta però una domanda che questo modello non affronta: non *quanto pesa* ciascun fattore, ma
 **quanto lontano si può arrivare a prevedere** chi si incepperà. Se ne occupa il
-[Random Forest]({{ site.baseurl }}/random-forest.html), che parte proprio dall'AUC 0,665
+[Random Forest]({{ site.baseurl }}/random-forest.html), che parte proprio dall'AUC 0,67
 raggiunta qui.
