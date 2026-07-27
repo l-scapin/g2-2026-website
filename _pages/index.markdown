@@ -263,7 +263,9 @@ Il risultato conferma quanto visto nella regressione: vengono riconosciuti come 
 | Regressione logistica | 0,67 |
 
 Dal punto di vista del **potere predittivo**, Random Forest performa decisamente meglio rispetto alla regressione logistica. 
-Per i dettagli dell'analisi predittiva si rimanda alla sezione [Random Forest]({{ site.baseurl }}/random-forest.html).
+Per i dettagli dell'analisi predittiva si rimanda alla sezione [Random Forest]({{ site.baseurl }}/random-forest.html). 
+
+Infine, combinando l'informazione con tecniche di [Text Analysis]({{ site.baseurl }}/text-analysis.html), il modello predittivo migliora leggermente. 
 
 
 # Conclusioni {#cosa-fare}

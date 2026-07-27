@@ -16,9 +16,9 @@ La domanda a cui questa sezione cerca di rispondere è: c'è un'informazione uti
 {: .lead }
 
 <div class="def-box" style="margin: 25px 0;">
-  <p class="def-box__label">Il verdetto in sintesi</p>
-  <h4>Il testo smaschera la burocrazia (e porta un segnale reale)</h4>
-  <p>L'integrazione dell'analisi testuale porta un guadagno predittivo modesto (circa +1% di affidabilità), ma estremamente solido. Il vero valore di questa analisi, tuttavia, è diagnostico: ci ha permesso di scoprire che gran parte del "linguaggio" usato nei progetti è in realtà costituito da bandi clonati in serie. Una volta ripulito il dato da questo "burocratese", le parole ci confermano la tendenza già vista nei dati strutturati: gli interventi legati alla ricerca e all'imprenditoria affrontano percorsi molto più accidentati rispetto alla formazione scolastica e alle procedure formali.</p>
+  <p class="def-box__label">In sintesi</p>
+  <h4>Il linguaggio della burocrazia</h4>
+  <p>L'integrazione dell'analisi testuale porta un guadagno predittivo modesto (circa +1% di affidabilità), ma estremamente solido. Il vero valore di questa analisi, tuttavia, è diagnostico: ci ha permesso di scoprire che gran parte del "linguaggio" usato nei progetti è in realtà costituito da descrizioni ricopiate in modo identico. Una volta ripulito il dato, le parole ci confermano la tendenza già vista nei dati strutturati: gli interventi legati alla ricerca e all'imprenditoria affrontano percorsi molto più accidentati.</p>
 </div>
 
 # Il corpus disponibile
@@ -77,23 +77,23 @@ Analizzando il contenuto lessicale, è emerso che molte delle parole associate a
 Per restituire un vocabolario rappresentativo, abbiamo imposto un filtro di sbarramento: analizzare solo i termini presenti in **almeno 100 descrizioni del tutto distinte**. 
 
 <figure class="fig-home">
-  <img src="{{ site.baseurl }}/assets/images/ta_termini_rischio.png"
-       alt="Le parole agli estremi del rischio ripulite dalle ripetizioni">
-  <figcaption>
-    L'identikit semantico del rischio dopo aver rimosso i bandi clonati. Un termine associato al rischio non è una "causa" del ritardo, ma il segno che quel determinato intervento storicamente ha incontrato più ostacoli. Grafico realizzato con Altair.
-  </figcaption>
+  <iframe src="{{ '/assets/charts/ta_termini_rischio.html' | relative_url }}"
+          title="Le parole del rischio"
+          style="width: 150%; height: 550px; border: none; overflow: hidden; transform: translateX(-300px);"
+          loading="lazy"
+          scrolling="no"></iframe>
 </figure>
 
-Il grafico evidenzia come le parole legate all'istruzione e ai passaggi di rendicontazione (in verde) tendano ad associarsi a percorsi più sicuri e fluidi rispetto a termini che richiamano la complessità del mondo aziendale, dei dipartimenti e della ricerca (in rosso).
+Il grafico evidenzia come le parole che richiamano la complessità del mondo aziendale, dei dipartimenti e della ricerca tendano ad associarsi ad un rischio maggiore.
 
 ### La lunghezza della descrizione conta?
 
 Un'ulteriore analisi esplorativa ha valutato la relazione tra la lunghezza della descrizione e la probabilità di rischio. I risultati mostrano che descrizioni molto brevi non sono necessariamente associate a performance peggiori. Tuttavia, le descrizioni più corpose (oltre le 60 parole) risultano mediamente associate a una minore percentuale di progetti a rischio. L'effetto è presente, ma relativamente contenuto, e da solo non costituisce un indicatore primario.
 
-# Conclusioni: oltre le formule burocratiche
+# Conclusioni
 
-L'immersione nel testo libero dei progetti ci consegna una lezione preziosa, che unisce la statistica alla realtà amministrativa. Inizialmente, abbiamo scoperto che quando un modello predittivo legge le descrizioni della Pubblica Amministrazione, il suo primo istinto non è comprendere il "senso" del progetto, ma sfruttare i testi ripetuti per riconoscere il bando o la scrivania di origine. 
+Inizialmente, abbiamo scoperto che quando un modello predittivo legge le descrizioni della Pubblica Amministrazione, la sua prima tendenza non è comprendere il "senso" del progetto, ma sfruttare i testi ripetuti per riconoscere il bando o la scrivania di origine. 
 
-Tuttavia, una volta disinnescata questa illusione statistica, il verdetto è chiaro: **il linguaggio contiene un segnale predittivo reale e misurabile**. Il modesto ma solido guadagno di affidabilità (+1% di AUC) ci dice che il modo in cui un progetto viene raccontato nasconde indizi sul suo destino. E, cosa ancora più importante, le "parole del rischio" confermano in pieno l'identikit tracciato dai modelli strutturali: fare ricerca, coinvolgere dipartimenti o erogare incentivi alle aziende porta con sé una complessità che sfocia più facilmente nel ritardo, rispetto alla regolarità della formazione scolastica o al collaudo formale di procedure già codificate.
+Tuttavia, una volta disinnescata questa illusione statistica, **il linguaggio contiene un segnale predittivo reale e misurabile**. Il modesto ma solido guadagno di affidabilità (+1% di AUC) ci dice che il modo in cui un progetto viene raccontato nasconde indizi sul suo destino. E, cosa ancora più importante, le "parole del rischio" confermano in pieno l'identikit tracciato dai modelli strutturali: fare ricerca, coinvolgere dipartimenti o erogare incentivi alle aziende porta con sé una complessità che sfocia più facilmente nel ritardo, rispetto ad esempio al collaudo formale di procedure già codificate.
 
-Per un decisore pubblico, questo significa due cose. Primo: le variabili strutturali (dove si fa il progetto, quanti soldi muove, di che natura è) restano la bussola più potente per inquadrare il rischio al "giorno zero". Secondo: imporre e curare descrizioni testuali che siano davvero *uniche* e di qualità, abbandonando la prassi dei "bandi fotocopia" e del burocratese di riempimento, potrebbe in futuro fornire ai sistemi di monitoraggio preventivo un'arma ancora più affilata per intercettare le criticità di percorso prima che diventino croniche.
+Per un decisore pubblico, questo significa due cose. Primo: le variabili strutturali (dove si fa il progetto, quanti soldi muove, di che natura è) restano la bussola più potente per inquadrare il rischio al "giorno zero". Secondo: utilizzare descrizioni testuali che siano davvero significative potrebbe essere d'aiuto nella realizzazione di modelli predittivi efficaci. 
