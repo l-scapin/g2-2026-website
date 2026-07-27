@@ -163,7 +163,9 @@ i **trasporti** (37,2%) e l'**ambiente** (34,9%).
 Verrebbe da pensare che i progetti con più soggetti coinvolti
 (più enti, più tavoli, più firme) siano i più fragili. I dati dicono di no: la correlazione
 tra numero di enti e rischio è praticamente nulla, e i progetti con più di 5 enti sono anzi i
-*meno* a rischio.
+*meno* a rischio. Maggiori dettagli sono disponibili nella sezione <a href="{{ site.baseurl }}/eda.html">Analisi Esplorativa</a>.
+
+
 
 ## Il clustering
 
