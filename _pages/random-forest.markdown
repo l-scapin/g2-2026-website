@@ -33,17 +33,17 @@ Perché il confronto sia leale, il Random Forest ha ricevuto in pasto **le stess
 
 # Il risultato: una previsione solida e onesta
 
-Il primo modello addestrato ha raggiunto un'affidabilità predittiva (misurata tramite l'indice AUC, dove 0,5 è il caso e 1 è la previsione perfetta) apparentemente eccellente, pari a **0,813**. Tuttavia, interrogando la *black box* del modello, abbiamo notato un'anomalia: la variabile `QUOTA_UE` aveva un peso sospettosamente alto sulle decisioni dell'algoritmo. Indagando su questo indizio, abbiamo capito il perché: l'algoritmo stava sfruttando l'esatto numero di cifre decimali di quella percentuale come una sorta di "codice a barre" per riconoscere il singolo piano di finanziamento, e di conseguenza lo specifico bando amministrativo. In pratica, il modello non stava valutando il rischio intrinseco del progetto, ma "barava" riconoscendo la scrivania di partenza.
+Il primo modello addestrato ha raggiunto un'affidabilità predittiva (misurata tramite l'indice AUC, dove 0,5 è il caso e 1 è la previsione perfetta) apparentemente eccellente, pari a **0,81**. Tuttavia, interrogando la *black box* del modello, abbiamo notato un'anomalia: la variabile `QUOTA_UE` aveva un peso sospettosamente alto sulle decisioni dell'algoritmo. Indagando su questo indizio, abbiamo capito il perché: l'algoritmo stava sfruttando l'esatto numero di cifre decimali di quella percentuale come una sorta di "codice a barre" per riconoscere il singolo piano di finanziamento, e di conseguenza lo specifico bando amministrativo. In pratica, il modello non stava valutando il rischio intrinseco del progetto, ma "barava" riconoscendo la scrivania di partenza.
 
-Per verificare e correggere questo effetto, abbiamo "sfocato" i dati arrotondando le quote finanziarie, nascondendo l'impronta digitale del bando. A questo punto l'AUC si è assestata a **0,778**:
+Per verificare e correggere questo effetto, abbiamo "sfocato" i dati arrotondando le quote finanziarie, nascondendo l'impronta digitale del bando. A questo punto l'AUC si è assestata a **0,78**:
 
 | Dati a disposizione del modello | Affidabilità della previsione (AUC) |
 |---|---|
-| Quote esatte | 0,813 |
-| **Quote arrotondate** | **0,778** |
-| Regressione logistica| 0,668 |
+| Quote esatte | 0,81 |
+| **Quote arrotondate** | **0,78** |
+| Regressione logistica| 0,67 |
 
-L'affidabilità è fisiologicamente diminuita — confermando che l'effetto "bando" esisteva ed inquinava il dato — ma resta comunque un risultato estremamente buono e nettamente superiore a quello della regressione (0,668). **Questo 0,778 è il valore reale, onesto e robusto della nostra capacità predittiva.** 
+L'affidabilità è fisiologicamente diminuita — confermando che l'effetto "bando" esisteva ed inquinava il dato — ma resta comunque un risultato estremamente buono e nettamente superiore a quello della regressione (0,67). **Questo 0,78 è il valore reale, onesto e robusto della nostra capacità predittiva.** 
 
 Per un *policy maker* o un gestore di fondi, questo significa che creare un modello predittivo al "giorno zero" è assolutamente possibile e utile, a patto di prestare un'estrema attenzione critica per disinnescare dinamiche algoritmiche nascoste come questa.
 
@@ -93,7 +93,7 @@ I progetti più piccoli (da 100 a 500 mila euro) sono l'unico gruppo prevalentem
 
 # Conclusioni 
 
-**Costruire un sistema di allerta predittivo è possibile e utile.** Ripulendo i dati dalle illusioni statistiche e utilizzando unicamente informazioni note al momento della firma, è possibile ottenere una previsione robusta (0,778 AUC). Per un *policy maker*, questo significa avere in mano una bussola: non serve a scartare o definanziare i progetti, ma a definire su chi attivare un tutoraggio mirato e un monitoraggio stretto prima che gli iter si blocchino.
+**Costruire un sistema di allerta predittivo è possibile e utile.** Ripulendo i dati dalle illusioni statistiche e utilizzando unicamente informazioni note al momento della firma, è possibile ottenere una previsione robusta (0,78 AUC). Per un *policy maker*, questo significa avere in mano una bussola: non serve a scartare o definanziare i progetti, ma a definire su chi attivare un tutoraggio mirato e un monitoraggio stretto prima che gli iter si blocchino.
 
 **Il punto di forza: catturare le combinazioni complesse.** A differenza della regressione, il Random Forest non valuta i fattori in modo isolato: riesce a cogliere da solo le interazioni a coppie o di gruppo (ad esempio come il rischio di un certo tipo di intervento cambi radicalmente a seconda del territorio in cui si localizza). I valori SHAP ci permettono di "aprire la scatola nera" e verificare che queste combinazioni abbiano un senso logico.
 
