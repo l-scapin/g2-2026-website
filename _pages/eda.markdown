@@ -18,13 +18,12 @@ subtitle: "Qualità dei dati, la metrica del rischio e i primi pattern"
 La fonte del nostro dataset è **OpenCoesione**, un progetto di open government che raccoglie i dati relativi ai progetti finanziati con le politiche di coesione. Abbiamo scelto di concentrare la nostra analisi solo su progetti con un valore finanziato **maggiore o uguale a 100.000 €**. 
 In totale, il nostro dataset è composto da **206.777 progetti**. Nella nostra esplorazione preliminare, abbiamo cercato di definire quali fossero **a rischio** e di isolarne le **caratteristiche principali**.  
 
-{: .lead }
 
 # Qualità e preparazione dei dati
 
 Il dataset non ha righe duplicate: ogni progetto è identificato in modo **univoco** dalla coppia CUP + codice locale. 
 
-I **valori mancanti** nel dataset dipendono dalla sua struttura, e non vanno considerati come errori. Per esempio, il _ritardo_ e la _data di fine effettiva_ sono valori assenti sui progetti non ancora conclusi. Oppure, progetti interamente finanziati con fondi nazionali (FSC, PAC) non hanno valori relativi alle _descrizioni tematiche_ e _fondo europeo_.
+I **valori mancanti** nel dataset dipendono dalla sua struttura e non vanno considerati come errori. Per esempio, il _ritardo_ e la _data di fine effettiva_ sono valori assenti sui progetti non ancora conclusi. Oppure, progetti interamente finanziati con fondi nazionali (FSC, PAC) non hanno valori relativi alle _descrizioni tematiche_ e _fondo europeo_.
 
 
 
@@ -36,9 +35,7 @@ Nei dati ufficiali non esiste un'etichetta di **"fallimento"**: un progetto rest
   <p class="def-box__label">La nostra variabile target</p>
   <h4>Come definiamo un progetto «a rischio»?</h4>
 
-  <p>Nei dati ufficiali non esiste un'etichetta di "fallimento": un progetto resta aperto finché non viene formalmente chiuso o definanziato. Abbiamo quindi optato per una <strong>classificazione binaria operativa</strong> che fotografa la presenza di un'<strong>anomalia procedurale</strong> alla data di riferimento del <strong>31 dicembre 2025</strong>.</p>
-
-  <p>Un progetto è quindi etichettato come <strong>«a rischio»</strong> se:</p>
+  <p>Un progetto è etichettato come <strong>«a rischio»</strong> se:</p>
   <p>
     <strong>1 · Non è mai partito:</strong> risulta ancora «non avviato» (16.261 progetti, 7,9%), <em>oppure</em><br>
     <strong>2 · È oltre la scadenza:</strong> risulta «in corso» ma ha già superato la data di fine prevista (51.237 progetti, 24,8%).
@@ -46,13 +43,8 @@ Nei dati ufficiali non esiste un'etichetta di **"fallimento"**: un progetto rest
 
   <p>In totale parliamo di <strong>67.498 progetti (32,6%)</strong>. Raggruppare sotto la stessa variabile sia i ritardi recenti sia i blocchi pluriennali è una <strong>scelta metodologica precisa</strong>: anziché introdurre una soglia arbitraria oltre la quale considerare un progetto "definitivamente morto" (soglia smentita nei fatti da opere che si sbloccano anche dopo anni), cataloghiamo come <em>a rischio</em> qualsiasi iter che ha deviato rispetto al cronoprogramma originario.</p>
 
-  <p class="def-box__note">
-    <strong>In sintesi:</strong> «A rischio» identifica un'anomalia di percorso ancora aperta, non un verdetto di fallimento. Non riguarda chi ha chiuso in ritardo, ma chi oggi non sta rispettando i tempi previsti.
-  </p>
 </div>
 
-
-![Distribuzione dello stato dei progetti]({{ site.baseurl }}/assets/images/eda/01_stato_progetto.png){: .img-fluid }
 
 ## Dove passano i fondi
 
@@ -71,16 +63,9 @@ Inoltre, in maniera coerente con la missione redistributiva delle politiche di c
 </figure>
 
 
-<div class="def-box">
-  <p class="def-box__label">Un accorgimento importante</p>
-  <h4>Il nostro dataset è sbilanciato?</h4>
-
-  <p>
-E’ importante notare che nonostante questo sbilanciamento nella attribuzione dei fondi, il numero di progetti risulta comunque **bilanciato** per ciascuna macro-area.
+È importante notare che nonostante questo sbilanciamento nella attribuzione dei fondi, il numero di progetti risulta comunque **bilanciato** per ciascuna macro-area.
 
 Infatti, sul totale dei progetti analizzati, il **56%** è al Mezzogiorno, mentre il **44%** al Centro-Nord.
-</p>
-</div>
 
 ![Quota di progetti nel Centro-Nord e nel Mezzogiorno]({{ site.baseurl }}/assets/images/eda/04b_bilanciamento.png){: .img-fluid }
 
@@ -89,9 +74,9 @@ Infatti, sul totale dei progetti analizzati, il **56%** è al Mezzogiorno, mentr
 
 Per esplorare la dimensione del rischio, abbiamo deciso di osservare due features specifiche: la **dimensione**, ovvero la quantità di fondi destinati ai progetti, e il **tema**.
 
-**Dimensione.** Abbiamo diviso la dimensione per classi di importo, scalando per 500.000 €. Questo ci consente di osservare che il rischio non cresce necessariamente con la taglia del progetto. La distribuzione del rischio, infatti, disegna una campana. Sale dal 29,4% dei progetti piccoli fino al 43,9% della fascia 5-10 milioni, per poi scendere nuovamente (42,9% fra 10 e 50 milioni, 38,5% sopra i 50). 
+**Dimensione.** Abbiamo diviso la dimensione per classi di importo. Questo ci consente di osservare che il rischio non cresce necessariamente con la taglia del progetto. La distribuzione del rischio, infatti, disegna una campana. Sale dal 29,4% dei progetti più piccoli fino al 43,9% della fascia 5-10 milioni, per poi scendere nuovamente (42,9% fra 10 e 50 milioni, 38,5% sopra i 50). 
 
-Il punto più critico sono i **progetti medio-grandi**, quelli che potrebbero essere abbastanza complessi da accumulare ritardo, non abbastanza grandi da ricevere un’attenzione particolare.
+Il punto più critico sono i **progetti medio-grandi**, quelli che potrebbero essere abbastanza complessi da accumulare ritardo, ma non abbastanza grandi da ricevere un’attenzione particolare.
 
 ![Percentuale di progetti a rischio per classe di importo]({{ site.baseurl }}/assets/images/eda/05_dimensione_rischio.png){: .img-fluid }
 
@@ -125,7 +110,7 @@ Per non fermarci alla semplice distinzione tra macro-aree, abbiamo analizzato il
 
 In coda c’è la Sicilia con il 53,8%, staccata di tredici punti dalla seconda, la Campania (40,5%): più di un progetto su due. A queste due seguono Calabria (39,8%) e Puglia (38,5%). In testa la Liguria con il 9,2%, poi Valle d’Aosta (15,5%), Molise (16,5%) e Veneto (16,6%).
 
-**Le eccezioni.** Nel Centro-Nord, Marche (31,4%) e Lazio (27,6%) hanno progetti con un tasso di rischio peggiore di quattro regioni del Mezzogiorno: nel caso delle Marche il motivo si legge nella scomposizione, perché il 16,2% dei loro progetti non è mai partito, il valore più alto d’Italia, mentre il 15,2% fuori tempo è nella norma del Nord. Dall’altro lato il Molise è davanti a Lombardia, Piemonte e Veneto. Il territorio,dunque, pur dando una chiave di lettura importante, non spiega in maniera completa le ragioni del rischio. 
+**Le eccezioni.** Nel Centro-Nord, Marche (31,4%) e Lazio (27,6%) hanno progetti con un tasso di rischio peggiore di quattro regioni del Mezzogiorno: nel caso delle Marche il motivo si legge nella scomposizione, perché il 16,2% dei loro progetti non è mai partito, il valore più alto d’Italia, mentre il 15,2% fuori tempo è nella norma del Centro-Nord. Dall’altro lato il Molise è davanti a Lombardia, Piemonte e Veneto. Il territorio, dunque, pur dando una chiave di lettura importante, non spiega in maniera completa le ragioni del rischio. 
 
 <div style="width: 100vw; margin-left: calc(50% - 50vw); display: flex; justify-content: center; margin-top: 2.5rem; margin-bottom: 1.5rem;">
   <figure class="fig-home" style="margin: 0; width: min(960px, 96vw); display: flex; flex-direction: column;">
@@ -145,7 +130,7 @@ In coda c’è la Sicilia con il 53,8%, staccata di tredici punti dalla seconda,
 
 Abbiamo anche considerato l’**ipotesi** che **più enti coinvolti** in un progetto possano contribuire al ritardo, considerando eventuali **difficoltà di coordinamento** fra soggetti. 
 
-Dall’analisi emerge che la **correlazione** fra il numero di enti e il ritardo è **praticamente nulla (≈ −0,04)**. 
+Dall’analisi emerge che la **correlazione** fra il numero di enti e il ritardo è **praticamente nulla (coefficiente di correlazione di Pearson ≈ −0,04)**. 
 
 Ovviamente, in questo caso il ritardo è misurato quasi solo sui progetti conclusi: per un’analisi più approfondita di questo aspetto rimandiamo alla regressione multivariata, dove il numero di enti entra tra i predittori sul **rischio** (che include anche i progetti mai partiti).
 
@@ -167,9 +152,8 @@ Tenendo in considerazione solo 4 di queste variabili, possiamo calcolare la segu
 La correlazione più alta è **0,20**. Le quattro variabili raccontano cose diverse, e i coefficienti del modello si potranno leggere uno per uno senza il sospetto che si stiano rubando informazione a vicenda.
 
 Da qui partono le analisi successive, che lavorano tutte sullo stesso insieme con qualche adattamento: il [clustering]({{ site.baseurl }}/clustering.html)
-prende importo e capitale privato in logaritmo (e il privato in valore assoluto), mentre la [regressione]({{ site.baseurl }}/regressione.html) e il Random Forest usano l’importo in fasce, la quota di capitale privato e le altre due invariate.
-
-
+prende come variabili il logaritmo in base 10 del finanziamento totale e della quota privata,mentre la [regressione]({{ site.baseurl }}/regressione.html) e il Random Forest usano
+l'importo suddiviso in fasce.
 
 # In sintesi 
 
@@ -177,5 +161,5 @@ Un progetto su tre (32,6%) è a rischio, e in aggregato il problema è l’esecu
 
 Il divario territoriale è netto (42,0% contro 20,5%) ed è osservabile in ciascun ciclo di finanziamenti. La complessità di governance, invece, non spiega i ritardi.
 
-Restano due avvertenze prima di trarre conclusioni causali: le differenze descrittive non bastano, e le analisi sui ritardi coprono solo la parte di progetti con una fine effettiva. Per questo il passo successivo è la  [**regressione multivariata**]({{ site.baseurl }}/regressione.html), che stima il peso del territorio a parità di dimensione, tema, tipo di intervento e fonte di finanziamento.
+Restano due avvertenze prima di trarre conclusioni causali: le differenze descrittive non bastano. Il passo successivo è la  [**regressione multivariata**]({{ site.baseurl }}/regressione.html), che stima il peso del territorio a parità di dimensione, tema, tipo di intervento e fonte di finanziamento.
 

@@ -60,7 +60,7 @@ Il grafico Sankey ricostruisce il percorso di questi 249 miliardi: dalla fonte (
     Il percorso dei fondi: da ogni <strong>fonte</strong>, europea o nazionale (FSC, PAC,
     rotazione), al <strong>territorio</strong>, fino al <strong>tema</strong>. Lo spessore dei flussi
     è proporzionale ai fondi pubblici. Passa il mouse sui flussi per i valori;
-    Per una spiegazione più approfondita si rimanda alla sezione <a href="{{ site.baseurl }}/eda.html#dove-passano-i-fondi">EDA</a>.
+    Per una spiegazione più approfondita si rimanda alla sezione <a href="{{ site.baseurl }}/eda.html#dove-passano-i-fondi">Analisi esplorativa</a>.
   </figcaption>
 </figure>
 
@@ -98,9 +98,6 @@ Cosa succede ai progetti analizzati? Per cercare di capirlo abbiamo definito una
 
   <p>In totale parliamo di <strong>67.498 progetti (32,6%)</strong>. Raggruppare sotto la stessa variabile sia i ritardi recenti sia i blocchi pluriennali è una <strong>scelta metodologica precisa</strong>: anziché introdurre una soglia arbitraria oltre la quale considerare un progetto "definitivamente morto" (soglia smentita nei fatti da opere che si sbloccano anche dopo anni), cataloghiamo come <em>a rischio</em> qualsiasi iter che ha deviato rispetto al cronoprogramma originario.</p>
 
-  <p class="def-box__note">
-    <strong>In sintesi:</strong> «A rischio» identifica un'anomalia di percorso ancora aperta, non un verdetto di fallimento. Non riguarda chi ha chiuso in ritardo, ma chi oggi non sta rispettando i tempi previsti.
-  </p>
 </div>
 
 Le cifre con cui abbiamo a che fare sono enormi: nei progetti a rischio sono impegnati
@@ -170,7 +167,20 @@ tra numero di enti e rischio è praticamente nulla, e i progetti con più di 5 e
 
 ## Il clustering
 
-Prima di bla bla [clustering]({{ site.baseurl }}/clustering.html)
+Prima di provare a prevedere quali progetti si sarebbero classificati *"a rischio"*, ci siamo chiesti se esistessero già dei profili definiti dai dati. Per comprendere meglio le caratteristiche dei progetti abbiamo applicato un'analisi di [clustering]({{ site.baseurl }}/clustering.html), una tecnica di apprendimento non supervisionato che permette di raggruppare automaticamente osservazioni simili senza utilizzare una variabile target.
+
+L'analisi è stata condotta utilizzando esclusivamente informazioni disponibili all'avvio dei progetti, come il finanziamento pubblico, la quota di fondi europei, il finanziamento privato e il numero di enti coinvolti. Dopo una fase di preparazione dei dati, è stato applicato l'algoritmo **K-Means**; la scelta del numero ottimale di gruppi è stata supportata dal **Metodo del Gomito (Elbow Method)** e dal **Silhouette Score**, che hanno individuato in tre cluster il miglior compromesso tra qualità della segmentazione e interpretabilità.
+
+Sono così emersi tre profili ben distinti: 
+- **Cluster 0**: progetti sociali e formativi finanziati prevalentemente dall'Unione Europea;
+- **Cluster 1**: grandi investimenti sostenuti soprattutto da risorse nazionali;
+- **Cluster 2**: progetti di ricerca e innovazione caratterizzati dalla presenza di capitale privato.
+
+Successivamente, i cluster sono stati confrontati con variabili non utilizzate durante l'addestramento, come il livello di rischio, il ciclo di programmazione, la macroarea geografica e il tema di intervento. È emerso che i tre gruppi differiscono soprattutto per struttura del finanziamento, ambito di intervento e incidenza dei progetti a rischio, mentre la distribuzione territoriale risulta sostanzialmente omogenea.
+
+Questa analisi esplorativa ha fornito una rappresentazione sintetica della struttura del dataset e una chiave di lettura utile per interpretare i risultati dei successivi modelli predittivi.
+
+
 
 
 | | **0** · Servizi con fondi UE | **1** · Opere con fondi nazionali | **2** · Incentivi con capitale privato |

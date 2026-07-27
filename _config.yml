@@ -68,7 +68,7 @@ navbar:
       url: /#cosa-fare
     - title: Le analisi
       child:
-        - title: EDA
+        - title: Analisi esplorativa
           url: /eda.html
         - title: Clustering
           url: /clustering.html
