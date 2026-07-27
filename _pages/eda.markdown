@@ -17,7 +17,7 @@ subtitle: "Qualità dei dati, la metrica del rischio e i primi pattern"
 
 La fonte del nostro dataset è **OpenCoesione**, un progetto di open government che raccoglie i dati relativi ai progetti finanziati con le politiche di coesione. Abbiamo scelto di concentrare la nostra analisi solo su progetti con un valore finanziato **maggiore o uguale a 100.000 €**. 
 In totale, il nostro dataset è composto da **206.777 progetti**. Nella nostra esplorazione preliminare, abbiamo cercato di definire quali fossero **a rischio** e di isolarne le **caratteristiche principali**.  
-
+{: .lead }
 
 # Qualità e preparazione dei dati
 

@@ -17,6 +17,7 @@ subtitle: "Prevedere il rischio prima che si manifesti"
 </div>
 
 La [regressione]({{ site.baseurl }}/regressione.html) ha risposto a una domanda precisa: **quanto pesa ciascun fattore** sul ritardo di un progetto, a parità di tutte le altre condizioni. Ma ne resta una altrettanto concreta per chi deve gestire i fondi: **è possibile prevedere prima del via quali progetti rischiano di incepparsi, così da monitorarli più da vicino?**
+{: .lead }
 
 Per rispondere abbiamo messo alla prova i dati con un **Random Forest**, un algoritmo che non si limita a "pesare" le singole variabili, ma cerca in autonomia migliaia di combinazioni e soglie critiche nascoste nei dati. 
 {: .lead }
