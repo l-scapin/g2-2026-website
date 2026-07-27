@@ -83,7 +83,7 @@ Per restituire un vocabolario rappresentativo, abbiamo imposto un filtro di sbar
   </figcaption>
 </figure>
 
-Per esplorare visivamente queste differenze tematiche, sono state inoltre costruite tre *word cloud*: una dedicata ai termini più frequenti dell'intero corpus, una per i progetti a basso rischio e una specifica per i progetti classificati come "a rischio", evidenziando come i temi legati all'istruzione e alla rendicontazione tendano a percorsi più fluidi rispetto alla complessità del mondo aziendale e della ricerca.
+Per esplorare visivamente queste differenze tematiche, il grafico qui sopra evidenzia come le parole legate all'istruzione e ai passaggi di rendicontazione (in verde) tendano ad associarsi a percorsi più sicuri e fluidi rispetto a termini che richiamano la complessità del mondo aziendale, dei dipartimenti e della ricerca (in rosso).
 
 ### La lunghezza della descrizione conta?
 
