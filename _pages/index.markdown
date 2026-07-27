@@ -260,7 +260,7 @@ Il risultato conferma quanto visto nella regressione: vengono riconosciuti come 
 | Modello | Affidabilità della previsione (AUC) |
 |---|---|
 | Random Forest| **0,778** |
-| Regressione logistica | 0,669 |
+| Regressione logistica | 0,668 |
 
 Dal punto di vista del **potere predittivo**, Random Forest performa decisamente meglio rispetto alla regressione logistica. 
 Per i dettagli dell'analisi predittiva si rimanda alla sezione [Random Forest]({{ site.baseurl }}/random-forest.html).
