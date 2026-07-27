@@ -49,7 +49,7 @@ Prima di combinare il linguaggio con le variabili strutturali, abbiamo valutato 
 
 Per rappresentare le descrizioni abbiamo trasformato il testo in numeri attraverso una matrice **TF-IDF** (*Term Frequency - Inverse Document Frequency*), calcolando non solo le singole parole (unigrammi) ma anche le associazioni di due parole (bigrammi). Questa matrice è stata utilizzata come input per una **Regressione Logistica**. 
 
-Il modello puramente testuale ha raggiunto un'affidabilità (AUC) pari a **0,774**, un risultato sorprendentemente vicino allo 0,799 ottenuto dal Random Forest addestrato, su questo stesso sottoinsieme, con le sole variabili strutturali. La sola descrizione del progetto contiene quindi una quantità significativa di informazioni sul rischio futuro.
+Il modello puramente testuale ha raggiunto un'affidabilità (AUC) pari a **0,77**, un risultato sorprendentemente vicino allo 0,80 ottenuto dal Random Forest addestrato, su questo stesso sottoinsieme, con le sole variabili strutturali. La sola descrizione del progetto contiene quindi una quantità significativa di informazioni sul rischio futuro.
 
 # Integrare testo e variabili strutturali
 
@@ -57,7 +57,7 @@ Per migliorare il modello predittivo principale, occorreva unire le due fonti. I
 
 Abbiamo quindi adottato un approccio più compatto tramite *stacking*: il modello testuale (la regressione logistica) produce un **punteggio di rischio ("text score")**, calcolato con tecnica *out-of-fold* per evitare sovradattamenti. Questo singolo punteggio viene poi aggiunto come nona colonna alle feature strutturali.
 
-L'integrazione di questa sintesi numerica del linguaggio porta l'AUC del Random Forest da 0,799 a **0,832**, con un miglioramento netto di **+3,2 punti percentuali**.
+L'integrazione di questa sintesi numerica del linguaggio porta l'AUC del Random Forest da 0,80 a **0,83**, con un miglioramento netto di **+3 punti percentuali**.
 
 # Le verifiche contro il data leakage
 
@@ -67,7 +67,7 @@ Per scongiurare l'effetto di *data leakage*, sono stati effettuati due controlli
 1.  **Split per testo unico:** Lo split dei dati tra fase di addestramento e di test è stato vincolato affinché descrizioni identiche non potessero mai comparire in entrambi i gruppi.
 2.  **Isolamento del calendario:** L'analisi è stata ristretta al solo ciclo di programmazione 2014-2020, disinnescando le differenze linguistiche temporali.
 
-In entrambi i casi, l'AUC si riduce fisiologicamente (arrivando a un solido **0,841** sul ciclo '14-'20, con un guadagno di **+1,2 punti** rispetto alle sole variabili strutturali), ma il contributo del testo rimane significativo. Questo conferma che le descrizioni contengono informazioni realmente utili, e non soltanto anomalie algoritmiche dovute alla ripetizione seriale.
+In entrambi i casi, l'impatto del testo si riduce fisiologicamente: il "guadagno" predittivo passa dall'iniziale +3 a un solido +1% (portando l'AUC del ciclo '14-'20 da 0,83 del modello base allo 0,84 del modello integrato). Il contributo del testo si assottiglia, dunque, ma rimane reale e significativo. Questo conferma che le descrizioni contengono informazioni intrinseche utili, e non soltanto anomalie algoritmiche dovute alla ripetizione seriale dei bandi.
 
 # Quali parole caratterizzano i progetti?
 
