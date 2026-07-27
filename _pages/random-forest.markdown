@@ -57,17 +57,17 @@ Questo grafico offre la panoramica globale su cosa orienta l'algoritmo. Innanzit
 
 In secondo luogo, le scatole mostrano l'**intensità (o magnitudo) dell'impatto**. È importante fare una distinzione: mentre per le variabili binarie (come il Territorio) è possibile dedurre una direzione generale chiara, per le variabili multiclasse (come Tema e Natura) il grafico mette tutto insieme e ci dice semplicemente *quanto è forte* l'effetto di quella caratteristica sulle scelte del modello. Per scoprire la **direzione specifica** — ovvero se l'acquisto di beni o i lavori pubblici spingano la probabilità di rischio in alto o in basso — si rimanda ai grafici di dettaglio della sezione successiva.
 
-# L'identikit confermato: il dettaglio variabile per variabile {#dipendenze}
+# L'identikit confermato: il dettaglio variabile per variabile 
 
 Se il grafico precedente ci dà la classifica dell'importanza, i focus qui sotto scendono nel dettaglio per mostrarci **quali specifici valori** spingono verso il ritardo o verso la sicurezza. La logica visiva è la medesima: la scatola colorata racchiude il cuore dei progetti (il 50% centrale della distribuzione), mentre la linea rossa fissa la soglia di rischio zero. A destra il fattore aumenta l'allarme, a sinistra lo riduce.
 
-## Il peso della geografia {#dip-territorio}
+## Il peso della geografia 
 
 {% include altair.html id="vis-territorio" file="/assets/charts/vis_territorio.json" %}
 
 Il territorio non ammette sfumature e mostra **due distribuzioni nettamente separate**. I progetti del Mezzogiorno (color oro) si collocano abbondantemente a destra, confermandosi il bacino di rischio principale. Quelli del Centro-Nord (in viola) si posizionano tutti a sinistra, nell'area di sicurezza. È la stessa spaccatura individuata dalla regressione: due modelli matematicamente opposti confermano l'esatta, identica tendenza.
 
-## Il vincolo dei fondi europei {#dip-quota-ue}
+## Il vincolo dei fondi europei 
 
 {% include altair.html id="vis-quota-ue" file="/assets/charts/vis_quota_ue.json" %}
 
@@ -79,19 +79,19 @@ Nel paragrafo precedente abbiamo visto come i decimali della quota europea risch
 
 È il segnale più inequivocabile. L'**acquisto di beni** è l'unica operazione che il modello considera sistematicamente sicura (tutta la distribuzione è sotto lo zero). All'estremo opposto, **erogare contributi ad altri soggetti** o realizzare **lavori pubblici** spinge drammaticamente verso l'alto l'allarme rischio. Ancora una volta, la "direzione" appresa dal Random Forest è perfettamente in linea con quanto ci diceva la regressione.
 
-## Di cosa si parla: il tema {#dip-tema}
+## Di cosa si parla: il tema 
 
 {% include altair.html id="vis-tema" file="/assets/charts/vis_tema.json" %}
 
 Anche qui l'identikit regge. Spingono verso l'area di rischio i progetti legati alla **competitività delle imprese**, all'**istruzione** e all'**occupazione**. Agiscono invece da scudo l'**ambiente**, l'**energia** e le **reti digitali**. Rispetto alla regressione, qui notiamo un dettaglio in più: l'estensione orizzontale per ogni tema è molto ampia e attraversa quasi sempre lo zero. Significa che il tema, da solo, non è una condanna automatica, ma interagisce fortemente con il resto del progetto.
 
-## Quanto si spende: la dimensione {#dip-dimensione}
+## Quanto si spende: la dimensione 
 
 {% include altair.html id="vis-dimensione" file="/assets/charts/vis_dimensione.json" %}
 
 I progetti più piccoli (da 100 a 500 mila euro) sono l'unico gruppo prevalentemente al riparo. Salendo con i fondi, il rischio cresce fino a toccare il suo apice per i progetti **medio-grandi (tra 1 e 10 milioni di euro)**, per poi ridiscendere leggermente sui mega-progetti. È l'esatta forma "a campana" che avevamo già osservato esplorando i dati base.
 
-# Che cosa ci dice, in conclusione
+# Conclusioni 
 
 **Costruire un sistema di allerta predittivo è possibile e utile.** Ripulendo i dati dalle illusioni statistiche e utilizzando unicamente informazioni note al momento della firma, è possibile ottenere una previsione robusta (0,778 AUC). Per un *policy maker*, questo significa avere in mano una bussola: non serve a scartare o definanziare i progetti, ma a definire su chi attivare un tutoraggio mirato e un monitoraggio stretto prima che gli iter si blocchino.
 
