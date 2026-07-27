@@ -60,7 +60,7 @@ Il grafico Sankey ricostruisce il percorso di questi 249 miliardi: dalla fonte (
     Il percorso dei fondi: da ogni <strong>fonte</strong>, europea o nazionale (FSC, PAC,
     rotazione), al <strong>territorio</strong>, fino al <strong>tema</strong>. Lo spessore dei flussi
     è proporzionale ai fondi pubblici. Passa il mouse sui flussi per i valori;
-    la legenda completa delle fonti è <a href="{{ site.baseurl }}/eda.html#dove-passano-i-fondi">nell'EDA</a>.
+    Per una spiegazione più approfondita si rimanda alla sezione <a href="{{ site.baseurl }}/eda.html#dove-passano-i-fondi">EDA</a>.
   </figcaption>
 </figure>
 
