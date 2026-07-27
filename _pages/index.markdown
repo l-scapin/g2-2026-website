@@ -112,11 +112,17 @@ di cui risultano pagati finora solo 45,5. Ci sono **26,3 miliardi** fermi in 16.
 Si tratta della conseguenza di un numero maggiore di fondi stanziati per il Sud? Solo parzialmente. In realtà, anche in termini **relativi** (percentuale di progetti "a rischio" rispetto al numero totale di progetti della regione regione), **il divario rimane significativo**: si passa dal **9,2%** della Liguria al **53,8%** della Sicilia. 
 
 <div style="width: 100vw; margin-left: calc(50% - 50vw); display: flex; justify-content: center; margin-top: 2.5rem; margin-bottom: 1.5rem;">
-  <iframe src="{{ site.baseurl }}/assets/charts/interactive/dashboard_regioni.html"
-          title="Dashboard interattiva delle regioni"
-          style="width: min(960px, 96vw); height: 720px; border: none; transform: translateX(30px);"
-          loading="lazy"></iframe>
+  <figure class="fig-home" style="margin: 0; width: min(960px, 96vw); display: flex; flex-direction: column;">
+    <iframe src="{{ site.baseurl }}/assets/charts/interactive/dashboard_regioni.html"
+            title="Dashboard interattiva delle regioni"
+            style="width: 100%; height: 670px; border: none; transform: translateX(30px);"
+            loading="lazy"></iframe>
+    <figcaption style="transform: translateX(30px);">
+      La dashboard è interattiva. Dal menu a tendina si può scegliere quale vista del rischio mostrare: il totale, la sola quota di progetti mai avviati o la sola quota fuori tempo massimo. La mappa si ricolora e la classifica regionale si aggiorna; passando il mouse su una regione la si evidenzia in entrambe le viste. Cambiando voce si vede che le regioni non si dispongono nello stesso ordine: due regioni con lo stesso rischio complessivo possono avere problemi opposti.
+    </figcaption>
+  </figure>
 </div>
+
 
 Inoltre, questo divario persiste in ognuno dei cicli di programmazione analizzati. 
 
