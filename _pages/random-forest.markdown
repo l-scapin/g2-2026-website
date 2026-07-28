@@ -48,16 +48,43 @@ L'affidabilità è fisiologicamente diminuita, confermando che l'effetto "bando"
 
 Per un *policy maker* o un gestore di fondi, questo significa che creare un modello predittivo al "giorno zero" è assolutamente possibile e utile, a patto di prestare un'estrema attenzione critica per disinnescare dinamiche algoritmiche nascoste come questa.
 
-<div class="def-box" style="margin: 35px 0;">
-  <p class="def-box__label">Oltre l'affidabilità statistica: il modello alla prova dei fatti</p>
-  <h4>Da algoritmo a "semaforo" amministrativo</h4>
-  <p>Dire che un modello ha un'alta affidabilità (AUC 0,78) significa che sa ordinare bene i progetti dal più sicuro al più rischioso. Ma all'atto pratico, se un decisore pubblico usasse questo strumento per decidere dove mandare gli ispettori, quanti controlli a vuoto (falsi allarmi) farebbe?</p>
-  <p>Considerando che, pescando a caso nel nostro archivio, circa 32 progetti su 100 presentano problemi (il tasso di rischio medio del test set è del 31,7%), il modello offre un vantaggio operativo netto. Ecco due scenari di utilizzo reale:</p>
-  <ul>
-    <li><strong>L'ispezione mirata (il 10% più a rischio):</strong> Immaginiamo che l'ente abbia le risorse per controllare solo una piccola frazione, il 10%, di tutte le pratiche attive. Se sceglie i progetti a cui il modello ha assegnato il punteggio di rischio più estremo, <strong>l'81,6%</strong> di questi si rivelerà effettivamente problematico. L'algoritmo rende quindi l'ispezione 2,6 volte più mirata ed efficiente rispetto a un controllo casuale.</li>
-    <li><strong>Il "colpo sicuro" (massima precisione):</strong> Se l'obiettivo principale è ridurre al minimo i controlli inutili, è possibile alzare la soglia di sensibilità del sistema. Chiedendo al modello di far scattare l'allarme rosso solo quando è sicuro al 65%, la precisione sale all'<strong>86,6%</strong>. Significa che quasi 9 progetti su 10 segnalati avranno davvero bisogno di un intervento, ottimizzando al massimo il tempo e le risorse del personale pubblico.</li>
-  </ul>
-</div>
+# La precisione del modello {#soglie}
+ 
+L'AUC dice che il modello sa **ordinare** i progetti dal più sicuro al più rischioso, ma chi deve
+decidere dove mandare gli ispettori non ordina: sceglie una soglia oltre la quale far scattare
+l'allarme. Da quel momento contano due numeri diversi. La **precision** risponde a «su 100 allarmi,
+quanti sono veri?»; la **recall** a «di tutti i progetti che si inceppano, quanti ne intercettiamo?».
+I due si muovono in direzioni opposte, e la soglia decide il cambio.
+ 
+Il collaudo è su **62.028 progetti mai visti in addestramento**, di cui 19.634 a rischio: il
+**31,7%**, la stessa quota che troverebbe chi sorteggiasse le pratiche da controllare. Alla soglia
+standard di 0,5 il modello segnala 11.595 progetti, classifica correttamente il **71%** e intercetta il **42%**
+di quelli a rischio. L'accuratezza complessiva del 76% va invece guardata con sospetto: dichiarare
+«nessun progetto a rischio» ne farebbe già il 68%, perché due terzi dei progetti non sono a
+rischio. È il motivo per cui su un problema sbilanciato si ragiona per soglie e non per accuratezza.
+ 
+| Soglia | Progetti segnalati | Precision | Recall |
+|---|---|---|---|
+| 0,50 (standard) | 11.595 (18,7%) | 71,0% | 41,9% |
+| 0,60 | 6.433 (10,4%) | **81,2%** | 26,6% |
+| 0,65 | 4.246 (6,8%) | **86,6%** | 18,7% |
+| 0,70 | 3.214 (5,2%) | 90,6% | 14,8% |
+| 0,75 | 2.314 (3,7%) | 94,1% | 11,1% |
+| 0,80 | 1.827 (2,9%) | **96,1%** | 8,9% |
+ 
+La tabella si legge come un listino: si sceglie quanti controlli ci si può permettere e si ottiene
+in cambio una certa affidabilità. Se un ente ha risorse per verificare **il 10% delle pratiche** e
+sceglie il decimo più rischioso secondo il modello, **quattro controlli su cinque vanno a segno**
+(precision 81,6%) contro il sorteggio che ne azzecca uno su tre: l'ispezione diventa **2,6 volte
+più mirata**, e in quel 10% si trova circa un quarto di tutti i progetti a rischio. All'estremo
+opposto, chi non può permettersi controlli a vuoto alza la soglia a 0,80: le segnalazioni scendono
+a 1.827, meno del 3% dell'archivio, e **ne sbaglia una su venticinque**.
+
+Tre avvertenze, prima di leggere questi numeri. Sono misurati su un solo
+campione di test, quindi vanno intesi come ordine di grandezza e non al decimale. La soglia è un
+punteggio del modello, non una probabilità verificata: per dire «il modello è sicuro al 65%»
+servirebbe una verifica di calibrazione, che non abbiamo fatto. E soprattutto un allarme segnala un
+iter che si è scostato dal cronoprogramma alla nostra data di riferimento, il 31 dicembre 2025.
 
 # Dentro la scatola nera: l'impatto dei fattori {#shap}
 
