@@ -25,7 +25,10 @@ La domanda a cui questa sezione cerca di rispondere è: c'è un'informazione uti
 
 Il primo passo consiste nel misurare quanto testo sia effettivamente a nostra disposizione. A differenza dei dati finanziari, la descrizione del progetto è un campo facoltativo. 
 
-Sebbene il dataset OpenCoesione contenga oltre 206 mila progetti, solo **107.988 presentano una descrizione compilata** (circa il 52% del totale). L'analisi mostra inoltre una distribuzione non uniforme tra i diversi cicli di programmazione: i progetti dei cicli 2000-2006 e 2014-2020 sono quasi interamente coperti, mentre gli altri due ne sono quasi privi.
+Sebbene il dataset OpenCoesione contenga oltre 206 mila progetti, solo **107.988 presentano una descrizione compilata** (circa il 52% del totale). Per confronto con le analisi successivi, è stato riaddestrato un modello di Random Forest su questo sottoinsieme, ottenendo una AUC di 0,80
+
+
+ L'analisi mostra inoltre una distribuzione non uniforme tra i diversi cicli di programmazione: i progetti dei cicli 2000-2006 e 2014-2020 sono quasi interamente coperti, mentre gli altri due ne sono quasi privi.
 
 <figure class="fig-home">
   <img src="{{ site.baseurl }}/assets/images/ta_copertura_testo.png"
