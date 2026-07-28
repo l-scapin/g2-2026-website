@@ -18,7 +18,7 @@ La domanda a cui questa sezione cerca di rispondere è: c'è un'informazione uti
 <div class="def-box" style="margin: 25px 0;">
   <p class="def-box__label">In sintesi</p>
   <h4>Il linguaggio della burocrazia</h4>
-  <p>L'integrazione dell'analisi testuale porta un guadagno predittivo modesto (circa +1% di affidabilità), ma estremamente solido. Il vero valore di questa analisi, tuttavia, è diagnostico: ci ha permesso di scoprire che gran parte del "linguaggio" usato nei progetti è in realtà costituito da descrizioni ricopiate in modo identico. Una volta ripulito il dato, le parole ci confermano la tendenza già vista nei dati strutturati: gli interventi legati alla ricerca e all'imprenditoria affrontano percorsi molto più accidentati.</p>
+  <p>L'integrazione dell'analisi testuale porta un guadagno predittivo modesto (circa +1% di affidabilità), ma solido. Il vero valore di questa analisi, tuttavia, è diagnostico: ci ha permesso di scoprire che gran parte del "linguaggio" usato nei progetti è in realtà costituito da descrizioni ricopiate in modo identico. Una volta ripulito il dato, le parole ci confermano la tendenza già vista nei dati strutturati: gli interventi legati alla ricerca e all'imprenditoria affrontano percorsi molto più accidentati.</p>
 </div>
 
 # Il corpus disponibile
@@ -56,7 +56,12 @@ Il modello puramente testuale ha raggiunto un'affidabilità (AUC) pari a **0,77*
 
 Per migliorare il modello predittivo principale, occorreva unire le due fonti. Inserire direttamente decine di migliaia di *feature* TF-IDF all'interno del Random Forest ne avrebbe compromesso l'efficienza. 
 
-Abbiamo quindi adottato un approccio più compatto tramite *stacking*: il modello testuale (la regressione logistica) produce un **punteggio di rischio ("text score")**, calcolato con tecnica *out-of-fold* per evitare sovradattamenti. Questo singolo punteggio viene poi aggiunto come nona colonna alle feature strutturali.
+Abbiamo quindi adottato un approccio più compatto, noto come *stacking*. Invece di inserire le singole parole, abbiamo chiesto al nostro modello testuale (una Regressione Logistica) di valutare la descrizione e calcolare un singolo numero: la probabilità di rischio di quello specifico progetto. Ma in che modo l'algoritmo calcola questa probabilità? Durante l'addestramento, il modello impara ad assegnare uno specifico coefficiente a ogni termine del vocabolario. Quando valuta una nuova descrizione, analizza le parole presenti, ne moltiplica l'importanza matematica (il valore TF-IDF) per i coefficienti che ha memorizzato, e restituisce una stima finale compresa tra 0 e 1.
+
+Questo "Punteggio Testuale" è diventato la nona colonna, l'unica variabile in più passata all'algoritmo principale. In questo modo, il Random Forest ha ricevuto l'analisi del linguaggio già "digerita".
+
+
+Ma qui si nascondeva una trappola statistica. Se avessimo fatto valutare al modello testuale le stesse descrizioni su cui aveva appena studiato per addestrarsi, avrebbe restituito punteggi artificialmente perfetti, e il Random Forest si sarebbe fidato troppo. Per evitare questo overfitting, abbiamo calcolato i punteggi con una tecnica chiamata out-of-fold: abbiamo diviso l'intero database in 5 blocchi e abbiamo fatto calcolare il punteggio di ciascun blocco da un modello testuale addestrato esclusivamente sugli altri quattro. In questo modo, ci siamo assicurati che ogni "text score" fosse il frutto di una valutazione onesta su testi mai visti prima dal modello.
 
 L'integrazione di questa sintesi numerica del linguaggio porta l'AUC del Random Forest da 0,80 a **0,83**, con un miglioramento apparente di **+3 punti percentuali**.
 

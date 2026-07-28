@@ -92,14 +92,14 @@ Quelli meno a rischio sono: **reti e servizi digitali** (21,8%), **energia** (24
 
 # Divario territoriale: Centro-Nord/Mezzogiorno {#divario}
 
-Continuando la nostra analisi sul rischio e concentrandoci sulla localizzazione dei progetti, vediamo che il 42% di quelli **«a rischio»** è nel Mezzogiorno, contro il 20,5% del Centro-Nord.
+Continuando la nostra analisi sul rischio e concentrandoci sulla localizzazione dei progetti, vediamo che il 42% dei progetti del Mezzogiorno è **«a rischio»**, mentre nel Centro-Nord solo il 20,5%.
 
-Sui progetti mai avviati le due aree sono quasi pari, 7,2% al Mezzogiorno, 8,8% al Centro-Nord. Il **divario principale**, dunque, si trova nei progetti **in ritardo**: al Mezzogiorno, sono il 34,8% dei progetti a rischio, al Centro-Nord l’11,7%. Si tratta di una differenza di circa un triplo.
+Sui progetti mai avviati le due aree sono quasi pari, 7,2% al Mezzogiorno, 8,8% al Centro-Nord. Il **divario principale**, dunque, si trova nei progetti **in ritardo**: al Mezzogiorno, sono il 34,8%, al Centro-Nord l’11,7%. Si tratta di una differenza di circa un triplo.
 
 
 ![Esiti per macroarea territoriale]({{ site.baseurl }}/assets/images/eda/04_territorio.png){: .img-fluid }
 
-Il divario è osservabile anche dentro ogni **ciclo di programmazione**: in _tutti_ i cicli il Mezzogiorno è più a rischio, con uno scarto che raggiunge il **30%** nel ciclo 2014-2020. 
+Il divario è osservabile anche dentro ogni **ciclo di programmazione**: in _tutti_ i cicli il Mezzogiorno è più a rischio, con uno scarto di **30 punti percentuali** nel ciclo 2014-2020. 
 Per un’analisi più approfondita del ruolo del territorio nella definizione di questo scarto, a parità di dimensione, tema e tipo di intervento, rimandiamo alla  [**regressione multivariata**]({{ site.baseurl }}/regressione.html).
 
 ![Divario di rischio Nord-Sud, per ciclo]({{ site.baseurl }}/assets/images/eda/07_divario_per_ciclo.png){: .img-fluid }

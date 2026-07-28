@@ -108,7 +108,7 @@ Dopo aver confrontato i gruppi con variabili non utilizzate durante il clusterin
 
 | | **0** · Progetti sociali finanziati dall'UE | **1** · Progetti infrastrutturali e di sviluppo territoriale | **2** · Progetti di innovazione con capitale privato |
 |---|---|---|---|
-| **progetti a rischio** | **28,5%** | **35,3%** | **31,3%** |
+| **progetti a rischio** | **29,0%** | **37,3%** | **31,9%** |
 | macroarea prevalente | Mezzogiorno (53,4%) | Mezzogiorno (57,2%) | Mezzogiorno (55,8%) |
 | ciclo prevalente | 2007–2013 e 2014–2020 | Distribuito tra tutti i cicli, con maggiore presenza nel 2021–2027 | **2014–2020 (56,3%)** |
 | tema prevalente | **Istruzione e formazione** (29,5%)<br>Occupazione e lavoro (20,1%) | Ambiente (18,1%)<br>Inclusione sociale (15,8%)<br>Competitività delle imprese (13,2%) | **Ricerca e innovazione** (42,5%)<br>Competitività delle imprese (37,5%) |
@@ -131,7 +131,7 @@ Infine, il confronto con la macroarea geografica mostra che tutti e tre i cluste
 # Visualizzazione dei cluster tramite PCA 
 
 Per facilitare l'interpretazione dei risultati, è stata applicata la **Principal Component Analysis (PCA)**, una tecnica di riduzione della dimensionalità che proietta i dati in uno spazio bidimensionale preservando il più possibile la variabilità originale.
-La rappresentazione ottenuta mostra che i tre cluster individuati da K-Means occupano regioni differenti dello spazio delle componenti principali. Sebbene sia presente una parziale sovrapposizione tra alcuni punti, i gruppi risultano complessivamente distinguibili, confermando la bontà della segmentazione ottenuta.
+La rappresentazione ottenuta mostra che i tre cluster individuati da K-Means occupano regioni differenti dello spazio delle componenti principali. Sebbene sia presente una parziale sovrapposizione tra alcuni punti, i gruppi risultano complessivamente distinguibili.
 
 ![Proiezione PCA dei tre gruppi]({{ site.baseurl }}/assets/images/clustering/clu_pca.png){: .img-fluid }
 

@@ -64,7 +64,7 @@ Il grafico Sankey ricostruisce il percorso di questi 249 miliardi: dalla fonte (
   </figcaption>
 </figure>
 
-A fronte di un volume di risorse nettamente sbilanciato verso il Sud, il **numero di progetti** risulta invece distribuito in modo quasi paritario tra le due macro-aree (56,0% al Mezzogiorno contro 44,0% al Centro-Nord). Questa sostanziale equivalenza di numerosità campionaria è un elemento metodologico cruciale, poiché garantisce l'assenza di bias nei confronti statistici successivi.
+A fronte di un volume di risorse nettamente sbilanciato verso il Sud, il **numero di progetti** risulta invece distribuito in modo quasi paritario tra le due macro-aree (56,0% al Mezzogiorno contro 44,0% al Centro-Nord). Questa sostanziale equivalenza di numerosità campionaria è un elemento metodologico cruciale, poiché esclude che il divario sia un effetto di numerosità. 
 
 <figure class="fig-home">
   <img src="{{ site.baseurl }}/assets/images/eda/04b_bilanciamento.png"
@@ -106,7 +106,7 @@ di cui risultano pagati finora solo 45,5. Ci sono **26,3 miliardi** fermi in 16.
 **mai avviati**, con zero pagamenti. E la geografia del denaro fermo ricalca quella del bisogno:
 **99,4 miliardi a rischio nel Mezzogiorno**, 18,5 nel Centro-Nord.
 
-Si tratta della conseguenza di un numero maggiore di fondi stanziati per il Sud? Solo parzialmente. In realtà, anche in termini **relativi** (percentuale di progetti "a rischio" rispetto al numero totale di progetti della regione regione), **il divario rimane significativo**: si passa dal **9,2%** della Liguria al **53,8%** della Sicilia. 
+Si tratta della conseguenza di un numero maggiore di fondi stanziati per il Sud? Solo parzialmente. In realtà, anche in termini **relativi** (percentuale di progetti "a rischio" rispetto al numero totale di progetti della regione), **il divario rimane significativo**: si passa dal **9,2%** della Liguria al **53,8%** della Sicilia. 
 
 <div style="width: 100vw; margin-left: calc(50% - 50vw); display: flex; justify-content: center; margin-top: 2.5rem; margin-bottom: 1.5rem;">
   <figure class="fig-home" style="margin: 0; width: min(960px, 96vw); display: flex; flex-direction: column;">
@@ -140,7 +140,7 @@ Proviamo quindi a costruire un identikit dei progetti a rischio concentrandoci s
 
 
 **Dimensione.** Il rischio cresce con la quantità di fondi stanziati per ciascun progetto, fino a raggiungere un picco nei progetti **medio-grandi**, quelli fra 5 e 10 milioni, a rischio nel **43,9%** dei
-casi. I progetti ancora più grandi, mostrano un'inversine del trend, risultando a rischio nel 38,5% dei casi. Possiamo ipotizzare che alle opere più grandi venga riservata un'attenzione particolare. 
+casi. I progetti ancora più grandi, mostrano un'inversione del trend, risultando a rischio nel 38,5% dei casi. Possiamo ipotizzare che alle opere più grandi venga riservata un'attenzione particolare. 
 
 <!-- GRAFICI · dimensione (campana) e persistenza del divario per dimensione. -->
 
@@ -156,7 +156,7 @@ casi. I progetti ancora più grandi, mostrano un'inversine del trend, risultando
 
 
 **Tema.** Alcuni temi risultano più a rischio di altri: la **competitività delle imprese** (39,6%),
-i **trasporti** (37,2%) e l'**ambiente** (34,9%). 
+i **trasporti** (37,4%) e l'**ambiente** (35,2%). 
 
 ![Rischio per tema]({{ site.baseurl }}/assets/images/eda/09_tema.png){: .img-fluid }
 

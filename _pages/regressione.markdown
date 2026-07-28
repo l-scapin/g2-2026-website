@@ -99,8 +99,7 @@ Nell'esplorazione invece l'ambiente costituiva il terzo tema per numero di proge
 
 
 **Fondi europei: OR 0,78.** Un progetto interamente finanziato dall'Unione ha odds di rischio
-inferiori di circa un quinto rispetto a uno interamente nazionale e, specularmente, è più
-probabile che si concluda. Una lettura plausibile è che i fondi europei portino con sé scadenze
+inferiori di circa un quinto rispetto a uno interamente nazionale. Una lettura plausibile è che i fondi europei portino con sé scadenze
 vincolanti e regole di disimpegno; il dato però dice che i due fenomeni vanno insieme, non che
 l'uno produca l'altro. Quel che conta è soprattutto **avere** fondi europei più che la quota
 esatta: a parità di averli, una percentuale più alta non protegge di più.
@@ -149,12 +148,14 @@ Il modello stima un unico OR del Mezzogiorno, mediato su progetti di età molto 
 capire se il divario sia il fenomeno di una stagione particolare, ristimiamo lo stesso modello
 **dentro ogni ciclo di programmazione**, uno alla volta.
 
-| Ciclo | OR Mezzogiorno |
-|---|---|
-| 2000-2006 | **17,3** [14,0–21,4] |
-| 2007-2013 | **3,84** [3,68–4,01] |
-| 2014-2020 | **3,72** [3,59–3,85] |
-| 2021-2027 | **1,42** [1,35–1,49] |
+
+| Ciclo | Centro-Nord | Mezzogiorno | Rischio relativo | OR |
+|---|---|---|---|---|
+| 2000-2006 | 3,0% | 31,4% | **10,5** | 17,3 [14,0–21,4] |
+| 2007-2013 | 12,6% | 33,8% | **2,67** | 3,84 [3,68–4,01] |
+| 2014-2020 | 20,6% | 50,6% | **2,46** | 3,72 [3,59–3,85] |
+| 2021-2027 | 32,9% | 45,2% | **1,38** | 1,42 [1,35–1,49] |
+
 
 Il divario è **maggiore di 1 e statisticamente significativo in tutti e quattro i cicli**: cambia
 l'intensità, mai il segno. Due cautele di lettura: nel 2000-2006, ciclo ormai chiuso, al
