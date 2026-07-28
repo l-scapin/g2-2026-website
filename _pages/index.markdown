@@ -70,7 +70,7 @@ A fronte di un volume di risorse nettamente sbilanciato verso il Sud, il **numer
   <img src="{{ site.baseurl }}/assets/images/eda/04b_bilanciamento.png"
        alt="Barra divisa in due: il 44,0% dei progetti sta nel Centro-Nord e il 56,0% nel Mezzogiorno, quindi vicino alla metà esatta">
   <figcaption>
-    La distribuzione dei progetti: dei <strong>oltre 200.000</strong> interventi localizzati, il <strong>44,0%</strong> si trova nel Centro-Nord (89.831) e il <strong>56,0%</strong> nel Mezzogiorno (114.229). I <strong>fondi</strong>, al contrario, sono fortemente concentrati a Sud (<strong>73% contro 27%</strong>), come evidenziato nel diagramma precedente.
+    La distribuzione dei progetti: degli <strong>oltre 200.000</strong> interventi localizzati, il <strong>44,0%</strong> si trova nel Centro-Nord (89.831) e il <strong>56,0%</strong> nel Mezzogiorno (114.229). I <strong>fondi</strong>, al contrario, sono fortemente concentrati a Sud (<strong>73% contro 27%</strong>), come evidenziato nel diagramma precedente.
   </figcaption>
 </figure>
 
