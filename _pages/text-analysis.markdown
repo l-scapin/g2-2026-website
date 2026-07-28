@@ -18,7 +18,7 @@ La domanda a cui questa sezione cerca di rispondere è: c'è un'informazione uti
 <div class="def-box" style="margin: 25px 0;">
   <p class="def-box__label">In sintesi</p>
   <h4>Il linguaggio della burocrazia</h4>
-  <p>L'integrazione dell'analisi testuale porta un guadagno predittivo modesto (circa +1% di affidabilità), ma solido. Il vero valore di questa analisi, tuttavia, è diagnostico: ci ha permesso di scoprire che gran parte del "linguaggio" usato nei progetti è in realtà costituito da descrizioni ricopiate in modo identico. Una volta ripulito il dato, le parole ci confermano la tendenza già vista nei dati strutturati: gli interventi legati alla ricerca e all'imprenditoria affrontano percorsi molto più accidentati.</p>
+  <p>L'integrazione dell'analisi testuale porta un guadagno predittivo modesto (+0,01 di AUC), ma solido. Il vero valore di questa analisi, tuttavia, è diagnostico: ci ha permesso di scoprire che gran parte del "linguaggio" usato nei progetti è in realtà costituito da descrizioni ricopiate in modo identico. Una volta ripulito il dato, le parole ci confermano la tendenza già vista nei dati strutturati: gli interventi legati alla ricerca e all'imprenditoria affrontano percorsi molto più accidentati.</p>
 </div>
 
 # Il corpus disponibile
