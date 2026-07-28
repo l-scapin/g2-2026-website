@@ -289,7 +289,8 @@ Molti progetti sembrano risentire della **mancanza di un adeguato supporto** lun
 
 L'analisi dei dati, unita ad un modello predittivo, può rappresentare uno strumento concreto di supporto alle decisioni pubbliche: identificando in anticipo i principali fattori di rischio, è possibile intervenire tempestivamente e orientare in modo più efficace le risorse disponibili.
 
-Nel complesso, i risultati suggeriscono che le politiche di coesione **non sono ancora riuscite** a ridurre in modo significativo il divario territoriale tra le diverse aree del Paese.
+Nel complesso, i risultati suggeriscono che le politiche di coesione non riescono ancora a spendere un modo uniforme sul territorio e, di conseguenza, a ridurre in modo significativo il divario territoriale tra le diverse aree del Paese.
+
 Accanto a queste criticità, ci sono tuttavia anche **segnali positivi**.
 
 <!-- 🎙️ INTERVISTA (Bologna, CTA) · citazione VERBATIM (sez. D di virgolettati_intervista.md). -->

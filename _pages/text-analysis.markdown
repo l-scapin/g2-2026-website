@@ -53,7 +53,8 @@ Prima di combinare il linguaggio con le variabili strutturali, abbiamo valutato 
 
 Per rappresentare le descrizioni abbiamo trasformato il testo in numeri attraverso una matrice **TF-IDF** (*Term Frequency - Inverse Document Frequency*), calcolando non solo le singole parole (unigrammi) ma anche le associazioni di due parole (bigrammi). Questa matrice è stata utilizzata come input per una **Regressione Logistica**. 
 
-Il modello puramente testuale ha raggiunto un'affidabilità (AUC) pari a **0,77**, un risultato vicino allo **0,80** ottenuto dal Random Forest addestrato, su questo stesso sottoinsieme, con le sole variabili strutturali. La sola descrizione del progetto contiene quindi una quantità significativa di informazioni sul rischio futuro.
+Il modello puramente testuale ha raggiunto un'affidabilità (AUC) pari a **0,77**, un risultato vicino allo **0,80** ottenuto dal Random Forest addestrato, su questo stesso sottoinsieme, con le sole variabili strutturali. Questo valore però potrebbe essere soggetto ai problemi evidenziati nelle sezioni successive. 
+
 
 # Integrare testo e numeri
 
